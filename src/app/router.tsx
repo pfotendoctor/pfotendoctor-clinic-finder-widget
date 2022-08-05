@@ -8,7 +8,7 @@ type TRoute = {
 	content: () => JSX.Element;
 };
 
-const routes: Record<string, TRoute> = {
+const routes: { "": { content: (idElement, param1, param2) => void } } = {
 	"": {
 		content: (idElement, param1, param2) => {
 			let config = { param1, param2 };
