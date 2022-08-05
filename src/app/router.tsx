@@ -15,7 +15,7 @@ const routes: { "": { content: (idElement, param1, param2) => void } } = {
 				mode: "open",
 			});
 
-			render(<DefaultHome />, appRoot.shadowRoot);
+			render(<DefaultHome  idElement={idElement} param1={param1} param2={param2}/>, appRoot.shadowRoot);
 		},
 	},
 };
