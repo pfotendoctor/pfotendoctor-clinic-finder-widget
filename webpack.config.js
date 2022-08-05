@@ -18,6 +18,8 @@ module.exports = (env, args) => {
 		},
 		output: {
 			path: path.resolve('./dist'),
+			library: 'Widget',
+			libraryTarget: 'umd',
 		},
 		target: 'web',
 		devtool: isProduction ? false : 'source-map',

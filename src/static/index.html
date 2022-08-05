@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-En">
-
 <head>
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="Description" content="Preact boilerplate">
-	<title>Boilerplate</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="Description" content="Preact boilerplate" />
+	<title>Clinic-Finder</title>
 
-	<base href="/">
+	<base href="/" />
 	<style>
 		body {
 			font-family: system-ui;
@@ -21,7 +20,8 @@
 			color: #000;
 			background-color: #fff;
 		}
-		#app, noscript {
+		#app,
+		noscript {
 			display: flex;
 			width: 100vw;
 			height: 100vh;
@@ -43,14 +43,19 @@
 		}
 	</style>
 
-	<link rel="stylesheet" href="/styles/app.css" media="all">
+	<link rel="stylesheet" href="/styles/app.css" media="all" />
 </head>
 
 <body>
-	<noscript>Please turn on the Javascript.</noscript>
-	<div id="app"></div>
-	<script src="/scripts/vendor.js" defer></script>
-	<script src="/scripts/main.js" defer></script>
+<noscript>Please turn on the Javascript.</noscript>
+<!--	<div id="app"></div>-->
+<script src="http://0.0.0.0:3030"></script>
+<script>
+	window.addEventListener("DOMContentLoaded", function (event) {
+		new MyWidget("#react-widget", "toto", "tata");
+	});
+</script>
+<script src="/scripts/vendor.js" defer></script>
+<script src="/scripts/main.js" defer></script>
 </body>
-
 </html>
