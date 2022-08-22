@@ -114,6 +114,11 @@ export default function ClinicFinder(props: Props){
         catch(e) {console.log(e)}
     }
 
+    const resetClinicService = () => {
+        console.log("resetClinicService")
+        setActiveInfoCardId(null)
+    }
+
     return (
         <div className={"container"}>
             <div className={"container__header"}>
@@ -164,7 +169,9 @@ export default function ClinicFinder(props: Props){
                         })
                     }
                     {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                        <ClinicDetails clinicServiceDetails={clinicServiceDetails} />
+                        <ClinicDetails
+                            clinicServiceDetails={clinicServiceDetails}
+                            backToList={() => {resetClinicService()}} />
                     }
                 </div>
             </div>

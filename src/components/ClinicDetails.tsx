@@ -11,15 +11,16 @@ interface Props {
         city: string;
         openingHours: any;
         customerTodo: string;
-        openingHoursEmergency: string
-    }
+        openingHoursEmergency: string;
+    };
+    backToList: () => void
 }
 const ClinicDetails = (props: Props) => {
     const clinicService = props.clinicServiceDetails
     console.log(props)
     return (
         <div className={"clinicDetails"}>
-            <div className={"clinicDetails__backContainer"}>
+            <div onClick={props.backToList} className={"clinicDetails__backContainer"}>
                 <div><img src={"arrow_left.png"} alt={"arrow left"} /></div>
                 <div>Notdienstübersicht</div>
             </div>

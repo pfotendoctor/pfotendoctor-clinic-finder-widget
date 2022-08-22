@@ -9,6 +9,10 @@ body, html {
   /*margin: 0;*/
 }
 
+.marker:hover {
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -139,6 +143,10 @@ body, html {
   gap: 0.5rem;
   color: #F50001;
   margin-bottom: 2rem;
+}
+
+.clinicDetails__backContainer:hover {
+  cursor: pointer;
 }
 
 .clinicDetails__detailContainer {
