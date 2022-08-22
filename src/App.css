@@ -4,7 +4,8 @@ body, html {
   font-family: 'Roboto', sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #2B3656;
+  color: rgba(43, 54, 86, 0.75);
+  font-weight: 400;
   /*margin: 0;*/
 }
 
@@ -25,7 +26,7 @@ body, html {
 }
 
 .container__headerLeft {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
   line-height: 1.5rem;
 }
 
@@ -46,20 +47,64 @@ body, html {
 }
 
 .container__body {
-  height: 500px;
+  height: 550px;
   display: flex;
   flex-direction: row;
 }
 
 .container__bodyLeft {
+  position: relative;
+  background: white;
+  margin-top: -1.5rem;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  border-bottom-right-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 2.25rem;
+  color: #2b3656;
+  width: 200px;
+  z-index: 1;
 }
 
 .container__bodyRight {
-  background: pink;
+  width: 25rem;
+  overflow-y: scroll;
+}
+
+.container__bodyRight--item {
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
+  font-size: 14px;
+}
+
+.container__bodyRight--item:hover {
+  margin: 0;
+  padding: 1rem;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.container__bodyRight--item:hover .container__bodyRight--itemTitle {
+  color: #F50001
+}
+
+.container__bodyRight--itemTitle {
+  color: #2B3656
+}
+
+.container__bodyRight--itemTitle, .container__bodyRight--itemActiveTitle, .container__bodyRight--itemActiveStreet {
+  margin-bottom: 0.15rem;
+}
+
+.container__bodyRight--item:hover {
+  cursor: pointer;
 }
 
 .container__footer{
-  background: lightblue;
+  background: white;
+  padding: 1rem;
 }
 
 @media (max-width: 800px) {
@@ -80,76 +125,83 @@ body, html {
   }
 }
 
+/*Clinic Details*/
 
-/*.reddit_widget__app {*/
-/*  font-size: 16px;*/
-/*  padding: 0;*/
-/*  font-family: IBMPlexSans, Arial, sans-serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  color: #222;*/
-/*  box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.07);*/
-/*  border-radius: 12px;*/
-/*  overflow: hidden;*/
-/*}*/
+.clinicDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem
+}
 
-/*.reddit_widget__app a {*/
-/*  color: #5399d7;*/
-/*  transition: 0.2s ease-in-out all;*/
-/*}*/
+.clinicDetails__backContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  color: #F50001;
+  margin-bottom: 2rem;
+}
 
-/*.reddit_widget__header {*/
-/*  margin: 0;*/
-/*  display: block;*/
-/*  font-size: 19px;*/
-/*  padding: 12px 6px;*/
-/*  background: #5399d7;*/
-/*  color: white;*/
-/*  text-align: center;*/
-/*}*/
+.clinicDetails__detailContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
 
-/*.reddit_widget__header a {*/
-/*  color: #fff;*/
-/*}*/
+.clinicDetails__detailContainer--title {
+  color: #2b3656;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
 
-/*.reddit_widget__inner {*/
-/*  padding: 12px;*/
-/*}*/
+.clinicDetails__attentionContainer {
+  margin-bottom: 0.5rem;
+}
 
-/*.reddit_widget__inner a {*/
-/*  color: #222;*/
-/*  text-decoration: none;*/
-/*}*/
+.clinicDetails__detailContainer--address {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
 
-/*.reddit_widget__post {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  padding: 6px 0;*/
-/*}*/
+.clinicDetails__attentionContainer--info, .clinicDetails__emergencyInfo--info {
+  margin-bottom: 1rem;
+}
 
+.clinicDetails__emergencyInfo--info {
+  font-size: 14px;
+}
 
-/*.reddit_widget__posted_by {*/
-/*  font-size: 14px;*/
-/*  color: rgb(120, 124, 126);*/
-/*  padding: 0 0 6px 0;*/
-/*}*/
+.clinicDetails__attentionContainer--title, .clinicDetails__emergencyInfo--title {
+  color: #2b3656;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 
-/*.reddit_widget__posted_by a {*/
-/*  color: rgb(120, 124, 126);*/
-/*}*/
+.clinicDetails__buttonContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 0.2rem
+}
 
-/*a.reddit_widget__posted_by:hover {*/
-/*  text-decoration: underline;*/
-/*}*/
+.clinicDetails__buttonContainer button {
+  background: #fff2f2;
+  border: none;
+  padding: 0.7rem;
+  color:  #F50001;
+  border-radius: 6px;
+}
 
-/*a.reddit_widget__title {*/
-/*  font-weight: 500;*/
-/*}*/
+.clinicDetails__disclaimer {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.2rem;
+  margin-top: 1.5rem;
+}
 
-/*a.reddit_widget__title:hover {*/
-/*  color: #000;*/
-/*}*/
-
-/*.reddit_widget__powered_by {*/
-/*  text-align: center;*/
-/*  font-size: 14px;*/
-/*}*/
+.stroke {
+  width: 100%;
+  border: 1px solid #f0f0f0;
+}
