@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-interface Props {
+export interface ClinicProps {
     clinicServiceDetails: {
         id: number;
         name: string;
@@ -15,13 +15,13 @@ interface Props {
     };
     backToList: () => void
 }
-const ClinicDetails = (props: Props) => {
+const ClinicDetails = (props: ClinicProps) => {
     const clinicService = props.clinicServiceDetails
     console.log(props)
     return (
         <div className={"clinicDetails"}>
-            <div onClick={props.backToList} className={"clinicDetails__backContainer"}>
-                <div><img src={"arrow_left.png"} alt={"arrow left"} /></div>
+            <div onClick={props.backToList} className={"clinicDetails__redRowContainer"}>
+                <img src={"arrow_left.svg"} alt={"arrow left"} />
                 <div>Notdienstübersicht</div>
             </div>
             <div className={"clinicDetails__detailContainer"}>

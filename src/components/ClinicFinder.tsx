@@ -5,6 +5,7 @@ import '../App.css';
 import axios from "axios";
 import {Item} from "./Item";
 import ClinicDetails from "./ClinicDetails";
+import ClincDetailsEmergency from "./ClincDetailsEmergency";
 
 interface Props {
     lat: number;
@@ -24,6 +25,13 @@ interface ClinicService {
     name: string;
     showInMobileApp: boolean;
     type: ClinicType;
+}
+
+export const testFkt = async (id) => {
+    await axios.get(`http://127.0.0.1:3001/vet-practices/${id}`)
+        .then((response) => {
+            return response.data
+        })
 }
 
 export default function ClinicFinder(props: Props){
@@ -103,7 +111,7 @@ export default function ClinicFinder(props: Props){
         }).slice(0, 10)
     }
 
-    const handleDetailView = (id:number) => {
+    const toggleInfoCard = (id:number) => {
         try {
             axios.get(`http://127.0.0.1:3001/vet-practices/${id}`)
                 .then((response) => {
@@ -117,6 +125,22 @@ export default function ClinicFinder(props: Props){
     const resetClinicService = () => {
         console.log("resetClinicService")
         setActiveInfoCardId(null)
+    }
+
+    const renderDetails = (clinic) => {
+        if(clinicServiceDetails.type === ClinicType.emergencyRing) {
+            return(
+                <ClincDetailsEmergency
+                    clinicServiceDetails={clinicServiceDetails}
+                    backToList={() => {resetClinicService()}} />
+            )
+        } else {
+           return (
+               <ClinicDetails
+                   clinicServiceDetails={clinicServiceDetails}
+                   backToList={() => {resetClinicService()}} />
+           )
+        }
     }
 
     return (
@@ -144,7 +168,7 @@ export default function ClinicFinder(props: Props){
                                     key={clinicService.id}
                                     id={clinicService.id}
                                     activeInfoCardId={activeInfoCardId}
-                                    toggleInfoCard={(id) => {handleDetailView(id)}}
+                                    toggleInfoCard={(id) => {toggleInfoCard(id)}}
                                     lat={clinicService.coordinatesLat}
                                     lng={clinicService.coordinatesLong}
                                     type={clinicService.type}
@@ -169,9 +193,7 @@ export default function ClinicFinder(props: Props){
                         })
                     }
                     {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                        <ClinicDetails
-                            clinicServiceDetails={clinicServiceDetails}
-                            backToList={() => {resetClinicService()}} />
+                        renderDetails(clinicServiceDetails)
                     }
                 </div>
             </div>
