@@ -9,6 +9,38 @@ body, html {
   margin: 0;
 }
 
+.marker {}
+
+.blob {
+  background: #f50003;
+  border-radius: 50%;
+  box-shadow:  0 0 0 0 rgba(245, 0, 3, 1);
+  height: 32px;
+  width: 32px;
+  transform: scale(1.2);
+  animation: pulse-emergency 2s infinite;
+}
+
+.blob img {
+  position: relative;
+  right: 10px;
+  bottom: 3px;
+}
+
+@keyframes pulse-emergency {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 0, 3, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
 .marker:hover {
   cursor: pointer;
 }
@@ -36,6 +68,7 @@ body, html {
 
 .container__headerRight {
   height: 8rem;
+  margin-left: auto;
 }
 
 .container__headerRight img {
@@ -247,13 +280,13 @@ body, html {
   gap: 0.5rem
 }
 
-.clinicDetails__buttonContainer button {
+.clinicDetails__buttonContainer button, .infoModal__footer button {
   background: #fff2f2;
   border: none;
   padding: 0.7rem;
   color:  #F50001;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .clinicDetails__buttonContainer a {
@@ -264,7 +297,11 @@ body, html {
   padding: 0.7rem;
   color: #F50001;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 1rem;
+}
+
+.clinicDetails__buttonContainer button:hover, .infoModal__footer button:hover, .clinicDetails__buttonContainer a:hover {
+  cursor: pointer;
 }
 
 .clinicDetails__detailContainerBox .clinicDetails__buttonContainer a {
@@ -275,7 +312,7 @@ body, html {
   padding: 0.7rem;
   color: #F50001;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .clinicDetails__detailContainerBox .clinicDetails__buttonContainer button {
@@ -326,7 +363,7 @@ body, html {
   top: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  width: 25rem;
+  width: 28rem;
   border-radius: 6px;
 }
 
@@ -340,10 +377,48 @@ body, html {
 
 .infoModal__header .clinicDetails__detailContainer--title {
   margin-bottom: 0;
+}
 
+.infoModal__header img:hover {
+  cursor: pointer;
 }
 
 .infoModal__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.infoModal__bodyBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 6px;
+  background: #f0f0f0;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.infoModal__bodyBox img {
+  height: 4rem;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.infoModal__bodyBox--title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.infoModal__bodyBox--subTitle {
+  color: #2B3656;
+  font-size: 1.25rem;
+}
+
+.infoModal__footer {
   display: flex;
   flex-direction: column;
   justify-content: center;

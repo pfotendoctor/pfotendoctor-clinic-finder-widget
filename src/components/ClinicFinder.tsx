@@ -6,7 +6,7 @@ import axios from "axios";
 import {Item} from "./Item";
 import ClinicDetails from "./ClinicDetails";
 import ClincDetailsEmergency from "./ClincDetailsEmergency";
-import InfoModal from "./InfoModal";
+import {InfoModal} from "./InfoModal";
 
 interface Props {
     lat: number;
@@ -211,7 +211,7 @@ export default function ClinicFinder(props: Props){
             </div>
             {showModal &&
                 <div className={"infoModalContainer"}>
-                    <InfoModal />
+                    <InfoModal closeModal={() => {setShowModal(false)}} />
                 </div>
             }
         </div>
