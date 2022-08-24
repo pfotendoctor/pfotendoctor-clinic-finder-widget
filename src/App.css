@@ -174,8 +174,18 @@ body, html {
     flex-direction: column-reverse;
   }
 
+  .container__body {
+    flex-direction: column;
+    height: 850px;
+  }
+
   .container__headerRight {
     height: 3rem;
+    margin-left: 0;
+  }
+
+  .container__bodyRight {
+    width: 100%;
   }
 
   .container__headerRight img {
