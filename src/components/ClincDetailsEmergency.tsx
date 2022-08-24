@@ -23,8 +23,8 @@ const ClincDetailsEmergency = (props: ClinicProps) => {
                     <div className={"clinicDetails__attentionContainer--info"}>{clinicService.customerTodo}</div>
                 </div>
                 <div className={"clinicDetails__buttonContainer"}>
-                    <button>Anrufen</button>
-                    <button>Website öffnen</button>
+                    <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+                    <button onClick={() => {window.open(clinicService.website, "_blank")}}>Website öffnen</button>
                 </div>
             </div>
             <div className={"marginBottom"}>

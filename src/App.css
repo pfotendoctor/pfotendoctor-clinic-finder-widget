@@ -6,7 +6,7 @@ body, html {
   -webkit-font-smoothing: antialiased;
   color: rgba(43, 54, 86, 0.75);
   font-weight: 400;
-  /*margin: 0;*/
+  margin: 0;
 }
 
 .marker:hover {
@@ -72,7 +72,7 @@ body, html {
 }
 
 .container__bodyRight {
-  width: 25rem;
+  width: 28rem;
   overflow-y: scroll;
 }
 
@@ -109,6 +109,31 @@ body, html {
 .container__footer{
   background: white;
   padding: 1rem;
+}
+
+.container__footer--button {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.container__footer--button:hover {
+  cursor: pointer;
+}
+
+.container__footer--info {
+  display: flex;
+  flex-direction: column;
+}
+
+.container__footer--info img {
+  margin-left: auto;
 }
 
 @media (max-width: 800px) {
@@ -228,6 +253,29 @@ body, html {
   padding: 0.7rem;
   color:  #F50001;
   border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.clinicDetails__buttonContainer a {
+  text-align: center;
+  background: #fff2f2;
+  border-radius: 6px;
+  border: none;
+  padding: 0.7rem;
+  color: #F50001;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.clinicDetails__detailContainerBox .clinicDetails__buttonContainer a {
+  text-align: center;
+  background: white;
+  border-radius: 6px;
+  border: none;
+  padding: 0.7rem;
+  color: #F50001;
+  text-decoration: none;
+  font-size: 0.85rem;
 }
 
 .clinicDetails__detailContainerBox .clinicDetails__buttonContainer button {
@@ -237,6 +285,8 @@ body, html {
   border-radius: 6px;
   border: 1px solid #f0f0f0;
 }
+
+
 
 .clinicDetails__buttonContainer button:hover {
   cursor: pointer;
@@ -257,4 +307,46 @@ body, html {
 
 .marginBottom {
   margin-bottom: 1rem;
+}
+
+
+/*InfoModal*/
+
+.infoModalContainer {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.57);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.infoModal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 25rem;
+  border-radius: 6px;
+}
+
+.infoModal__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.infoModal__header .clinicDetails__detailContainer--title {
+  margin-bottom: 0;
+
+}
+
+.infoModal__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
 }

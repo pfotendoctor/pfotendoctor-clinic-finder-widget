@@ -12,6 +12,8 @@ export interface ClinicProps {
         openingHours: any;
         customerTodo: string;
         openingHoursEmergency: string;
+        website: string;
+        phoneNumberRegular: string;
     };
     backToList: () => void
 }
@@ -40,8 +42,8 @@ const ClinicDetails = (props: ClinicProps) => {
                 <div className={"clinicDetails__attentionContainer--info"}>{clinicService.customerTodo}</div>
             </div>
             <div className={"clinicDetails__buttonContainer"}>
-                <button>Anrufen</button>
-                <button>Website öffnen</button>
+                <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+                <button onClick={() => {window.open(clinicService.website, "_blank")}}>Website öffnen</button>
             </div>
             <div className={"clinicDetails__emergencyInfo"}>
                 <div className={"clinicDetails__emergencyInfo--title"}>Notdienst-Öffnungszeiten</div>

@@ -6,6 +6,7 @@ import axios from "axios";
 import {Item} from "./Item";
 import ClinicDetails from "./ClinicDetails";
 import ClincDetailsEmergency from "./ClincDetailsEmergency";
+import InfoModal from "./InfoModal";
 
 interface Props {
     lat: number;
@@ -38,7 +39,7 @@ export default function ClinicFinder(props: Props){
     const [clinicServices ,setClinicServices] = useState<ClinicService[]>(null)
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
-
+    const [showModal, setShowModal] = useState<boolean>(false)
     if(activeInfoCardId) {
         console.log(clinicServiceDetails)
     }
@@ -197,7 +198,22 @@ export default function ClinicFinder(props: Props){
                     }
                 </div>
             </div>
-            <div className={"container__footer"}></div>
+            <div className={"container__footer"}>
+                <div className={"clinicDetails__emergencyInfo--title"}>Nicht sicher, ob es sich um einen Notfall handelt?</div>
+                <div>Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb weniger Minuten eine erste Einschätzung bieten und Sie zu den nächsten Schritten beraten.</div>
+                <button className={"container__footer--button"} onClick={() => window.open("https://pfotendoctor.de", "_blank")}>
+                    <img src={"video_icon.svg"} alt={"video call icon"}/>
+                    <div>Jetzt Videosprechstunde buchen</div>
+                </button>
+            </div>
+            <div className={"container__footer--info"} onClick={() => {setShowModal(!showModal)}}>
+                <img src={"info.svg"} alt={"info icon"}/>
+            </div>
+            {showModal &&
+                <div className={"infoModalContainer"}>
+                    <InfoModal />
+                </div>
+            }
         </div>
     );
 }
