@@ -40,9 +40,8 @@ export default function ClinicFinder(props: Props){
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
-    if(activeInfoCardId) {
-        console.log(clinicServiceDetails)
-    }
+    const [showItemList, setShowItemList] = useState<boolean>(false)
+
     const defaultProps = {
         center: {
             lat: props.lat,
@@ -64,6 +63,9 @@ export default function ClinicFinder(props: Props){
 
     useEffect(() => {
         FetchClinicServices()
+        if(window) {
+            setShowItemList(window.innerWidth >= 668)
+        }
     },[])
 
     // NEAREST CLINICS
@@ -112,9 +114,9 @@ export default function ClinicFinder(props: Props){
         }).slice(0, 10)
     }
 
-    const toggleInfoCard = (id:number) => {
+    const toggleInfoCard = async (id:number) => {
         try {
-            axios.get(`http://127.0.0.1:3001/vet-practices/${id}`)
+            await axios.get(`http://127.0.0.1:3001/vet-practices/${id}`)
                 .then((response) => {
                     setActiveInfoCardId(id)
                     setClinicServiceDetails(response.data)
@@ -124,7 +126,6 @@ export default function ClinicFinder(props: Props){
     }
 
     const resetClinicService = () => {
-        console.log("resetClinicService")
         setActiveInfoCardId(null)
     }
 
@@ -144,6 +145,11 @@ export default function ClinicFinder(props: Props){
         }
     }
 
+    const backToMap = () => {
+        resetClinicService()
+        setShowItemList(false)
+    }
+
     return (
         <div className={"container"}>
             <div className={"container__header"}>
@@ -156,7 +162,35 @@ export default function ClinicFinder(props: Props){
                 </div>
             </div>
             <div className={"container__bodyLeft"}>Notdienste in unserer Nähe</div>
+            {(showItemList) &&
+                <div className={"container__bodyRight"}>
+                    <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer padding"}>
+                        <img src={"arrow_left.svg"} alt={"arrow left"} />
+                        <div>Karte</div>
+                    </div>
+                    {(clinicServices && !activeInfoCardId) &&
+                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                            return(
+                                <div key={clinicService.id}>
+                                    <Item
+                                        id={clinicService.id}
+                                        activeInfoCardId={activeInfoCardId}
+                                        toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
+                                        setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
+                                    />
+                                </div>
+                            )
+                        })
+                        }
+                        {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
+                        renderDetails(clinicServiceDetails)
+                    }
+                </div>
+            }
             <div className={"container__body"}>
+                <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
+                    <img src={"items_icon.svg"} alt={"items icon"}/>
+                </div>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ" }}
                     defaultCenter={defaultProps.center}
@@ -170,7 +204,7 @@ export default function ClinicFinder(props: Props){
                                     key={clinicService.id}
                                     id={clinicService.id}
                                     activeInfoCardId={activeInfoCardId}
-                                    toggleInfoCard={(id) => {toggleInfoCard(id)}}
+                                    toggleInfoCard={(id) => {toggleInfoCard(id).then(r => setShowItemList(true))}}
                                     lat={clinicService.coordinatesLat}
                                     lng={clinicService.coordinatesLong}
                                     type={clinicService.type}
@@ -179,25 +213,7 @@ export default function ClinicFinder(props: Props){
                         })
                     }
                 </GoogleMapReact>
-                <div className={"container__bodyRight"}>
-                    {(clinicServices && !activeInfoCardId) &&
-                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-                            return(
-                                <div key={clinicService.id}>
-                                   <Item
-                                       id={clinicService.id}
-                                       activeInfoCardId={activeInfoCardId}
-                                       toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
-                                       setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
-                                   />
-                                </div>
-                            )
-                        })
-                    }
-                    {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                        renderDetails(clinicServiceDetails)
-                    }
-                </div>
+
             </div>
             <div className={"container__footer"}>
                 <div className={"clinicDetails__emergencyInfo--title"}>Nicht sicher, ob es sich um einen Notfall handelt?</div>

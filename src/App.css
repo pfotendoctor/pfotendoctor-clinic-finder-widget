@@ -78,6 +78,23 @@ body, html {
   height: 180%;
 }
 
+.container__bodyItemsIcon {
+  position: absolute;
+  z-index: 99;
+  right: 11px;
+  width: 25px;
+  padding: 7px;
+  background: white;
+  height: 25px;
+  top: 19rem;
+
+}
+
+.container__bodyItemsIcon img {
+  width: 100%;
+  height: auto;
+}
+
 .emergencyText {
   color: #F50001;
   font-weight: bold;
@@ -90,15 +107,15 @@ body, html {
 }
 
 .container__bodyLeft {
-  position: relative;
+  position: absolute;
   background: white;
-  margin-top: -1.5rem;
+  /*margin-top: -1.5rem;*/
   padding: 0.5rem 1rem 0.5rem 1.5rem;
   border-top: 1px solid #f0f0f0;
   border-bottom-right-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
-  top: 2.25rem;
+  top: 8rem;
   color: #2b3656;
   width: 200px;
   z-index: 1;
@@ -107,6 +124,12 @@ body, html {
 .container__bodyRight {
   width: 28rem;
   overflow-y: scroll;
+  position: absolute;
+  z-index: 100;
+  background: white;
+  top: 8rem;
+  right: 0;
+  height: 540px;
 }
 
 .container__bodyRight--item {
@@ -178,6 +201,10 @@ body, html {
     flex-direction: column;
   }
 
+  .container__bodyLeft {
+    top: 15rem
+  }
+
   .container__headerRight {
     height: 3rem;
     margin-left: 0;
@@ -192,6 +219,11 @@ body, html {
 
   .container__bodyRight {
     width: 100%;
+    position: absolute;
+    z-index: 100;
+    background: white;
+    top: 16rem;
+    margin-left: 1rem;
   }
 
   .container__headerRight img {
@@ -362,6 +394,9 @@ body, html {
   margin-bottom: 1rem;
 }
 
+.padding {
+ padding: 1rem;
+}
 
 /*InfoModal*/
 
