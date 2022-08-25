@@ -169,19 +169,25 @@ body, html {
   margin-left: auto;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 668px) {
   .container__header {
     flex-direction: column-reverse;
   }
 
   .container__body {
     flex-direction: column;
-    height: 850px;
   }
 
   .container__headerRight {
     height: 3rem;
     margin-left: 0;
+  }
+
+  .clinicDetails {
+    /*position: absolute;*/
+    /*top: 15rem;*/
+    /*margin: 1rem;*/
+    background: white;
   }
 
   .container__bodyRight {

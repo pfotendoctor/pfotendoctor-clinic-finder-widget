@@ -162,6 +162,7 @@ export default function ClinicFinder(props: Props){
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
                 >
+                    <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
                     {clinicServices &&
                         clinicServices.map((clinicService) => {
                             return (
