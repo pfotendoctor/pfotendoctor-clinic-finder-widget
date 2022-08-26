@@ -85,6 +85,7 @@ body, html {
   width: 25px;
   padding: 7px;
   background: white;
+  border-radius: 10px;
   height: 25px;
   top: 19rem;
 
@@ -394,8 +395,22 @@ body, html {
   margin-bottom: 1rem;
 }
 
-.padding {
- padding: 1rem;
+.backToMap {
+  padding: 1rem 1rem 0 1rem;
+  margin-bottom: 0;
+}
+
+.gmnoprint {
+  background-color: transparent !important;
+}
+
+.gmnoprint button {
+  border-radius: 10px !important;
+  background: pink !important;
+}
+
+.gm-fullscreen-control {
+  border-radius: 10px !important;
 }
 
 /*InfoModal*/

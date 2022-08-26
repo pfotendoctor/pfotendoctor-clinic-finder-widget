@@ -162,12 +162,14 @@ export default function ClinicFinder(props: Props){
                 </div>
             </div>
             <div className={"container__bodyLeft"}>Notdienste in unserer Nähe</div>
-            {(showItemList) &&
+            {showItemList &&
                 <div className={"container__bodyRight"}>
-                    <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer padding"}>
-                        <img src={"arrow_left.svg"} alt={"arrow left"} />
-                        <div>Karte</div>
-                    </div>
+                    {!activeInfoCardId &&
+                        <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
+                            <img src={"arrow_left.svg"} alt={"arrow left"} />
+                            <div>Karte</div>
+                        </div>
+                    }
                     {(clinicServices && !activeInfoCardId) &&
                         sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
                             return(
