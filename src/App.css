@@ -82,13 +82,16 @@ body, html {
   position: absolute;
   z-index: 99;
   right: 11px;
-  width: 25px;
+  width: 26px;
   padding: 7px;
   background: white;
   border-radius: 10px;
   height: 25px;
-  top: 19rem;
+  top: 11.5rem;
+}
 
+.container__bodyItemsIcon:hover {
+  cursor: pointer;
 }
 
 .container__bodyItemsIcon img {
@@ -193,6 +196,12 @@ body, html {
   margin-left: auto;
 }
 
+@media (min-width: 668px) {
+  .gmnoprint {
+    top: 2.8rem !important;
+  }
+}
+
 @media (max-width: 668px) {
   .container__header {
     flex-direction: column-reverse;
@@ -212,10 +221,11 @@ body, html {
   }
 
   .clinicDetails {
-    /*position: absolute;*/
-    /*top: 15rem;*/
-    /*margin: 1rem;*/
     background: white;
+  }
+
+  .container__bodyItemsIcon {
+    top: 19rem;
   }
 
   .container__bodyRight {
@@ -233,6 +243,10 @@ body, html {
     bottom: -1rem;
     left: 1rem;
     height: 100%;
+  }
+
+  .gmnoprint {
+    top: 3.3rem !important;
   }
 }
 
@@ -400,16 +414,16 @@ body, html {
   margin-bottom: 0;
 }
 
-.gmnoprint {
-  background-color: transparent !important;
-}
-
-.gmnoprint button {
+.gm-fullscreen-control{
   border-radius: 10px !important;
-  background: pink !important;
 }
 
-.gm-fullscreen-control {
+.gmnoprint {
+  bottom: auto !important;
+}
+
+.gmnoprint > div {
+  box-shadow: none !important;
   border-radius: 10px !important;
 }
 
