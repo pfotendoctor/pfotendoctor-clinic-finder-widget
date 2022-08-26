@@ -78,16 +78,20 @@ body, html {
   height: 180%;
 }
 
+.container__bodyItems {
+  width: 0;
+}
+
 .container__bodyItemsIcon {
-  position: absolute;
+  position: relative;
   z-index: 99;
-  right: 11px;
+  right: 50px;
   width: 26px;
   padding: 7px;
   background: white;
   border-radius: 10px;
   height: 25px;
-  top: 11.5rem;
+  top: 3.5rem;
 }
 
 .container__bodyItemsIcon:hover {
@@ -111,18 +115,21 @@ body, html {
 }
 
 .container__bodyLeft {
-  position: absolute;
-  background: white;
+  width: 0;
   /*margin-top: -1.5rem;*/
+}
+.container__bodyLeftText {
+  position: relative;
+  z-index: 99;
+  right: 100vw;
+  background: white;
   padding: 0.5rem 1rem 0.5rem 1.5rem;
   border-top: 1px solid #f0f0f0;
   border-bottom-right-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
-  top: 8rem;
   color: #2b3656;
   width: 200px;
-  z-index: 1;
 }
 
 .container__bodyRight {
@@ -133,7 +140,7 @@ body, html {
   background: white;
   top: 8rem;
   right: 0;
-  height: 540px;
+  height: 550px;
 }
 
 .container__bodyRight--item {
@@ -208,7 +215,7 @@ body, html {
   }
 
   .container__body {
-    flex-direction: column;
+    /*flex-direction: column;*/
   }
 
   .container__bodyLeft {
@@ -224,17 +231,14 @@ body, html {
     background: white;
   }
 
-  .container__bodyItemsIcon {
-    top: 19rem;
-  }
-
   .container__bodyRight {
     width: 100%;
     position: absolute;
     z-index: 100;
     background: white;
-    top: 16rem;
+    top: 11rem;
     margin-left: 1rem;
+    height: 565px;
   }
 
   .container__headerRight img {
@@ -246,7 +250,7 @@ body, html {
   }
 
   .gmnoprint {
-    top: 3.3rem !important;
+    top: 2.9rem !important;
   }
 }
 

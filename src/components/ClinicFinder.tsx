@@ -161,7 +161,6 @@ export default function ClinicFinder(props: Props){
                     <img src={"red_cross.png"} alt={"emergency cross"}/>
                 </div>
             </div>
-            <div className={"container__bodyLeft"}>Notdienste in unserer Nähe</div>
             {showItemList &&
                 <div className={"container__bodyRight"}>
                     {!activeInfoCardId &&
@@ -190,9 +189,6 @@ export default function ClinicFinder(props: Props){
                 </div>
             }
             <div className={"container__body"}>
-                <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
-                    <img src={"items_icon.svg"} alt={"items icon"}/>
-                </div>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ" }}
                     defaultCenter={defaultProps.center}
@@ -215,7 +211,14 @@ export default function ClinicFinder(props: Props){
                         })
                     }
                 </GoogleMapReact>
-
+                <div className={"container__bodyLeft"}>
+                    <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
+                </div>
+                <div className={"container__bodyItems"}>
+                    <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
+                        <img src={"items_icon.svg"} alt={"items icon"}/>
+                    </div>
+                </div>
             </div>
             <div className={"container__footer"}>
                 <div className={"clinicDetails__emergencyInfo--title"}>Nicht sicher, ob es sich um einen Notfall handelt?</div>
