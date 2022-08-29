@@ -232,12 +232,11 @@ body, html {
   }
 
   .container__bodyRight {
-    width: 100%;
+    width: 96%;
     position: absolute;
     z-index: 100;
     background: white;
-    top: 11rem;
-    margin-left: 1rem;
+    top: 12rem;
     height: 565px;
   }
 

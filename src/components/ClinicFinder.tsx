@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Marker } from './Marker'
 import GoogleMapReact from 'google-map-react';
 import '../App.css';
@@ -11,6 +11,8 @@ import {InfoModal} from "./InfoModal";
 interface Props {
     lat: number;
     lng: number;
+    clinic: string;
+    method: "internal" | "external"
 }
 
 export enum ClinicType {
@@ -28,20 +30,13 @@ interface ClinicService {
     type: ClinicType;
 }
 
-export const testFkt = async (id) => {
-    await axios.get(`http://127.0.0.1:3001/vet-practices/${id}`)
-        .then((response) => {
-            return response.data
-        })
-}
-
 export default function ClinicFinder(props: Props){
     const [clinicServices ,setClinicServices] = useState<ClinicService[]>(null)
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
-
+    
     const defaultProps = {
         center: {
             lat: props.lat,
