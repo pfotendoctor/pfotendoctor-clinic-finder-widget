@@ -7,6 +7,7 @@ import {Item} from "./Item";
 import ClinicDetails from "./ClinicDetails";
 import ClincDetailsEmergency from "./ClincDetailsEmergency";
 import {InfoModal} from "./InfoModal";
+import CurrentPositionMarker from "./CurrentPositionMarker";
 
 interface Props {
     lat: number;
@@ -30,12 +31,18 @@ interface ClinicService {
     type: ClinicType;
 }
 
+interface userGeoLocation {
+    lat: number;
+    long: number
+}
+
 export default function ClinicFinder(props: Props){
     const [clinicServices ,setClinicServices] = useState<ClinicService[]>(null)
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
+    const [userGeoLocation, setUserGeoLocation] = useState<userGeoLocation>(null)
 
     const defaultProps = {
         center: {
@@ -72,19 +79,14 @@ export default function ClinicFinder(props: Props){
             timeout: 5000,
             maximumAge: 0
         };
-
         const success = (pos) => {
             const crd = pos.coords;
-            console.log(`Latitude : ${crd.latitude}`);
-            console.log(`Longitude: ${crd.longitude}`);
+            setUserGeoLocation({lat: crd.latitude, long: crd.longitude})
         }
-
         const error = (err) => {
             console.warn(`ERROR(${err.code}): ${err.message}`);
         }
-
         navigator.geolocation.getCurrentPosition(success, error, options);
-
     }
 
     // NEAREST CLINICS
@@ -214,6 +216,8 @@ export default function ClinicFinder(props: Props){
                     defaultZoom={defaultProps.zoom}
                 >
                     <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                    {userGeoLocation &&
+                        <CurrentPositionMarker lat={userGeoLocation.lat} lng={userGeoLocation.long} />}
                     {clinicServices &&
                         clinicServices.map((clinicService) => {
                             return (
