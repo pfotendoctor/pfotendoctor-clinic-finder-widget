@@ -36,7 +36,7 @@ export default function ClinicFinder(props: Props){
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
-    
+
     const defaultProps = {
         center: {
             lat: props.lat,
