@@ -16,15 +16,14 @@ export const Marker = ( props: Props ) => {
         return (
             <div key={props.key} onClick={() => props.toggleInfoCard(props.id)} className={"marker"}>
                 {props.type === ClinicType.emergencyRing &&
-                <div className={props.type === ClinicType.emergencyRing ? "blob" : ""}>
-                    <img
-                        src={"emergency_icon_ring.svg"}
-                        alt={"emergency cross"}/>
-                </div>
-                }
+                    <div className={props.type === ClinicType.emergencyRing ? "blob" : ""}>
+                        <img
+                            src={"emergency_icon_ring.svg"}
+                            alt={"emergency cross"}/>
+                    </div>}
+
                 {props.type === ClinicType.clinic && (
-                    <img src={props.id === props.activeInfoCardId ? "marker_active.png" : "marker_inactive.png"} alt={"marker"}/>
-                )}
+                    <img src={props.id === props.activeInfoCardId ? "marker_active.png" : "marker_inactive.png"} alt={"marker"}/>)}
             </div>
         )
     }
