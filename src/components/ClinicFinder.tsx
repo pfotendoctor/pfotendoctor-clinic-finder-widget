@@ -13,13 +13,18 @@ interface Props {
     lat: number;
     lng: number;
     clinic: string;
-    method: "internal" | "external"
+    method: Method
 }
 
 export enum ClinicType {
     clinic = "clinic",
     emergencyRing = "emergencyRing",
     vetExtendedOpeningHours = 'vetExtendedOpeningHours',
+}
+
+export enum Method {
+    internal = "internal",
+    external = "external"
 }
 
 interface ClinicService {
@@ -192,7 +197,6 @@ export default function ClinicFinder(props: Props){
                     <img src={"red_cross.png"} alt={"emergency cross"}/>
                 </div>
             </div>
-
             <div className={"container__body"}>
                 <GoogleMapReact
                     disableFullScreenControl={true}
@@ -202,8 +206,7 @@ export default function ClinicFinder(props: Props){
                     center={positioning && userGeoLocation ? {lat: userGeoLocation.lat, lng: userGeoLocation.long} : null}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
-                >
-                    <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                ><Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
                     {userGeoLocation &&
                         <CurrentPositionMarker lat={userGeoLocation.lat} lng={userGeoLocation.long} />}
                     {clinicServices &&
@@ -223,43 +226,41 @@ export default function ClinicFinder(props: Props){
                     }
                 </GoogleMapReact>
                 {showItemList &&
-                <div className={"container__bodyRight"}>
-                    {!activeInfoCardId &&
-                    <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
-                        <img src={"arrow_left.svg"} alt={"arrow left"} />
-                        <div>Karte</div>
+                    <div className={"container__bodyRight"}>
+                        {!activeInfoCardId &&
+                        <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
+                            <img src={"arrow_left.svg"} alt={"arrow left"} />
+                            <div>Karte</div>
+                        </div>
+                        }
+                        {(clinicServices && !activeInfoCardId) &&
+                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                            return(
+                                <div key={clinicService.id}>
+                                    <Item
+                                        id={clinicService.id}
+                                        activeInfoCardId={activeInfoCardId}
+                                        toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
+                                        setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
+                                    />
+                                </div>
+                            )
+                        })
+                        }
+                        {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
+                        renderDetails(clinicServiceDetails)
+                        }
                     </div>
-                    }
-                    {(clinicServices && !activeInfoCardId) &&
-                    sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-                        return(
-                            <div key={clinicService.id}>
-                                <Item
-                                    id={clinicService.id}
-                                    activeInfoCardId={activeInfoCardId}
-                                    toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
-                                    setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
-                                />
-                            </div>
-                        )
-                    })
-                    }
-                    {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                    renderDetails(clinicServiceDetails)
-                    }
-                </div>
                 }
-                <div className={"container__bodyItems"}>
-                    <div
-                        className={showItemList ? "container__bodyControlsIconActive" : "container__bodyControlsIcon"}
-                        onClick={() => {moveToPosition()}}>
-                        <img src={"controls.svg"} alt={"controls icon"}/>
-                    </div>
-                </div>
                 <div className={"container__bodyLeft"}>
                     <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
                 </div>
                 <div className={"container__bodyItems"}>
+                    <div
+                        className={"container__bodyControlsIcon"}
+                        onClick={() => {moveToPosition()}}>
+                        <img src={"controls.svg"} alt={"controls icon"}/>
+                    </div>
                     <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
                         <img src={"items_icon.svg"} alt={"items icon"}/>
                     </div>

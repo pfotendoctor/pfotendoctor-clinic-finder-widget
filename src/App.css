@@ -80,47 +80,42 @@ body, html {
 
 .container__bodyItems {
   width: 0;
+  height: 0;
 }
 
 .gm-fullscreen-control {
   display: none !important;
 }
 
-.container__bodyControlsIcon img {
+.container__bodyItemsIcon {
+  position: relative;
+  z-index: 99;
+  right: 50px;
+  width: 27px;
+  padding: 7px;
+  background: white;
+  border-radius: 10px;
+  height: 25px;
+  top: 6.6rem;
+}
+
+.container__bodyControlsIcon {
   position: relative;
   z-index: 99;
   right: 73px;
   width: 72px;
   padding: 7px;
   border-radius: 10px;
-  height: auto;
-  top: 5rem;
-}
-
-.container__bodyControlsIconActive img {
-  position: relative;
-  z-index: 99;
-  right: 325px;
-  width: 72px;
-  padding: 7px;
-  border-radius: 10px;
-  height: auto;
-  top: 5rem;
-}
-
-.container__bodyItemsIcon {
-  position: relative;
-  z-index: 99;
-  right: 50px;
-  width: 26px;
-  padding: 7px;
-  background: white;
-  border-radius: 10px;
   height: 25px;
-  top: 9rem;
+  top: 5rem;
 }
 
-.container__bodyControlsIconActive:hover , .container__bodyControlsIcon:hover {
+.container__bodyControlsIcon img {
+  width: 100%;
+  height: auto;
+}
+
+.container__bodyControlsIcon:hover {
   cursor: pointer;
 }
 
