@@ -21,6 +21,7 @@ export enum ClinicType {
     clinic = "clinic",
     emergencyRing = "emergencyRing",
     vetExtendedOpeningHours = 'vetExtendedOpeningHours',
+    custom = "custom"
 }
 
 export enum Method {
@@ -47,6 +48,7 @@ export default function ClinicFinder(props: Props){
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
     const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null)
     const [positioning, setPositioning] = useState<boolean>(false)
@@ -190,6 +192,7 @@ export default function ClinicFinder(props: Props){
     }
 
     const moveToSearchLoacation = (placeId:string) => {
+        setIsLoading(true)
         axios
             .get(
                 `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`
@@ -198,8 +201,12 @@ export default function ClinicFinder(props: Props){
                 console.log(response)
                 setPositioning(true)
                 setCustomPosition({lat: response.data.lat, long: response.data.long})
+                setIsLoading(false)
             })
-            .catch(e => {console.log(e)})
+            .catch(e => {
+                console.log(e)
+                setIsLoading(false)
+            })
     }
 
     return (
@@ -222,7 +229,11 @@ export default function ClinicFinder(props: Props){
                     center={positioning && customPosition ? {lat: customPosition.lat, lng: customPosition.long} : null}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
-                ><Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                >
+                    <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                    {isLoading ? null : positioning && customPosition && (customPosition.lat !== userGeoLocation.lat) &&
+                        <Marker key={10000} id={1} type={ClinicType.custom} lat={customPosition.lat} lng={customPosition.long} toggleInfoCard={() => {}} activeInfoCardId={null} />
+                    }
                     {userGeoLocation &&
                         <CurrentPositionMarker lat={userGeoLocation.lat} lng={userGeoLocation.long} />}
                     {clinicServices &&

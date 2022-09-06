@@ -15,6 +15,9 @@ export const Marker = ( props: Props ) => {
     if(props.id !== 0) {
         return (
             <div key={props.key} onClick={() => props.toggleInfoCard(props.id)} className={"marker"}>
+                {props.type === ClinicType.custom &&
+                    <img src={"pin.svg"} alt={"custom marker"}/>
+                }
                 {props.type === ClinicType.emergencyRing &&
                     <div className={props.type === ClinicType.emergencyRing ? "blob" : ""}>
                         <img

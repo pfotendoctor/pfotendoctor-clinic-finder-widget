@@ -106,9 +106,10 @@ const Search = (props: Props) => {
             </div>
             {resultList &&
             <div>
-                {resultList.map(item => {
+                {resultList.map((item, i) => {
                     return(
                         <div
+                            key={i}
                             onClick={() => {props.moveToSearchLoacation(item.placeId)}}
                             className={"container__bodyLeftItem"}>
                             <div className={"container__bodyLeftItemResult"}>{
