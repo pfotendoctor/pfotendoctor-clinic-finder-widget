@@ -8,6 +8,7 @@ import ClinicDetails from "./ClinicDetails";
 import ClincDetailsEmergency from "./ClincDetailsEmergency";
 import {InfoModal} from "./InfoModal";
 import CurrentPositionMarker from "./CurrentPositionMarker";
+import Search from "./Search";
 
 interface Props {
     lat: number;
@@ -36,7 +37,7 @@ interface ClinicService {
     type: ClinicType;
 }
 
-interface userGeoLocation {
+interface GeoLocation {
     lat: number;
     long: number
 }
@@ -47,8 +48,9 @@ export default function ClinicFinder(props: Props){
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
-    const [userGeoLocation, setUserGeoLocation] = useState<userGeoLocation>(null)
+    const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null)
     const [positioning, setPositioning] = useState<boolean>(false)
+    const [customPosition, setCustomPosition] = useState<GeoLocation>(null)
 
     const defaultProps = {
         center: {
@@ -182,8 +184,22 @@ export default function ClinicFinder(props: Props){
             setUserGeoLocation(null)
             setPositioning(false)
             getGeoLoacation()
+            setCustomPosition({lat: userGeoLocation.lat, long: userGeoLocation.long})
             setPositioning(true)
         }
+    }
+
+    const moveToSearchLoacation = (placeId:string) => {
+        axios
+            .get(
+                `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`
+            )
+            .then(response => {
+                console.log(response)
+                setPositioning(true)
+                setCustomPosition({lat: response.data.lat, long: response.data.long})
+            })
+            .catch(e => {console.log(e)})
     }
 
     return (
@@ -203,7 +219,7 @@ export default function ClinicFinder(props: Props){
                     bootstrapURLKeys={{ key: "AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ" }}
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
-                    center={positioning && userGeoLocation ? {lat: userGeoLocation.lat, lng: userGeoLocation.long} : null}
+                    center={positioning && customPosition ? {lat: customPosition.lat, lng: customPosition.long} : null}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
                 ><Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
@@ -252,9 +268,18 @@ export default function ClinicFinder(props: Props){
                         }
                     </div>
                 }
-                <div className={"container__bodyLeft"}>
-                    <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
-                </div>
+                {props.method === Method.external &&
+                    <div className={"container__bodyLeft"}>
+                        <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
+                    </div>
+                }
+                {props.method === Method.internal &&
+                    <div>
+                        <div className={"container__bodyLeft"}>
+                            <Search moveToSearchLoacation={(placeId) => {moveToSearchLoacation(placeId)}}/>
+                        </div>
+                    </div>
+                }
                 <div className={"container__bodyItems"}>
                     <div
                         className={"container__bodyControlsIcon"}
