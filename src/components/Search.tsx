@@ -13,7 +13,8 @@ export type ResulListElement = {
 export type ResultListType = ResulListElement[]
 
 interface Props {
-    moveToSearchLoacation: (placeId: string) => void
+    removePin: () => void;
+    moveToSearchLocation: (placeId: string) => void
 }
 
 const Search = (props: Props) => {
@@ -74,6 +75,15 @@ const Search = (props: Props) => {
         setActive(false)
         setResultList(null)
         setTextInput("")
+        props.removePin()
+    }
+
+    const handleSearchClick = (item) => {
+        console.log(item)
+        props.moveToSearchLocation(item.placeId)
+        setTextInput(item.searchTermResult)
+        setActive(false)
+        setResultList(null)
     }
 
     useEffect(() => {
@@ -110,7 +120,7 @@ const Search = (props: Props) => {
                     return(
                         <div
                             key={i}
-                            onClick={() => {props.moveToSearchLoacation(item.placeId)}}
+                            onClick={() => {handleSearchClick(item)}}
                             className={"container__bodyLeftItem"}>
                             <div className={"container__bodyLeftItemResult"}>{
                                 item.searchTermResult}

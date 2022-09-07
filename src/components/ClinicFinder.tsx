@@ -49,6 +49,7 @@ export default function ClinicFinder(props: Props){
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [showPin, setShowPin] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
     const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null)
     const [positioning, setPositioning] = useState<boolean>(false)
@@ -185,13 +186,14 @@ export default function ClinicFinder(props: Props){
         if(userGeoLocation) {
             setUserGeoLocation(null)
             setPositioning(false)
+            setShowPin(false)
             getGeoLoacation()
             setCustomPosition({lat: userGeoLocation.lat, long: userGeoLocation.long})
             setPositioning(true)
         }
     }
 
-    const moveToSearchLoacation = (placeId:string) => {
+    const moveToSearchLocation = (placeId:string) => {
         setIsLoading(true)
         axios
             .get(
@@ -202,6 +204,7 @@ export default function ClinicFinder(props: Props){
                 setPositioning(true)
                 setCustomPosition({lat: response.data.lat, long: response.data.long})
                 setIsLoading(false)
+                setShowPin(true)
             })
             .catch(e => {
                 console.log(e)
@@ -231,7 +234,7 @@ export default function ClinicFinder(props: Props){
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
                 >
                     <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
-                    {isLoading ? null : positioning && customPosition && (customPosition.lat !== userGeoLocation.lat) &&
+                    {(!showPin) ? null : positioning && customPosition &&
                         <Marker key={10000} id={1} type={ClinicType.custom} lat={customPosition.lat} lng={customPosition.long} toggleInfoCard={() => {}} activeInfoCardId={null} />
                     }
                     {userGeoLocation &&
@@ -287,7 +290,10 @@ export default function ClinicFinder(props: Props){
                 {props.method === Method.internal &&
                     <div>
                         <div className={"container__bodyLeft"}>
-                            <Search moveToSearchLoacation={(placeId) => {moveToSearchLoacation(placeId)}}/>
+                            <Search
+                                removePin={() => {setShowPin(false)}}
+                                moveToSearchLocation={(placeId) => {moveToSearchLocation(placeId)}}
+                            />
                         </div>
                     </div>
                 }
