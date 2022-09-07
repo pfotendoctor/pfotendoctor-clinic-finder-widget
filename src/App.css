@@ -684,3 +684,38 @@ body, html {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/*.container__bodyLeftSearch {*/
+/*  width: 40px;*/
+/*  height: 40px;*/
+/*  background: white;*/
+/*  position: relative;*/
+/*  right: -16px;*/
+/*  top: 0.6rem;*/
+/*  border-radius: 10px;*/
+/*}*/
+
+.container__bodyControlsLoading {
+  background: white;
+  width: 40px;
+  height: 40px;
+  right: -16px;
+  position: relative;
+  top: 0.6rem;
+  border-radius: 10px;
+}
+
+.container__bodyControlsLoadingBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.container__bodyControlsLoadingBox .loader__size__small {
+  width: 18px;
+  height: 18px;
+  margin-right: 0;
+}
+
+

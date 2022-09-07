@@ -9,6 +9,7 @@ import ClincDetailsEmergency from "./ClincDetailsEmergency";
 import {InfoModal} from "./InfoModal";
 import CurrentPositionMarker from "./CurrentPositionMarker";
 import Search from "./Search";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface Props {
     lat: number;
@@ -182,12 +183,16 @@ export default function ClinicFinder(props: Props){
         setShowItemList(false)
     }
 
-    const moveToPosition = () => {
+    const clearPosition = () => {
+        setPositioning(false)
+        setUserGeoLocation(null)
+        setCustomPosition(null)
+    }
+
+    const moveToPosition = async () => {
+        await clearPosition()
+        await getGeoLoacation()
         if(userGeoLocation) {
-            setUserGeoLocation(null)
-            setPositioning(false)
-            setShowPin(false)
-            getGeoLoacation()
             setCustomPosition({lat: userGeoLocation.lat, long: userGeoLocation.long})
             setPositioning(true)
         }
@@ -200,7 +205,6 @@ export default function ClinicFinder(props: Props){
                 `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`
             )
             .then(response => {
-                console.log(response)
                 setPositioning(true)
                 setCustomPosition({lat: response.data.lat, long: response.data.long})
                 setIsLoading(false)
@@ -301,7 +305,14 @@ export default function ClinicFinder(props: Props){
                     <div
                         className={"container__bodyControlsIcon"}
                         onClick={() => {moveToPosition()}}>
-                        <img src={"controls.svg"} alt={"controls icon"}/>
+                        {userGeoLocation && <img src={"controls.svg"} alt={"controls icon"}/>}
+                        {!userGeoLocation &&
+                            <div className={"container__bodyControlsLoading"}>
+                                <div className={"container__bodyControlsLoadingBox"}>
+                                    <LoadingSpinner/>
+                                </div>
+                            </div>
+                        }
                     </div>
                     <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
                         <img src={"items_icon.svg"} alt={"items icon"}/>
