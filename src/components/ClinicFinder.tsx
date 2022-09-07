@@ -8,18 +8,26 @@ import ClinicDetails from "./ClinicDetails";
 import ClincDetailsEmergency from "./ClincDetailsEmergency";
 import {InfoModal} from "./InfoModal";
 import CurrentPositionMarker from "./CurrentPositionMarker";
+import Search from "./Search";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface Props {
     lat: number;
     lng: number;
     clinic: string;
-    method: "internal" | "external"
+    method: Method
 }
 
 export enum ClinicType {
     clinic = "clinic",
     emergencyRing = "emergencyRing",
     vetExtendedOpeningHours = 'vetExtendedOpeningHours',
+    custom = "custom"
+}
+
+export enum Method {
+    internal = "internal",
+    external = "external"
 }
 
 interface ClinicService {
@@ -31,7 +39,7 @@ interface ClinicService {
     type: ClinicType;
 }
 
-interface userGeoLocation {
+interface GeoLocation {
     lat: number;
     long: number
 }
@@ -41,9 +49,12 @@ export default function ClinicFinder(props: Props){
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [showPin, setShowPin] = useState<boolean>(false)
     const [showItemList, setShowItemList] = useState<boolean>(false)
-    const [userGeoLocation, setUserGeoLocation] = useState<userGeoLocation>(null)
+    const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null)
     const [positioning, setPositioning] = useState<boolean>(false)
+    const [customPosition, setCustomPosition] = useState<GeoLocation>(null)
 
     const defaultProps = {
         center: {
@@ -172,13 +183,37 @@ export default function ClinicFinder(props: Props){
         setShowItemList(false)
     }
 
-    const moveToPosition = () => {
+    const clearPosition = () => {
+        setPositioning(false)
+        setUserGeoLocation(null)
+        setCustomPosition(null)
+    }
+
+    const moveToPosition = async () => {
+        await clearPosition()
+        await getGeoLoacation()
         if(userGeoLocation) {
-            setUserGeoLocation(null)
-            setPositioning(false)
-            getGeoLoacation()
+            setCustomPosition({lat: userGeoLocation.lat, long: userGeoLocation.long})
             setPositioning(true)
         }
+    }
+
+    const moveToSearchLocation = (placeId:string) => {
+        setIsLoading(true)
+        axios
+            .get(
+                `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`
+            )
+            .then(response => {
+                setPositioning(true)
+                setCustomPosition({lat: response.data.lat, long: response.data.long})
+                setIsLoading(false)
+                setShowPin(true)
+            })
+            .catch(e => {
+                console.log(e)
+                setIsLoading(false)
+            })
     }
 
     return (
@@ -192,18 +227,20 @@ export default function ClinicFinder(props: Props){
                     <img src={"red_cross.png"} alt={"emergency cross"}/>
                 </div>
             </div>
-
             <div className={"container__body"}>
                 <GoogleMapReact
                     disableFullScreenControl={true}
                     bootstrapURLKeys={{ key: "AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ" }}
                     defaultCenter={defaultProps.center}
                     defaultZoom={defaultProps.zoom}
-                    center={positioning && userGeoLocation ? {lat: userGeoLocation.lat, lng: userGeoLocation.long} : null}
+                    center={positioning && customPosition ? {lat: customPosition.lat, lng: customPosition.long} : null}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
                 >
                     <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                    {(!showPin) ? null : positioning && customPosition &&
+                        <Marker key={10000} id={1} type={ClinicType.custom} lat={customPosition.lat} lng={customPosition.long} toggleInfoCard={() => {}} activeInfoCardId={null} />
+                    }
                     {userGeoLocation &&
                         <CurrentPositionMarker lat={userGeoLocation.lat} lng={userGeoLocation.long} />}
                     {clinicServices &&
@@ -223,43 +260,60 @@ export default function ClinicFinder(props: Props){
                     }
                 </GoogleMapReact>
                 {showItemList &&
-                <div className={"container__bodyRight"}>
-                    {!activeInfoCardId &&
-                    <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
-                        <img src={"arrow_left.svg"} alt={"arrow left"} />
-                        <div>Karte</div>
+                    <div className={"container__bodyRight"}>
+                        {!activeInfoCardId &&
+                        <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
+                            <img src={"arrow_left.svg"} alt={"arrow left"} />
+                            <div>Karte</div>
+                        </div>
+                        }
+                        {(clinicServices && !activeInfoCardId) &&
+                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                            return(
+                                <div key={clinicService.id}>
+                                    <Item
+                                        id={clinicService.id}
+                                        activeInfoCardId={activeInfoCardId}
+                                        toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
+                                        setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
+                                    />
+                                </div>
+                            )
+                        })
+                        }
+                        {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
+                        renderDetails(clinicServiceDetails)
+                        }
                     </div>
-                    }
-                    {(clinicServices && !activeInfoCardId) &&
-                    sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-                        return(
-                            <div key={clinicService.id}>
-                                <Item
-                                    id={clinicService.id}
-                                    activeInfoCardId={activeInfoCardId}
-                                    toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
-                                    setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
-                                />
-                            </div>
-                        )
-                    })
-                    }
-                    {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                    renderDetails(clinicServiceDetails)
-                    }
-                </div>
+                }
+                {props.method === Method.external &&
+                    <div className={"container__bodyLeft"}>
+                        <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
+                    </div>
+                }
+                {props.method === Method.internal &&
+                    <div>
+                        <div className={"container__bodyLeft"}>
+                            <Search
+                                removePin={() => {setShowPin(false)}}
+                                moveToSearchLocation={(placeId) => {moveToSearchLocation(placeId)}}
+                            />
+                        </div>
+                    </div>
                 }
                 <div className={"container__bodyItems"}>
                     <div
-                        className={showItemList ? "container__bodyControlsIconActive" : "container__bodyControlsIcon"}
+                        className={"container__bodyControlsIcon"}
                         onClick={() => {moveToPosition()}}>
-                        <img src={"controls.svg"} alt={"controls icon"}/>
+                        {userGeoLocation && <img src={"controls.svg"} alt={"controls icon"}/>}
+                        {!userGeoLocation &&
+                            <div className={"container__bodyControlsLoading"}>
+                                <div className={"container__bodyControlsLoadingBox"}>
+                                    <LoadingSpinner/>
+                                </div>
+                            </div>
+                        }
                     </div>
-                </div>
-                <div className={"container__bodyLeft"}>
-                    <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
-                </div>
-                <div className={"container__bodyItems"}>
                     <div className={"container__bodyItemsIcon"} onClick={() => {setShowItemList(true)}}>
                         <img src={"items_icon.svg"} alt={"items icon"}/>
                     </div>
