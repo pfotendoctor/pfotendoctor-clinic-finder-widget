@@ -590,6 +590,7 @@ body, html {
   height: 100%;
   z-index: 1000;
   top: 0;
+  margin: -1px;
 }
 
 .infoModal {
@@ -600,7 +601,6 @@ body, html {
   background: white;
   width: 28rem;
   border-radius: 6px;
-  margin: -1px;
 }
 
 @media (max-width: 547px) {
