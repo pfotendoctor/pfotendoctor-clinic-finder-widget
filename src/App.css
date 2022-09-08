@@ -587,7 +587,7 @@ body, html {
   position: fixed;
   background: rgba(0, 0, 0, 0.57);
   width: 100%;
-  height: 100%;
+  height: 101%;
   z-index: 1000;
   top: 0;
   margin: -1px;
