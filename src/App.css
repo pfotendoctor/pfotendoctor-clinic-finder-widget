@@ -145,6 +145,7 @@ body, html {
 }
 .container__bodyLeftText {
   position: relative;
+  width: 200px;
   z-index: 99;
   right: 100vw;
   background: white;
@@ -203,6 +204,11 @@ body, html {
 
 .container__bodyLeftSearchIcon {
   margin-right: 0.5rem;
+  width: 1.25rem;
+}
+
+.container__bodyLeftCloseIcon {
+  width: 1.25rem;
 }
 
 .container__bodyLeftCloseIcon:hover {
@@ -591,6 +597,12 @@ body, html {
   border-radius: 6px;
 }
 
+@media (max-width: 547px) {
+  .infoModal {
+    width: 20rem;
+  }
+}
+
 .infoModal__header {
   display: flex;
   flex-direction: row;
@@ -684,16 +696,6 @@ body, html {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-/*.container__bodyLeftSearch {*/
-/*  width: 40px;*/
-/*  height: 40px;*/
-/*  background: white;*/
-/*  position: relative;*/
-/*  right: -16px;*/
-/*  top: 0.6rem;*/
-/*  border-radius: 10px;*/
-/*}*/
 
 .container__bodyControlsLoading {
   background: white;
