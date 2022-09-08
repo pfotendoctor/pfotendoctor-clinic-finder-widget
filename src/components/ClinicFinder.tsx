@@ -55,7 +55,6 @@ export default function ClinicFinder(props: Props){
     const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null)
     const [positioning, setPositioning] = useState<boolean>(false)
     const [customPosition, setCustomPosition] = useState<GeoLocation>(null)
-
     const defaultProps = {
         center: {
             lat: props.lat,
@@ -194,6 +193,7 @@ export default function ClinicFinder(props: Props){
         await getGeoLoacation()
         if(userGeoLocation) {
             setCustomPosition({lat: userGeoLocation.lat, long: userGeoLocation.long})
+            setShowPin(false)
             setPositioning(true)
         }
     }
@@ -217,7 +217,7 @@ export default function ClinicFinder(props: Props){
     }
 
     return (
-        <div className={"container"}>
+        <div className={"container"} onClick={() => {if(showModal){setShowModal(false)}}}>
             <div className={"container__header"}>
                 <div className={"container__headerLeft"}>
                     <span className={"emergencyText"}>Notfälle sind lebensbedrohliche Situationen.&nbsp;</span>
@@ -304,7 +304,7 @@ export default function ClinicFinder(props: Props){
                 <div className={"container__bodyItems"}>
                     <div
                         className={"container__bodyControlsIcon"}
-                        onClick={() => {moveToPosition()}}>
+                        onClick={userGeoLocation ? moveToPosition : null }>
                         {userGeoLocation && <img src={"controls.svg"} alt={"controls icon"}/>}
                         {!userGeoLocation &&
                             <div className={"container__bodyControlsLoading"}>
