@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Marker } from './Marker'
 import GoogleMapReact from 'google-map-react';
 import '../App.css';
@@ -216,8 +216,9 @@ export default function ClinicFinder(props: Props){
             })
     }
 
+
     return (
-        <div className={"container"} onClick={() => {if(showModal){setShowModal(false)}}}>
+        <div className={"container"}>
             <div className={"container__header"}>
                 <div className={"container__headerLeft"}>
                     <span className={"emergencyText"}>Notfälle sind lebensbedrohliche Situationen.&nbsp;</span>
@@ -331,8 +332,10 @@ export default function ClinicFinder(props: Props){
                 <img src={"info.svg"} alt={"info icon"}/>
             </div>
             {showModal &&
-                <div className={"infoModalContainer"}>
-                    <InfoModal closeModal={() => {setShowModal(false)}} />
+                <div className={"infoModalContainer"} onClick={() => {setShowModal(false)}}>
+                    <div onClick={e => e.stopPropagation()}>
+                        <InfoModal closeModal={() => {setShowModal(false)}} />
+                    </div>
                 </div>
             }
         </div>
