@@ -7,6 +7,7 @@ type Props = {
     id: number,
     activeInfoCardId: number
     toggleInfoCard: (id:number) => void,
+    toggleHoveredMarker: (id:number) => void,
     setClinicServiceDetails: (clinic) => void
 };
 
@@ -35,10 +36,14 @@ export const Item = (props: Props) => {
     return (
         <div>
             {clinicService &&
-                <div onClick={() => {handleClinicServiceDetails(props.id)}} className={"container__bodyRight--item"} >
-                    <div className={"container__bodyRight--itemTitle"}><b>{clinicService.name}</b></div>
-                    <div className={"container__bodyRight--itemActiveStreet"}>{clinicService.street} {clinicService.houseNumber}</div>
-                    <div>{clinicService.city}</div>
+                <div
+                    onClick={() => {handleClinicServiceDetails(props.id)}}
+                    onMouseEnter={() => {props.toggleHoveredMarker(props.id)} }
+                    onMouseLeave={() => {} }
+                    className={"container__bodyRight--item"} >
+                        <div className={"container__bodyRight--itemTitle"}><b>{clinicService.name}</b></div>
+                        <div className={"container__bodyRight--itemActiveStreet"}>{clinicService.street} {clinicService.houseNumber}</div>
+                        <div>{clinicService.city}</div>
                 </div>
             }
         </div>

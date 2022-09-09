@@ -7,9 +7,7 @@ interface Props {
 }
 
 const CurrentPositionMarker = (props: Props) => {
-    return (
-        <div className={"positionMarker"}></div>
-    );
+    return (<div className={"positionMarker"}></div>);
 };
 
 export default CurrentPositionMarker;

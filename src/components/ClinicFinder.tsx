@@ -47,6 +47,7 @@ interface GeoLocation {
 export default function ClinicFinder(props: Props){
     const [clinicServices ,setClinicServices] = useState<ClinicService[]>(null)
     const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null)
+    const [hoveredMarker, setHoveredMarker] = useState<number>(null)
     const [clinicServiceDetails, setClinicServiceDetails] = useState(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -63,6 +64,7 @@ export default function ClinicFinder(props: Props){
         zoom: 10
     };
 
+    // Get clinic services
     const FetchClinicServices = () => {
         try {
             axios.get('http://127.0.0.1:3001/vet-practices')
@@ -84,6 +86,7 @@ export default function ClinicFinder(props: Props){
         }
     },[])
 
+    // Geo location
     const getGeoLoacation = () => {
         const options = {
             enableHighAccuracy: true,
@@ -100,8 +103,7 @@ export default function ClinicFinder(props: Props){
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
 
-    // NEAREST CLINICS
-
+    // Get nearest Clinics
     const distanceBetweenCoordinates = (
         [lat1, lon1]: number[],
         [lat2, lon2]: number[],
@@ -177,6 +179,7 @@ export default function ClinicFinder(props: Props){
         }
     }
 
+    // Map actions
     const backToMap = () => {
         resetClinicService()
         setShowItemList(false)
@@ -238,12 +241,34 @@ export default function ClinicFinder(props: Props){
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => console.log(map)}
                 >
-                    <Marker key={0} id={0} type={ClinicType.clinic} lat={props.lat} lng={props.lng} toggleInfoCard={() => {}} activeInfoCardId={activeInfoCardId} />
+                    <Marker
+                        key={0}
+                        id={0}
+                        type={ClinicType.clinic}
+                        lat={props.lat}
+                        lng={props.lng}
+                        toggleInfoCard={() => {}}
+                        activeInfoCardId={activeInfoCardId}
+                        hoveredMarker={hoveredMarker}
+                        clinic={props.clinic}
+                    />
                     {(!showPin) ? null : positioning && customPosition &&
-                        <Marker key={10000} id={1} type={ClinicType.custom} lat={customPosition.lat} lng={customPosition.long} toggleInfoCard={() => {}} activeInfoCardId={null} />
+                        <Marker
+                            key={10000} id={1}
+                            type={ClinicType.custom}
+                            lat={customPosition.lat}
+                            lng={customPosition.long}
+                            toggleInfoCard={() => {}}
+                            activeInfoCardId={null}
+                            hoveredMarker={null}
+                        />
                     }
                     {userGeoLocation &&
-                        <CurrentPositionMarker lat={userGeoLocation.lat} lng={userGeoLocation.long} />}
+                        <CurrentPositionMarker
+                            lat={userGeoLocation.lat}
+                            lng={userGeoLocation.long}
+                        />
+                    }
                     {clinicServices &&
                         clinicServices.map((clinicService) => {
                             return (
@@ -255,6 +280,7 @@ export default function ClinicFinder(props: Props){
                                     lat={clinicService.coordinatesLat}
                                     lng={clinicService.coordinatesLong}
                                     type={clinicService.type}
+                                    hoveredMarker={hoveredMarker}
                                 />
                             )
                         })
@@ -276,6 +302,7 @@ export default function ClinicFinder(props: Props){
                                         id={clinicService.id}
                                         activeInfoCardId={activeInfoCardId}
                                         toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
+                                        toggleHoveredMarker={(id) => {setHoveredMarker(id)}}
                                         setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
                                     />
                                 </div>
@@ -328,8 +355,11 @@ export default function ClinicFinder(props: Props){
                     <div>Jetzt Videosprechstunde buchen</div>
                 </button>
             </div>
-            <div className={"container__footer--info"} onClick={() => {setShowModal(!showModal)}}>
-                <img src={"info.svg"} alt={"info icon"}/>
+            <div className={"container__footer--infoContainer"} onClick={() => {setShowModal(!showModal)}}>
+                <div className={"container__footer--infoBox"}>
+                    <img src={"pd-logo.svg"} alt={"info icon"}/>
+                    <div className={"container__footer--infoText"}>Informationen</div>
+                </div>
             </div>
             {showModal &&
                 <div className={"infoModalContainer"} onClick={() => {setShowModal(false)}}>

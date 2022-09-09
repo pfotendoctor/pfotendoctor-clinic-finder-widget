@@ -18,7 +18,6 @@ interface Props {
 }
 
 const Search = (props: Props) => {
-    const [clinic, setClinic] = useState(null)
     const [resultList, setResultList] = useState(null)
     const [textInput, setTextInput] = useState("")
     const [resultListLoading, setResultListLoading] = useState<boolean>(null)
@@ -46,7 +45,6 @@ const Search = (props: Props) => {
     )
 
     const FetchAutoCompleteResults = (text: string, session: string) => {
-        setClinic(null)
         setResultListLoading(true)
         if (!text) {
             return
@@ -97,7 +95,6 @@ const Search = (props: Props) => {
     return (
         <div className={!!active ? "container__bodyLeftContainerActive" : "container__bodyLeftContainer"}>
             <div className={"container__bodyLeftSearch"}>
-                {/*<LoadingSpinner/>*/}
                 {resultListLoading && <LoadingSpinner/>}
                 {!resultListLoading &&
                     <img
@@ -108,11 +105,13 @@ const Search = (props: Props) => {
                     value={textInput}
                     onChange={(e) => {onChangeSearchFieldText(e.target.value)}}
                     placeholder={"Adresse, Ort, etc."}/>
-                <img
-                    className={"container__bodyLeftCloseIcon"}
-                    onClick={() => {removeSearch()}}
-                    src={"closeIcon.svg"}
-                    alt={"close"}/>
+                {!!textInput &&
+                    <img
+                        className={"container__bodyLeftCloseIcon"}
+                        onClick={() => {removeSearch()}}
+                        src={"closeIcon.svg"}
+                        alt={"close"}/>
+                }
             </div>
             {resultList &&
             <div>
