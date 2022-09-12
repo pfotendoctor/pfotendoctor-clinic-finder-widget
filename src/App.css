@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex:wght@100;400&display=swap');
 
-body, html {
+body,
+html {
   font-family: 'Roboto', sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -9,12 +10,13 @@ body, html {
   margin: 0;
 }
 
-.marker {}
+.marker {
+}
 
 .blob {
   background: #f50003;
   border-radius: 50%;
-  box-shadow:  0 0 0 0 rgba(245, 0, 3, 1);
+  box-shadow: 0 0 0 0 rgba(245, 0, 3, 1);
   height: 32px;
   width: 32px;
   transform: scale(1.2);
@@ -54,7 +56,7 @@ body, html {
   overflow: hidden;
 }
 
-.container__header{
+.container__header {
   display: flex;
   flex-direction: row;
   background: white;
@@ -129,7 +131,7 @@ body, html {
 }
 
 .emergencyText {
-  color: #F50001;
+  color: #f50001;
   font-weight: bold;
 }
 
@@ -173,7 +175,7 @@ body, html {
   z-index: 99;
   right: 100vw;
   border-radius: 10px;
-  background: #F5FAFA;
+  background: #f5fafa;
   width: 300px;
   padding: 0.1rem 0;
   margin: 0.5rem 1rem;
@@ -284,14 +286,16 @@ body, html {
 }
 
 .container__bodyRight--item:hover .container__bodyRight--itemTitle {
-  color: #F50001
+  color: #f50001;
 }
 
 .container__bodyRight--itemTitle {
-  color: #2B3656
+  color: #2b3656;
 }
 
-.container__bodyRight--itemTitle, .container__bodyRight--itemActiveTitle, .container__bodyRight--itemActiveStreet {
+.container__bodyRight--itemTitle,
+.container__bodyRight--itemActiveTitle,
+.container__bodyRight--itemActiveStreet {
   margin-bottom: 0.15rem;
 }
 
@@ -299,13 +303,13 @@ body, html {
   cursor: pointer;
 }
 
-.container__footer{
+.container__footer {
   background: white;
   padding: 1rem 1rem 0 1rem;
 }
 
 .container__footerInternal {
-  background: #EEF9FA;
+  background: #eef9fa;
   padding: 1.5rem;
 }
 
@@ -324,7 +328,7 @@ body, html {
 .container__footer--buttonInternal {
   display: flex;
   flex-direction: row;
-  background: #FF8766;
+  background: #ff8766;
   font-size: 1rem;
   color: white;
   font-weight: 600;
@@ -336,7 +340,8 @@ body, html {
   align-items: center;
 }
 
-.container__footer--button:hover, .container__footer--buttonInternal:hover {
+.container__footer--button:hover,
+.container__footer--buttonInternal:hover {
   cursor: pointer;
 }
 
@@ -366,7 +371,6 @@ body, html {
 }
 
 .container__footer--infoContainer img {
-
 }
 
 @media (max-width: 668px) {
@@ -400,7 +404,7 @@ body, html {
   }
 
   .container__bodyLeft {
-    top: 15rem
+    top: 15rem;
   }
 
   .container__headerRight {
@@ -440,7 +444,6 @@ body, html {
   }
 }
 
-
 @media (max-width: 547px) {
   .container__bodyRight {
     top: 12rem;
@@ -477,7 +480,7 @@ body, html {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  color: #F50001;
+  color: #f50001;
   align-items: center;
   margin-bottom: 1rem;
 }
@@ -507,7 +510,7 @@ body, html {
   margin-bottom: 0.5rem;
 }
 
-.clinicDetails__detailContainerBox .clinicDetails__redRowContainer img{
+.clinicDetails__detailContainerBox .clinicDetails__redRowContainer img {
   height: 1.5rem;
   width: auto;
 }
@@ -537,7 +540,8 @@ body, html {
   gap: 0.2rem;
 }
 
-.clinicDetails__attentionContainer--info, .clinicDetails__emergencyInfo--info {
+.clinicDetails__attentionContainer--info,
+.clinicDetails__emergencyInfo--info {
   margin-bottom: 1rem;
 }
 
@@ -545,7 +549,8 @@ body, html {
   font-size: 14px;
 }
 
-.clinicDetails__attentionContainer--title, .clinicDetails__emergencyInfo--title {
+.clinicDetails__attentionContainer--title,
+.clinicDetails__emergencyInfo--title {
   color: #2b3656;
   font-size: 1rem;
   font-weight: bold;
@@ -556,14 +561,15 @@ body, html {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  gap: 0.5rem
+  gap: 0.5rem;
 }
 
-.clinicDetails__buttonContainer button, .infoModal__footer button {
+.clinicDetails__buttonContainer button,
+.infoModal__footer button {
   background: #fff2f2;
   border: none;
   padding: 0.7rem;
-  color:  #F50001;
+  color: #f50001;
   border-radius: 6px;
   font-size: 1rem;
 }
@@ -574,12 +580,14 @@ body, html {
   border-radius: 6px;
   border: none;
   padding: 0.7rem;
-  color: #F50001;
+  color: #f50001;
   text-decoration: none;
   font-size: 1rem;
 }
 
-.clinicDetails__buttonContainer button:hover, .infoModal__footer button:hover, .clinicDetails__buttonContainer a:hover {
+.clinicDetails__buttonContainer button:hover,
+.infoModal__footer button:hover,
+.clinicDetails__buttonContainer a:hover {
   cursor: pointer;
 }
 
@@ -589,7 +597,7 @@ body, html {
   border-radius: 6px;
   border: none;
   padding: 0.7rem;
-  color: #F50001;
+  color: #f50001;
   text-decoration: none;
   font-size: 1rem;
 }
@@ -597,17 +605,14 @@ body, html {
 .clinicDetails__detailContainerBox .clinicDetails__buttonContainer button {
   background: white;
   padding: 0.7rem;
-  color:  #F50001;
+  color: #f50001;
   border-radius: 6px;
   border: 1px solid #f0f0f0;
 }
 
-
-
 .clinicDetails__buttonContainer button:hover {
   cursor: pointer;
 }
-
 
 .clinicDetails__disclaimer {
   font-size: 12px;
@@ -630,7 +635,7 @@ body, html {
   margin-bottom: 0.5rem;
 }
 
-.gm-fullscreen-control{
+.gm-fullscreen-control {
   border-radius: 10px !important;
 }
 
@@ -719,7 +724,7 @@ body, html {
 }
 
 .infoModal__bodyBox--subTitle {
-  color: #2B3656;
+  color: #2b3656;
   font-size: 1.25rem;
 }
 
@@ -774,7 +779,7 @@ body, html {
 
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #FF8766; /* Blue */
+  border-top: 16px solid #ff8766; /* Blue */
   border-radius: 50%;
   animation: spin 2s linear infinite;
   margin-right: 0.45rem;
@@ -784,13 +789,17 @@ body, html {
   width: 13px;
   height: 11px;
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid #FF8766; /* Blue */
+  border-top: 2px solid #ff8766; /* Blue */
   border-radius: 200%;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .container__bodyControlsLoading {
@@ -815,5 +824,3 @@ body, html {
   height: 18px;
   margin-right: 0;
 }
-
-

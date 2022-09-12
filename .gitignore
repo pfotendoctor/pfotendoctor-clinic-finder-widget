@@ -3,4 +3,6 @@ node_modules
 .idea/modules.xml
 .idea/pfotendoctor-clinic-finder-widget.iml
 .idea/vcs.xml
-.idea/inspectionProfiles/Project_Default.xml
+.idea/inspectionProfiles
+/.cache
+src/react-app-env.d.ts
