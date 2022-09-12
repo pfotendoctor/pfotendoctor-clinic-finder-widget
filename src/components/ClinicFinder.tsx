@@ -286,34 +286,32 @@ export default function ClinicFinder(props: Props){
                         })
                     }
                 </GoogleMapReact>
-                {showItemList &&
-                    <div className={"container__bodyRight"}>
-                        {!activeInfoCardId &&
-                        <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
-                            <img src={"arrow_left.svg"} alt={"arrow left"} />
-                            <div>Karte</div>
-                        </div>
-                        }
-                        {(clinicServices && !activeInfoCardId) &&
-                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-                            return(
-                                <div key={clinicService.id}>
-                                    <Item
-                                        id={clinicService.id}
-                                        activeInfoCardId={activeInfoCardId}
-                                        toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
-                                        toggleHoveredMarker={(id) => {setHoveredMarker(id)}}
-                                        setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
-                                    />
-                                </div>
-                            )
-                        })
-                        }
-                        {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
-                        renderDetails(clinicServiceDetails)
-                        }
+                <div className={showItemList ? "container__bodyRight" : "container__bodyRightInactive"}>
+                    {!activeInfoCardId &&
+                    <div onClick={() => {backToMap()}} className={"clinicDetails__redRowContainer backToMap"}>
+                        <img src={"arrow_left.svg"} alt={"arrow left"} />
+                        <div>Karte</div>
                     </div>
-                }
+                    }
+                    {(clinicServices && !activeInfoCardId) &&
+                    sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                        return(
+                            <div key={clinicService.id}>
+                                <Item
+                                    id={clinicService.id}
+                                    activeInfoCardId={activeInfoCardId}
+                                    toggleInfoCard={(id) => {setActiveInfoCardId(id)}}
+                                    toggleHoveredMarker={(id) => {setHoveredMarker(id)}}
+                                    setClinicServiceDetails={(clinic) => {setClinicServiceDetails(clinic)}}
+                                />
+                            </div>
+                        )
+                    })
+                    }
+                    {(activeInfoCardId && activeInfoCardId === clinicServiceDetails?.id) &&
+                    renderDetails(clinicServiceDetails)
+                    }
+                </div>
                 {props.method === Method.external &&
                     <div className={"container__bodyLeft"}>
                         <div className={"container__bodyLeftText"}>Notdienste in unserer Nähe</div>
@@ -347,26 +345,42 @@ export default function ClinicFinder(props: Props){
                     </div>
                 </div>
             </div>
-            <div className={"container__footer"}>
+            <div className={props.method === Method.internal ? "container__footerInternal" : "container__footer"}>
                 <div className={"clinicDetails__emergencyInfo--title"}>Nicht sicher, ob es sich um einen Notfall handelt?</div>
-                <div>Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb weniger Minuten eine erste Einschätzung bieten und Sie zu den nächsten Schritten beraten.</div>
-                <button className={"container__footer--button"} onClick={() => window.open("https://pfotendoctor.de", "_blank")}>
-                    <img src={"video_icon.svg"} alt={"video call icon"}/>
-                    <div>Jetzt Videosprechstunde buchen</div>
-                </button>
+                {props.method === Method.external &&
+                    <>
+                        <div>Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb weniger Minuten eine erste Einschätzung bieten und Sie zu den nächsten Schritten beraten.</div>
+                        <button className={"container__footer--button"} onClick={() => window.open("https://pfotendoctor.de", "_blank")}>
+                            <img src={"video_icon.svg"} alt={"video call icon"}/>
+                            <div>Jetzt Videosprechstunde buchen</div>
+                        </button>
+                    </>
+                }
+                {props.method === Method.internal &&
+                    <>
+                        <div>Unsere erfahrenen Tierärzte können dir per Videosprechstunde innerhalb weniger Minuten eine erste Einschätzung bieten und dich zu den nächsten Schritten beraten.</div>
+                        <button className={"container__footer--buttonInternal"} onClick={() => window.open("https://pfotendoctor.de/termin-buchen", "_blank")}>
+                            <div>Videosprechstunde buchen</div>
+                        </button>
+                    </>
+                }
             </div>
-            <div className={"container__footer--infoContainer"} onClick={() => {setShowModal(!showModal)}}>
-                <div className={"container__footer--infoBox"}>
-                    <img src={"pd-logo.svg"} alt={"info icon"}/>
-                    <div className={"container__footer--infoText"}>Informationen</div>
-                </div>
-            </div>
-            {showModal &&
-                <div className={"infoModalContainer"} onClick={() => {setShowModal(false)}}>
-                    <div onClick={e => e.stopPropagation()}>
-                        <InfoModal closeModal={() => {setShowModal(false)}} />
+            {props.method === Method.external &&
+                <>
+                    <div className={"container__footer--infoContainer"} onClick={() => {setShowModal(!showModal)}}>
+                        <div className={"container__footer--infoBox"}>
+                            <img src={"pd-logo.svg"} alt={"info icon"}/>
+                            <div className={"container__footer--infoText"}>Informationen</div>
+                        </div>
                     </div>
-                </div>
+                    {showModal &&
+                    <div className={"infoModalContainer"} onClick={() => {setShowModal(false)}}>
+                        <div onClick={e => e.stopPropagation()}>
+                            <InfoModal closeModal={() => {setShowModal(false)}} />
+                        </div>
+                    </div>
+                    }
+                </>
             }
         </div>
     );
