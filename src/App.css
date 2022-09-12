@@ -366,7 +366,7 @@ html {
   text-decoration: underline;
 }
 
-.container__footer--infoContainer:hover {
+.container__footer--infoBox:hover {
   cursor: pointer;
 }
 
