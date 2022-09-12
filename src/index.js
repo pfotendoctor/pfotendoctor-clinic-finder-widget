@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 // Find all widget divs
-const WidgetDivs = document.querySelectorAll('.clinic_finder_widget')
+const WidgetDivs = document.querySelectorAll('.clinic_finder_widget');
 
 // Inject our React App into each
 WidgetDivs.forEach(Div => {
@@ -11,6 +11,6 @@ WidgetDivs.forEach(Div => {
     <React.StrictMode>
       <App domElement={Div} />
     </React.StrictMode>,
-    Div
+    Div,
   );
-})
+});
