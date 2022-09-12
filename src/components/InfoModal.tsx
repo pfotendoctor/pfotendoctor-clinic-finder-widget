@@ -13,7 +13,7 @@ export const InfoModal = (props: Props) => {
                 <img onClick={props.closeModal} src={"close_icon.svg"} alt={"close modal"}/>
             </div>
             <div className={"infoModal__body"}>
-                <div>Dieses Notdienst-Widget wird entwickelt und kostenfrei bereitgestellt von</div>
+                <div>Dieses Notdienst-Widget wird entwickelt und kostenfrei bereitgestellt von</div>
                 <div className={"infoModal__bodyBox"}>
                     <img src={"pd_logo.svg"} alt={"logo"}/>
                     <div  className={"infoModal__bodyBox--title"}>Pfotendoctor</div>

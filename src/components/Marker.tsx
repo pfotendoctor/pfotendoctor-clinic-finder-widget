@@ -29,8 +29,7 @@ export const Marker = ( props: Props ) => {
                     <img src={props.id === (props.activeInfoCardId || props.hoveredMarker) ? "marker_active.png" : "marker_inactive.png"} alt={"marker"}/>)}
             </div>
         )
-    }
-     else {
+    } else {
          return (
              <div>
                  <img
