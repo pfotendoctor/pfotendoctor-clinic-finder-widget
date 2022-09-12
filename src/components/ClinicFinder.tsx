@@ -68,7 +68,7 @@ export default function ClinicFinder(props: Props) {
   const FetchClinicServices = () => {
     try {
       axios
-        .get('http://127.0.0.1:3001/vet-practices')
+        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices`)
 
         .then(response => {
           setClinicServices(response.data);
@@ -453,13 +453,13 @@ export default function ClinicFinder(props: Props) {
       </div>
       {props.method === Method.external && (
         <>
-          <div
-            className={'container__footer--infoContainer'}
-            onClick={() => {
-              setShowModal(!showModal);
-            }}
-          >
-            <div className={'container__footer--infoBox'}>
+          <div className={'container__footer--infoContainer'}>
+            <div
+              onClick={() => {
+                setShowModal(!showModal);
+              }}
+              className={'container__footer--infoBox'}
+            >
               <img src={'pd-logo.svg'} alt={'info icon'} />
               <div className={'container__footer--infoText'}>Informationen</div>
             </div>

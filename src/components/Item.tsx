@@ -16,9 +16,11 @@ export const Item = (props: Props) => {
 
   const FetchClinicService = (id: number) => {
     try {
-      axios.get(`http://127.0.0.1:3001/vet-practices/${id}`).then(response => {
-        setClinicService(response.data);
-      });
+      axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
+        .then(response => {
+          setClinicService(response.data);
+        });
     } catch (e) {
       console.log(e);
     }
