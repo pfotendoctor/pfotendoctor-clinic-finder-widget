@@ -69,7 +69,7 @@ export default function ClinicFinder(props: Props) {
     zoom: 10,
   };
 
-  console.log("PROPS FROM WIDGET",props)
+  console.log("PROPS FROM WIDGET2",props)
   // Get clinic services
   const FetchClinicServices = () => {
     try {
