@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Marker } from './Marker';
 import GoogleMapReact from 'google-map-react';
 import '../App.css';
@@ -50,7 +50,6 @@ export default function ClinicFinder(props: Props) {
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
   const [clinicServiceDetails, setClinicServiceDetails] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPin, setShowPin] = useState<boolean>(false);
   const [showItemList, setShowItemList] = useState<boolean>(false);
   const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null);
@@ -218,7 +217,6 @@ export default function ClinicFinder(props: Props) {
   };
 
   const moveToSearchLocation = (placeId: string) => {
-    setIsLoading(true);
     axios
       .get(
         `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`,
@@ -226,12 +224,10 @@ export default function ClinicFinder(props: Props) {
       .then(response => {
         setPositioning(true);
         setCustomPosition({ lat: response.data.lat, long: response.data.long });
-        setIsLoading(false);
         setShowPin(true);
       })
       .catch(e => {
         console.log(e);
-        setIsLoading(false);
       });
   };
 

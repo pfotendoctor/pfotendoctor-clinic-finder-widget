@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { v4, v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import '../App.css';
 import _ from 'lodash';
 import axios from 'axios';
@@ -21,9 +21,8 @@ const Search = (props: Props) => {
   const [resultList, setResultList] = useState(null);
   const [textInput, setTextInput] = useState('');
   const [resultListLoading, setResultListLoading] = useState<boolean>(null);
-  const [autoCompleteSessionUUID, setAutoCompleteSessionUUID] =
-    useState<string>(uuidv4());
   const [active, setActive] = useState<boolean>(false);
+  const autoCompleteSessionUUID: string = uuidv4();
 
   const onChangeSearchFieldText = (text: string) => {
     if (text.length >= 1) {
@@ -55,7 +54,7 @@ const Search = (props: Props) => {
         `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/autocomplete-predictions?search-term=${text}&session=${session}`,
       )
       .then(r => {
-        const resultList: ResultListType = r.data.map((result: any) => {
+        const resultList: ResultListType = r.data.map(result => {
           return {
             searchTermResult: result.prediction,
             placeId: result.locationId,
