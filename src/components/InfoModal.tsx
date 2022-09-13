@@ -1,5 +1,7 @@
 import React from 'react';
 import '../App.css';
+import closeIcon from '../images/close_icon.svg';
+import logo from '../images/pd-logo.svg';
 
 interface Props {
   closeModal: () => void;
@@ -14,7 +16,7 @@ export const InfoModal = (props: Props) => {
         </div>
         <img
           onClick={props.closeModal}
-          src={'close_icon.svg'}
+          src={closeIcon}
           alt={'close modal'}
         />
       </div>
@@ -24,7 +26,7 @@ export const InfoModal = (props: Props) => {
           von
         </div>
         <div className={'infoModal__bodyBox'}>
-          <img src={'pd_logo.svg'} alt={'logo'} />
+          <img src={logo} alt={'logo'} />
           <div className={'infoModal__bodyBox--title'}>Pfotendoctor</div>
           <div className={'infoModal__bodyBox--subTitle'}>
             Online-Tierarztbesuch per Smartphone

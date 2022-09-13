@@ -10,6 +10,12 @@ import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
+import arrowLeft from '../images/arrow_left.png';
+import redCross from '../images/red_cross.png';
+import controls from '../images/controls.svg';
+import itemsIcon from '../images/items_icon.svg';
+import videoIcon from '../images/video_icon.svg';
+import logo from '../images/pd-logo.svg';
 
 interface Props {
   lat: number;
@@ -246,7 +252,7 @@ export default function ClinicFinder(props: Props) {
           </span>
         </div>
         <div className={'container__headerRight'}>
-          <img src={'red_cross.png'} alt={'emergency cross'} />
+          <img src={redCross} alt={'emergency cross'} />
         </div>
       </div>
       <div className={'container__body'}>
@@ -327,7 +333,7 @@ export default function ClinicFinder(props: Props) {
               }}
               className={'clinicDetails__redRowContainer backToMap'}
             >
-              <img src={'arrow_left.svg'} alt={'arrow left'} />
+              <img src={arrowLeft} alt={'arrow left'} />
               <div>Karte</div>
             </div>
           )}
@@ -383,7 +389,7 @@ export default function ClinicFinder(props: Props) {
             onClick={userGeoLocation ? moveToPosition : null}
           >
             {userGeoLocation && (
-              <img src={'controls.svg'} alt={'controls icon'} />
+              <img src={controls} alt={'controls icon'} />
             )}
             {!userGeoLocation && (
               <div className={'container__bodyControlsLoading'}>
@@ -399,7 +405,7 @@ export default function ClinicFinder(props: Props) {
               setShowItemList(true);
             }}
           >
-            <img src={'items_icon.svg'} alt={'items icon'} />
+            <img src={itemsIcon} alt={'items icon'} />
           </div>
         </div>
       </div>
@@ -424,7 +430,7 @@ export default function ClinicFinder(props: Props) {
               className={'container__footer--button'}
               onClick={() => window.open('https://pfotendoctor.de', '_blank')}
             >
-              <img src={'video_icon.svg'} alt={'video call icon'} />
+              <img src={videoIcon} alt={'video call icon'} />
               <div>Jetzt Videosprechstunde buchen</div>
             </button>
           </>
@@ -456,7 +462,7 @@ export default function ClinicFinder(props: Props) {
               }}
               className={'container__footer--infoBox'}
             >
-              <img src={'pd-logo.svg'} alt={'info icon'} />
+              <img src={logo} alt={'info icon'} />
               <div className={'container__footer--infoText'}>Informationen</div>
             </div>
           </div>

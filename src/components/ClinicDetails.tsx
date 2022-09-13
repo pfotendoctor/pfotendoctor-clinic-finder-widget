@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import arrowLeft from '../images/arrow_left.png';
 
 export interface OpeningHours {
   monday: { opensAt: string; closesAt: string } | {};
@@ -37,7 +38,7 @@ const ClinicDetails = (props: ClinicProps) => {
         onClick={props.backToList}
         className={'clinicDetails__redRowContainer'}
       >
-        <img src={'arrow_left.svg'} alt={'arrow left'} />
+        <img src={arrowLeft} alt={'arrow left'} />
         <div>Notdienstübersicht</div>
       </div>
       <div className={'clinicDetails__detailContainer'}>
