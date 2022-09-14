@@ -6,4 +6,5 @@ node_modules
 .idea/inspectionProfiles
 /.cache
 /.docs
+/.build
 src/react-app-env.d.ts

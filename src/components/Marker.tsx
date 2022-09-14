@@ -13,8 +13,8 @@ interface Props {
   lat: number;
   lng: number;
   toggleInfoCard: (id: number) => void;
-  activeInfoCardId: number;
-  hoveredMarker: number;
+  activeInfoCardId: number | null;
+  hoveredMarker: number | null;
   clinic?: string;
 }
 

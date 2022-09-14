@@ -258,7 +258,6 @@ export default function ClinicFinder(props: Props) {
       </div>
       <div className={'container__body'}>
         <GoogleMapReact
-          disableFullScreenControl={true}
           bootstrapURLKeys={{ key: 'AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ' }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
