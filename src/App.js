@@ -9,7 +9,7 @@ function App({ domElement }) {
   const method = domElement.getAttribute('data-method');
 
   return (
-    <div style={{ width: '100%', margin: 0 }}>
+    <div>
       {lat && lng && (
         <ClinicFinder lat={lat} lng={lng} clinic={clinic} method={method} />
       )}

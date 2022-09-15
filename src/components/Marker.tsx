@@ -1,10 +1,6 @@
 import React from 'react';
 import { ClinicType } from './ClinicFinder';
 import pin from '../images/pin.svg';
-import emergencyIconRing from '../images/emergency_icon_ring.svg';
-import markerInactive from '../images/marker_inactive.png';
-import markerActive from '../images/marker_active.png';
-import localClinic from '../images/local_clinic.svg';
 
 interface Props {
   key: number;
@@ -33,15 +29,15 @@ export const Marker = (props: Props) => {
           <div
             className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
           >
-            <img src={emergencyIconRing} alt={'emergency cross'} />
+            <img src={"emergency_icon_ring.svg"} alt={'emergency cross'} />
           </div>
         )}
         {props.type === ClinicType.clinic && (
           <img
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
-                ? markerActive
-                : markerInactive
+                ? "marker_active.png"
+                : "marker_inactive.png"
             }
             alt={'marker'}
           />
@@ -53,7 +49,7 @@ export const Marker = (props: Props) => {
       <div>
         <img
           className={'positionMarker__clinic'}
-          src={localClinic}
+          src={"local_clinic.svg"}
           alt={'local clinic'}
         />
         <div className={'positionMarker__tooltip'}>
