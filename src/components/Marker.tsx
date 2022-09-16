@@ -35,8 +35,8 @@ export const Marker = (props: Props) => {
           <img
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
-                ? 'marker_active.png'
-                : 'marker_inactive.png'
+                ? 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_active.png'
+                : 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_inactive.png'
             }
             alt={'marker'}
           />
