@@ -4,9 +4,6 @@ import '../App.css';
 import _ from 'lodash';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
-import searchIcon from '../images/searchIcon.svg';
-import closeIcon from '../images/closeIcon.svg';
-import arrowRight from '../images/arrowRight.svg';
 
 export type ResulListElement = {
   searchTermResult: string;
@@ -108,7 +105,7 @@ const Search = (props: Props) => {
         {!resultListLoading && (
           <img
             className={'container__bodyLeftSearchIcon'}
-            src={searchIcon}
+            src={"searchIcon.svg"}
             alt={'search'}
           />
         )}
@@ -125,7 +122,7 @@ const Search = (props: Props) => {
             onClick={() => {
               removeSearch();
             }}
-            src={closeIcon}
+            src={"closeIcon.svg"}
             alt={'close'}
           />
         )}
@@ -146,7 +143,7 @@ const Search = (props: Props) => {
                 </div>
                 <img
                   className={'container__bodyLeftItemIcon'}
-                  src={arrowRight}
+                  src={"arrowRight.svg"}
                   alt={'arrow right'}
                 />
               </div>
