@@ -365,7 +365,7 @@ export default function ClinicFinder(props: Props) {
         {props.method === Method.external && (
           <div className={'container__bodyLeft'}>
             <div className={'container__bodyLeftText'}>
-              test in unserer Nähe
+              Notdienste in unserer Nähe
             </div>
           </div>
         )}
