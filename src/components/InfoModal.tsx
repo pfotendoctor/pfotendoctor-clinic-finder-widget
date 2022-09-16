@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import closeIcon from '../../public/close_icon.svg';
-import logo from '../../public/pd-logo.svg';
+import closeIcon from '../images/close_icon.svg';
+import logo from '../images/pd-logo.svg';
 
 interface Props {
   closeModal: () => void;

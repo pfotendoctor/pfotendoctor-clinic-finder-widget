@@ -10,12 +10,12 @@ import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
-import arrowLeft from '../../public/arrow_left.png';
-import redCross from '../../public/red_cross.png';
-import controls from '../../public/controls.svg';
-import itemsIcon from '../../public/items_icon.svg';
-import videoIcon from '../../public/video_icon.svg';
-import logo from '../../public/pd-logo.svg';
+import arrowLeft from '../images/arrow_left.png';
+import redCross from '../images/red_cross.png';
+import controls from '../images/controls.svg';
+import itemsIcon from '../images/items_icon.svg';
+import videoIcon from '../images/video_icon.svg';
+import logo from '../images/pd-logo.svg';
 
 interface Props {
   lat: number;

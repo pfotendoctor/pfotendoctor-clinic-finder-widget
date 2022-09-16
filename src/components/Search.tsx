@@ -4,9 +4,9 @@ import '../App.css';
 import _ from 'lodash';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
-import searchIcon from '../../public/searchIcon.svg';
-import closeIcon from '../../public/closeIcon.svg';
-import arrowRight from '../../public/arrowRight.svg';
+import searchIcon from '../images/searchIcon.svg';
+import closeIcon from '../images/closeIcon.svg';
+import arrowRight from '../images/arrowRight.svg';
 
 export type ResulListElement = {
   searchTermResult: string;

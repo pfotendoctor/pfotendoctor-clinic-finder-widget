@@ -1,7 +1,7 @@
 import React from 'react';
 import { ClinicProps } from './ClinicDetails';
-import arrowLeft from '../../public/arrow_left.png';
-import emergencyRing from '../../public/emergency_ring.svg';
+import arrowLeft from '../images/arrow_left.png';
+import emergencyRing from '../images/emergency_ring.svg';
 
 const ClincDetailsEmergency = (props: ClinicProps) => {
   const clinicService = props.clinicServiceDetails;

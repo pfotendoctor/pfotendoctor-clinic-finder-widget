@@ -1,10 +1,10 @@
 import React from 'react';
 import { ClinicType } from './ClinicFinder';
-import pin from '../../public/pin.svg';
-import emergencyIconRing from '../../public/emergency_icon_ring.svg';
-import markerInactive from '../../public/marker_inactive.png';
-import markerActive from '../../public/marker_active.png';
-import localClinic from '../../public/local_clinic.svg';
+import pin from '../images/pin.svg';
+import emergencyIconRing from '../images/emergency_icon_ring.svg';
+import markerInactive from '../images/marker_inactive.png';
+import markerActive from '../images/marker_active.png';
+import localClinic from '../images/local_clinic.svg';
 
 interface Props {
   key: number;
