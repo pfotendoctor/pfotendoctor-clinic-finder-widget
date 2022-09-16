@@ -1,5 +1,7 @@
 import React from 'react';
 import { ClinicProps } from './ClinicDetails';
+import arrowLeft from '../../public/arrow_left.png';
+import emergencyRing from '../../public/emergency_ring.svg';
 
 const ClincDetailsEmergency = (props: ClinicProps) => {
   const clinicService = props.clinicServiceDetails;
@@ -9,7 +11,7 @@ const ClincDetailsEmergency = (props: ClinicProps) => {
         onClick={props.backToList}
         className={'clinicDetails__redRowContainer'}
       >
-        <img src={"arrow_left.svg"} alt={'arrow left'} />
+        <img src={arrowLeft} alt={'arrow left'} />
         <div>Notdienstübersicht</div>
       </div>
       <div className={'clinicDetails__detailContainer--title'}>
@@ -17,7 +19,7 @@ const ClincDetailsEmergency = (props: ClinicProps) => {
       </div>
       <div className={'clinicDetails__detailContainerBox'}>
         <div className={'clinicDetails__redRowContainer'}>
-          <img src={"emergency_ring.svg"} alt={'emergency cross'} />
+          <img src={emergencyRing} alt={'emergency cross'} />
           <div>Wichtiger Hinweis</div>
         </div>
         <div className={'clinicDetails__detailContainer--title'}>

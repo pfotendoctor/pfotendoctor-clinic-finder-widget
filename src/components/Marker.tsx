@@ -1,5 +1,10 @@
 import React from 'react';
 import { ClinicType } from './ClinicFinder';
+import pin from '../../public/pin.svg';
+import emergencyIconRing from '../../public/emergency_icon_ring.svg';
+import markerInactive from '../../public/marker_inactive.png';
+import markerActive from '../../public/marker_active.png';
+import localClinic from '../../public/local_clinic.svg';
 
 interface Props {
   key: number;
@@ -22,21 +27,21 @@ export const Marker = (props: Props) => {
         className={'marker'}
       >
         {props.type === ClinicType.custom && (
-          <img src={'pin.svg'} alt={'custom marker'} />
+          <img src={pin} alt={'custom marker'} />
         )}
         {props.type === ClinicType.emergencyRing && (
           <div
             className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
           >
-            <img src={'emergency_icon_ring.svg'} alt={'emergency cross'} />
+            <img src={emergencyIconRing} alt={'emergency cross'} />
           </div>
         )}
         {props.type === ClinicType.clinic && (
           <img
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
-                ? 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_active.png'
-                : 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_inactive.png'
+                ? markerActive
+                : markerInactive
             }
             alt={'marker'}
           />
@@ -48,7 +53,7 @@ export const Marker = (props: Props) => {
       <div>
         <img
           className={'positionMarker__clinic'}
-          src={'local_clinic.svg'}
+          src={localClinic}
           alt={'local clinic'}
         />
         <div className={'positionMarker__tooltip'}>
