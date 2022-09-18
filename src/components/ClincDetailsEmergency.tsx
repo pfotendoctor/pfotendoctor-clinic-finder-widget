@@ -1,7 +1,7 @@
 import React from 'react';
-import { ClinicProps } from './ClinicDetails';
+import { ClinicDetails } from './ClinicDetails';
 
-const ClincDetailsEmergency = (props: ClinicProps) => {
+const ClincDetailsEmergency = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
   return (
     <div className={'clinicDetails'}>
@@ -10,14 +10,14 @@ const ClincDetailsEmergency = (props: ClinicProps) => {
         className={'clinicDetails__redRowContainer'}
       >
         <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/arrow_left.svg'} alt={'arrow left'} />
-        <div>Notdienstübersicht</div>
+        <h3>Notdienstübersicht</h3>
       </div>
       <div className={'clinicDetails__detailContainer--title'}>
         {clinicService.name}
       </div>
       <div className={'clinicDetails__detailContainerBox'}>
         <div className={'clinicDetails__redRowContainer'}>
-          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/emergency_ring.svg'} alt={'emergency cross'} />
+          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/emergency_ring.svg'} alt={clinicService.name} />
           <div>Wichtiger Hinweis</div>
         </div>
         <div className={'clinicDetails__detailContainer--title'}>

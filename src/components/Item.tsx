@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../App.css';
 
-type Props = {
+type Item = {
   id: number;
   activeInfoCardId: number;
   toggleInfoCard: (id: number) => void;
@@ -11,7 +11,7 @@ type Props = {
   setClinicServiceDetails: (clinic) => void;
 };
 
-export const Item = (props: Props) => {
+export const Item = (props: Item) => {
   const [clinicService, setClinicService] = useState(null);
 
   const FetchClinicService = (id: number) => {

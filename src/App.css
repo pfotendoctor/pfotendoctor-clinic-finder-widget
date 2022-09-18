@@ -10,6 +10,24 @@ html {
   margin: 0;
 }
 
+h1 {}
+
+h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
 .marker {
 }
 
@@ -154,8 +172,6 @@ html {
   padding: 0.5rem 1rem 0.5rem 1.5rem;
   border-top: 1px solid #f0f0f0;
   border-bottom-right-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
   color: #2b3656;
 }
 
@@ -552,8 +568,6 @@ html {
 .clinicDetails__attentionContainer--title,
 .clinicDetails__emergencyInfo--title {
   color: #2b3656;
-  font-size: 1rem;
-  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 

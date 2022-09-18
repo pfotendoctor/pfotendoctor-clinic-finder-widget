@@ -12,12 +12,12 @@ export type ResulListElement = {
 
 export type ResultListType = ResulListElement[];
 
-interface Props {
+interface Search {
   removePin: () => void;
   moveToSearchLocation: (placeId: string) => void;
 }
 
-const Search = (props: Props) => {
+const Search = (props: Search) => {
   const [resultList, setResultList] = useState(null);
   const [textInput, setTextInput] = useState('');
   const [resultListLoading, setResultListLoading] = useState<boolean>(null);
@@ -51,7 +51,7 @@ const Search = (props: Props) => {
     }
     axios
       .get(
-        `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/autocomplete-predictions?search-term=${text}&session=${session}`,
+        `${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/location-search/autocomplete-predictions?search-term=${text}&session=${session}`,
       )
       .then(r => {
         const resultList: ResultListType = r.data.map(result => {

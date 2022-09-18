@@ -1,12 +1,12 @@
 import React from 'react';
 import '../App.css';
 
-interface Props {
+interface Coordinates {
   lat: number;
   lng: number;
 }
 
-const CurrentPositionMarker = (props: Props) => {
+const CurrentPositionMarker = (props: Coordinates) => {
   return <div className={'positionMarker'}></div>;
 };
 

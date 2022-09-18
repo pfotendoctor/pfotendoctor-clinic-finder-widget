@@ -11,7 +11,7 @@ export interface OpeningHours {
   sunday: { opensAt: string; closesAt: string } | {};
 }
 
-export interface ClinicProps {
+export interface ClinicDetails {
   clinicServiceDetails: {
     id: number;
     name: string;
@@ -28,9 +28,8 @@ export interface ClinicProps {
   backToList: () => void;
 }
 
-const ClinicDetails = (props: ClinicProps) => {
+const ClinicDetails = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
-  console.log(clinicService.openingHours);
   return (
     <div className={'clinicDetails'}>
       <div
@@ -38,7 +37,7 @@ const ClinicDetails = (props: ClinicProps) => {
         className={'clinicDetails__redRowContainer'}
       >
         <img src={"arrow_left.png"} alt={'arrow left'} />
-        <div>Notdienstübersicht</div>
+        <h3>Notdienstübersicht</h3>
       </div>
       <div className={'clinicDetails__detailContainer'}>
         <div className={'clinicDetails__detailContainer--title'}>

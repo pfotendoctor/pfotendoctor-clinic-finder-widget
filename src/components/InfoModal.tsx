@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css';
 
-interface Props {
+interface Modal {
   closeModal: () => void;
 }
 
-export const InfoModal = (props: Props) => {
+export const InfoModal = (props: Modal) => {
   return (
     <div className={'infoModal'}>
       <div className={'infoModal__header'}>

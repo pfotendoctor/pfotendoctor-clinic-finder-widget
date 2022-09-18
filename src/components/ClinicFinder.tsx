@@ -11,11 +11,11 @@ import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 
-interface Props {
+interface ClinicFinder {
   lat: number;
   lng: number;
   clinic: string;
-  method: Method;
+  providedAt: ProvidedAt;
 }
 
 export enum ClinicType {
@@ -25,8 +25,8 @@ export enum ClinicType {
   custom = 'custom',
 }
 
-export enum Method {
-  internal = 'internal',
+export enum ProvidedAt {
+  pfotendoctor = 'pfotendoctor',
   external = 'external',
 }
 
@@ -44,7 +44,7 @@ interface GeoLocation {
   long: number;
 }
 
-export default function ClinicFinder(props: Props) {
+export default function ClinicFinder(props: ClinicFinder) {
   const [clinicServices, setClinicServices] = useState<ClinicService[]>(null);
   const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null);
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
@@ -64,7 +64,7 @@ export default function ClinicFinder(props: Props) {
   };
 
   console.log("PROPS FROM WIDGET2",props)
-  // Get clinic services
+  // Get clinicName services
   const FetchClinicServices = () => {
     try {
       axios
@@ -273,7 +273,7 @@ export default function ClinicFinder(props: Props) {
             toggleInfoCard={() => {}}
             activeInfoCardId={activeInfoCardId}
             hoveredMarker={hoveredMarker}
-            clinic={props.clinic}
+            clinicName={props.clinic}
           />
           {!showPin
             ? null
@@ -357,14 +357,14 @@ export default function ClinicFinder(props: Props) {
             activeInfoCardId === clinicServiceDetails?.id &&
             renderDetails(clinicServiceDetails)}
         </div>
-        {props.method === Method.external && (
+        {props.providedAt === ProvidedAt.external && (
           <div className={'container__bodyLeft'}>
             <div className={'container__bodyLeftText'}>
-              Notdienste in unserer Nähe
+              <h2>Notdienste in unserer Nähe</h2>
             </div>
           </div>
         )}
-        {props.method === Method.internal && (
+        {props.providedAt === ProvidedAt.pfotendoctor && (
           <div>
             <div className={'container__bodyLeft'}>
               <Search
@@ -406,20 +406,22 @@ export default function ClinicFinder(props: Props) {
       </div>
       <div
         className={
-          props.method === Method.internal
+          props.providedAt === ProvidedAt.pfotendoctor
             ? 'container__footerInternal'
             : 'container__footer'
         }
       >
         <div className={'clinicDetails__emergencyInfo--title'}>
-          Nicht sicher, ob es sich um einen Notfall handelt?
+          <h2>Nicht sicher, ob es sich um einen Notfall handelt?</h2>
         </div>
-        {props.method === Method.external && (
+        {props.providedAt === ProvidedAt.external && (
           <>
             <div>
-              Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb
-              weniger Minuten eine erste Einschätzung bieten und Sie zu den
-              nächsten Schritten beraten.
+              <p>
+                Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb
+                weniger Minuten eine erste Einschätzung bieten und Sie zu den
+                nächsten Schritten beraten.
+              </p>
             </div>
             <button
               className={'container__footer--button'}
@@ -430,12 +432,13 @@ export default function ClinicFinder(props: Props) {
             </button>
           </>
         )}
-        {props.method === Method.internal && (
+        {props.providedAt === ProvidedAt.pfotendoctor && (
           <>
             <div>
-              Unsere erfahrenen Tierärzte können dir per Videosprechstunde
-              innerhalb weniger Minuten eine erste Einschätzung bieten und dich
-              zu den nächsten Schritten beraten.
+              <p>Unsere erfahrenen Tierärzte können dir per Videosprechstunde
+                innerhalb weniger Minuten eine erste Einschätzung bieten und dich
+                zu den nächsten Schritten beraten.
+              </p>
             </div>
             <button
               className={'container__footer--buttonInternal'}
@@ -448,7 +451,7 @@ export default function ClinicFinder(props: Props) {
           </>
         )}
       </div>
-      {props.method === Method.external && (
+      {props.providedAt === ProvidedAt.external && (
         <>
           <div className={'container__footer--infoContainer'}>
             <div

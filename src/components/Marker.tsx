@@ -1,7 +1,7 @@
 import React from 'react';
 import { ClinicType } from './ClinicFinder';
 
-interface Props {
+interface Marker {
   key: number;
   id: number;
   type: ClinicType;
@@ -10,10 +10,10 @@ interface Props {
   toggleInfoCard: (id: number) => void;
   activeInfoCardId: number | null;
   hoveredMarker: number | null;
-  clinic?: string;
+  clinicName?: string;
 }
 
-export const Marker = (props: Props) => {
+export const Marker = (props: Marker) => {
   if (props.id !== 0) {
     return (
       <div
@@ -38,7 +38,7 @@ export const Marker = (props: Props) => {
                 ? 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_active.png'
                 : 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_inactive.png'
             }
-            alt={'marker'}
+            alt={props.clinicName}
           />
         )}
       </div>
@@ -49,10 +49,10 @@ export const Marker = (props: Props) => {
         <img
           className={'positionMarker__clinic'}
           src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/local_clinic.svg'}
-          alt={'local clinic'}
+          alt={'local clinicName'}
         />
         <div className={'positionMarker__tooltip'}>
-          <div className={'positionMarker__tooltipText'}>{props.clinic}</div>
+          <div className={'positionMarker__tooltipText'}>{props.clinicName}</div>
         </div>
       </div>
     );
