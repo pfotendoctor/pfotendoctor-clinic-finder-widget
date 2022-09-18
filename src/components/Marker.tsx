@@ -1,10 +1,5 @@
 import React from 'react';
 import { ClinicType } from './ClinicFinder';
-import pin from '../images/pin.svg';
-import emergencyIconRing from '../images/emergency_icon_ring.svg';
-import markerInactive from '../images/marker_inactive.png';
-import markerActive from '../images/marker_active.png';
-import localClinic from '../images/local_clinic.svg';
 
 interface Props {
   key: number;
@@ -27,13 +22,13 @@ export const Marker = (props: Props) => {
         className={'marker'}
       >
         {props.type === ClinicType.custom && (
-          <img src={pin} alt={'custom marker'} />
+          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/pin.svg'} alt={'custom marker'} />
         )}
         {props.type === ClinicType.emergencyRing && (
           <div
             className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
           >
-            <img src={emergencyIconRing} alt={'emergency cross'} />
+            <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/emergency_icon_ring.svg'} alt={'emergency cross'} />
           </div>
         )}
         {props.type === ClinicType.clinic && (
@@ -53,7 +48,7 @@ export const Marker = (props: Props) => {
       <div>
         <img
           className={'positionMarker__clinic'}
-          src={localClinic}
+          src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/local_clinic.svg'}
           alt={'local clinic'}
         />
         <div className={'positionMarker__tooltip'}>
