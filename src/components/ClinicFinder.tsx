@@ -10,6 +10,7 @@ import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
+import Footer from "./Footer";
 
 interface ClinicFinder {
   lat: number;
@@ -404,84 +405,7 @@ export default function ClinicFinder(props: ClinicFinder) {
           </div>
         </div>
       </div>
-      <div
-        className={
-          props.providedAt === ProvidedAt.pfotendoctor
-            ? 'container__footerInternal'
-            : 'container__footer'
-        }
-      >
-        <div className={'clinicDetails__emergencyInfo--title'}>
-          <h2>Nicht sicher, ob es sich um einen Notfall handelt?</h2>
-        </div>
-        {props.providedAt === ProvidedAt.external && (
-          <>
-            <div>
-              <p>
-                Die erfahrenen Tierärzte von Pfotendoctor können Ihnen innerhalb
-                weniger Minuten eine erste Einschätzung bieten und Sie zu den
-                nächsten Schritten beraten.
-              </p>
-            </div>
-            <button
-              className={'container__footer--button'}
-              onClick={() => window.open('https://pfotendoctor.de', '_blank')}
-            >
-              <img src={`${process.env.REACT_APP_CDN_URL}/video_icon.svg`} alt={'video call icon'} />
-              <div>Jetzt Videosprechstunde buchen</div>
-            </button>
-          </>
-        )}
-        {props.providedAt === ProvidedAt.pfotendoctor && (
-          <>
-            <div>
-              <p>Unsere erfahrenen Tierärzte können dir per Videosprechstunde
-                innerhalb weniger Minuten eine erste Einschätzung bieten und dich
-                zu den nächsten Schritten beraten.
-              </p>
-            </div>
-            <button
-              className={'container__footer--buttonInternal'}
-              onClick={() =>
-                window.open('https://pfotendoctor.de/termin-buchen', '_blank')
-              }
-            >
-              <div>Videosprechstunde buchen</div>
-            </button>
-          </>
-        )}
-      </div>
-      {props.providedAt === ProvidedAt.external && (
-        <>
-          <div className={'container__footer--infoContainer'}>
-            <div
-              onClick={() => {
-                setShowModal(!showModal);
-              }}
-              className={'container__footer--infoBox'}
-            >
-              <img src={`${process.env.REACT_APP_CDN_URL}/pd-logo.svg`} alt={'info icon'} />
-              <div className={'container__footer--infoText'}>Informationen</div>
-            </div>
-          </div>
-          {showModal && (
-            <div
-              className={'infoModalContainer'}
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              <div onClick={e => e.stopPropagation()}>
-                <InfoModal
-                  closeModal={() => {
-                    setShowModal(false);
-                  }}
-                />
-              </div>
-            </div>
-          )}
-        </>
-      )}
+      <Footer providedAt={props.providedAt} toggleModal={(value) => setShowModal(value)} showModal={showModal}/>
     </div>
   );
 }
