@@ -11,6 +11,7 @@ import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 import Footer from "./Footer";
+import Map from "./Map";
 
 interface ClinicFinder {
   lat: number;
@@ -31,7 +32,7 @@ export enum ProvidedAt {
   external = 'external',
 }
 
-interface ClinicService {
+export interface ClinicService {
   coordinatesLat: number;
   coordinatesLong: number;
   id: number;
@@ -40,7 +41,7 @@ interface ClinicService {
   type: ClinicType;
 }
 
-interface GeoLocation {
+export interface GeoLocation {
   lat: number;
   long: number;
 }
@@ -253,68 +254,19 @@ export default function ClinicFinder(props: ClinicFinder) {
         </div>
       </div>
       <div className={'container__body'}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ' }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
-          center={
-            positioning && customPosition
-              ? { lat: customPosition.lat, lng: customPosition.long }
-              : null
-          }
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => console.log(map)}
-        >
-          <Marker
-            key={0}
-            id={0}
-            type={ClinicType.clinic}
+        <Map
+            defaultProps={defaultProps}
+            positioning={positioning}
+            customPosition={customPosition}
             lat={props.lat}
             lng={props.lng}
-            toggleInfoCard={() => {}}
-            activeInfoCardId={activeClinicSiteId}
+            activeClinicSiteId={activeClinicSiteId}
             hoveredMarker={hoveredMarker}
-            clinicName={props.clinic}
-          />
-          {!showPin
-            ? null
-            : positioning &&
-              customPosition && (
-                <Marker
-                  key={10000}
-                  id={1}
-                  type={ClinicType.custom}
-                  lat={customPosition.lat}
-                  lng={customPosition.long}
-                  toggleInfoCard={() => {}}
-                  activeInfoCardId={null}
-                  hoveredMarker={null}
-                />
-              )}
-          {userGeoLocation && (
-            <CurrentPositionMarker
-              lat={userGeoLocation.lat}
-              lng={userGeoLocation.long}
-            />
-          )}
-          {clinicServices &&
-            clinicServices.map(clinicService => {
-              return (
-                <Marker
-                  key={clinicService.id}
-                  id={clinicService.id}
-                  activeInfoCardId={activeClinicSiteId}
-                  toggleInfoCard={id => {
-                    toggleInfoCard(id).then(r => setShowItemList(true));
-                  }}
-                  lat={clinicService.coordinatesLat}
-                  lng={clinicService.coordinatesLong}
-                  type={clinicService.type}
-                  hoveredMarker={hoveredMarker}
-                />
-              );
-            })}
-        </GoogleMapReact>
+            clinic={props.clinic}
+            showPin={showPin}
+            userGeoLocation={userGeoLocation}
+            clinicServices={clinicServices}
+            toggleInfoCard={(id) => {toggleInfoCard(id).then(r => setShowItemList(true))}} />
         <div
           className={
             showItemList
