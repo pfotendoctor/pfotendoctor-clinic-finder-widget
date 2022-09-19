@@ -22,13 +22,19 @@ export const Marker = (props: Marker) => {
         className={'marker'}
       >
         {props.type === ClinicType.custom && (
-          <img src={`${process.env.REACT_APP_CDN_URL}/pin.svg`} alt={'custom marker'} />
+          <img
+            src={`${process.env.REACT_APP_CDN_URL}/pin.svg`}
+            alt={'custom marker'}
+          />
         )}
         {props.type === ClinicType.emergencyRing && (
           <div
             className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
           >
-            <img src={`${process.env.REACT_APP_CDN_URL}/emergency_icon_ring.svg`} alt={'emergency cross'} />
+            <img
+              src={`${process.env.REACT_APP_CDN_URL}/emergency_icon_ring.svg`}
+              alt={'emergency cross'}
+            />
           </div>
         )}
         {props.type === ClinicType.clinic && (
@@ -52,7 +58,9 @@ export const Marker = (props: Marker) => {
           alt={'local clinicName'}
         />
         <div className={'positionMarker__tooltip'}>
-          <div className={'positionMarker__tooltipText'}>{props.clinicName}</div>
+          <div className={'positionMarker__tooltipText'}>
+            {props.clinicName}
+          </div>
         </div>
       </div>
     );

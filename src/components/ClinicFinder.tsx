@@ -10,8 +10,8 @@ import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
-import Footer from "./Footer";
-import Map from "./Map";
+import Footer from './Footer';
+import Map from './Map';
 
 interface ClinicFinder {
   lat: number;
@@ -65,7 +65,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     zoom: 10,
   };
 
-  console.log("PROPS FROM WIDGET2",props)
+  console.log('PROPS FROM WIDGET2', props);
   // Get clinicName services
   const FetchClinicServices = () => {
     try {
@@ -85,7 +85,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     if (window) {
       setShowItemList(window.innerWidth >= 668);
     }
-    console.log("geolocation: ",navigator.geolocation);
+    console.log('geolocation: ', navigator.geolocation);
     if (navigator.geolocation) {
       getGeoLoacation();
     }
@@ -250,23 +250,29 @@ export default function ClinicFinder(props: ClinicFinder) {
           </span>
         </div>
         <div className={'container__headerRight'}>
-          <img src={`${process.env.REACT_APP_CDN_URL}/red_cross.png`} alt={'emergency cross'} />
+          <img
+            src={`${process.env.REACT_APP_CDN_URL}/red_cross.png`}
+            alt={'emergency cross'}
+          />
         </div>
       </div>
       <div className={'container__body'}>
         <Map
-            defaultProps={defaultProps}
-            positioning={positioning}
-            customPosition={customPosition}
-            lat={props.lat}
-            lng={props.lng}
-            activeClinicSiteId={activeClinicSiteId}
-            hoveredMarker={hoveredMarker}
-            clinic={props.clinic}
-            showPin={showPin}
-            userGeoLocation={userGeoLocation}
-            clinicServices={clinicServices}
-            toggleInfoCard={(id) => {toggleInfoCard(id).then(r => setShowItemList(true))}} />
+          defaultProps={defaultProps}
+          positioning={positioning}
+          customPosition={customPosition}
+          lat={props.lat}
+          lng={props.lng}
+          activeClinicSiteId={activeClinicSiteId}
+          hoveredMarker={hoveredMarker}
+          clinic={props.clinic}
+          showPin={showPin}
+          userGeoLocation={userGeoLocation}
+          clinicServices={clinicServices}
+          toggleInfoCard={id => {
+            toggleInfoCard(id).then(r => setShowItemList(true));
+          }}
+        />
         <div
           className={
             showItemList
@@ -281,7 +287,10 @@ export default function ClinicFinder(props: ClinicFinder) {
               }}
               className={'clinicDetails__redRowContainer backToMap'}
             >
-              <img src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`} alt={'arrow left'} />
+              <img
+                src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
+                alt={'arrow left'}
+              />
               <div>Karte</div>
             </div>
           )}
@@ -337,7 +346,10 @@ export default function ClinicFinder(props: ClinicFinder) {
             onClick={userGeoLocation ? moveToPosition : null}
           >
             {userGeoLocation && (
-              <img src={`${process.env.REACT_APP_CDN_URL}/controls.svg`} alt={'controls icon'} />
+              <img
+                src={`${process.env.REACT_APP_CDN_URL}/controls.svg`}
+                alt={'controls icon'}
+              />
             )}
             {!userGeoLocation && (
               <div className={'container__bodyControlsLoading'}>
@@ -353,11 +365,18 @@ export default function ClinicFinder(props: ClinicFinder) {
               setShowItemList(true);
             }}
           >
-            <img src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`} alt={'items icon'} />
+            <img
+              src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
+              alt={'items icon'}
+            />
           </div>
         </div>
       </div>
-      <Footer providedAt={props.providedAt} toggleModal={(value) => setShowModal(value)} showModal={showModal}/>
+      <Footer
+        providedAt={props.providedAt}
+        toggleModal={value => setShowModal(value)}
+        showModal={showModal}
+      />
     </div>
   );
 }

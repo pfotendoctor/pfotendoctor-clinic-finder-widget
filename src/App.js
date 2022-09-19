@@ -11,7 +11,12 @@ function App({ domElement }) {
   return (
     <div>
       {lat && lng && (
-        <ClinicFinder lat={lat} lng={lng} clinic={clinic} providedAt={providedAt} />
+        <ClinicFinder
+          lat={lat}
+          lng={lng}
+          clinic={clinic}
+          providedAt={providedAt}
+        />
       )}
     </div>
   );

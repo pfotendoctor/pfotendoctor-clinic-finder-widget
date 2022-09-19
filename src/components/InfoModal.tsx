@@ -24,7 +24,12 @@ export const InfoModal = (props: Modal) => {
           von
         </div>
         <div className={'infoModal__bodyBox'}>
-          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/pd-logo.svg'} alt={'logo'} />
+          <img
+            src={
+              'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/pd-logo.svg'
+            }
+            alt={'logo'}
+          />
           <div className={'infoModal__bodyBox--title'}>Pfotendoctor</div>
           <div className={'infoModal__bodyBox--subTitle'}>
             Online-Tierarztbesuch per Smartphone
