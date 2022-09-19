@@ -248,7 +248,7 @@ export default function ClinicFinder(props: ClinicFinder) {
           </span>
         </div>
         <div className={'container__headerRight'}>
-          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/red_cross.png'} alt={'emergency cross'} />
+          <img src={`${process.env.REACT_APP_CDN_URL}/red_cross.png`} alt={'emergency cross'} />
         </div>
       </div>
       <div className={'container__body'}>
@@ -328,7 +328,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               }}
               className={'clinicDetails__redRowContainer backToMap'}
             >
-              <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/arrow_left.svg'} alt={'arrow left'} />
+              <img src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`} alt={'arrow left'} />
               <div>Karte</div>
             </div>
           )}
@@ -384,7 +384,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             onClick={userGeoLocation ? moveToPosition : null}
           >
             {userGeoLocation && (
-              <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/controls.svg'} alt={'controls icon'} />
+              <img src={`${process.env.REACT_APP_CDN_URL}/controls.svg`} alt={'controls icon'} />
             )}
             {!userGeoLocation && (
               <div className={'container__bodyControlsLoading'}>
@@ -400,7 +400,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               setShowItemList(true);
             }}
           >
-            <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/items_icon.svg'} alt={'items icon'} />
+            <img src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`} alt={'items icon'} />
           </div>
         </div>
       </div>
@@ -427,7 +427,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               className={'container__footer--button'}
               onClick={() => window.open('https://pfotendoctor.de', '_blank')}
             >
-              <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/video_icon.svg'} alt={'video call icon'} />
+              <img src={`${process.env.REACT_APP_CDN_URL}/video_icon.svg`} alt={'video call icon'} />
               <div>Jetzt Videosprechstunde buchen</div>
             </button>
           </>
@@ -460,7 +460,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               }}
               className={'container__footer--infoBox'}
             >
-              <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/pd-logo.svg'} alt={'info icon'} />
+              <img src={`${process.env.REACT_APP_CDN_URL}/pd-logo.svg`} alt={'info icon'} />
               <div className={'container__footer--infoText'}>Informationen</div>
             </div>
           </div>

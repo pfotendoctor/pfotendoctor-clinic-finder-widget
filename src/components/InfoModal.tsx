@@ -14,7 +14,7 @@ export const InfoModal = (props: Modal) => {
         </div>
         <img
           onClick={props.closeModal}
-          src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/close_icon.svg'}
+          src={`${process.env.REACT_APP_CDN_URL}/close_icon.svg`}
           alt={'close modal'}
         />
       </div>

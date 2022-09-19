@@ -36,7 +36,7 @@ const ClinicRegularDetails = (props: ClinicDetails) => {
         onClick={props.backToList}
         className={'clinicDetails__redRowContainer'}
       >
-        <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/arrow_left.svg'} alt={'arrow left'} />
+        <img src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`} alt={'arrow left'} />
         <h3>Notdienstübersicht</h3>
       </div>
       <div className={'clinicDetails__detailContainer'}>

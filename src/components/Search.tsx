@@ -105,7 +105,7 @@ const Search = (props: Search) => {
         {!resultListLoading && (
           <img
             className={'container__bodyLeftSearchIcon'}
-            src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/searchIcon.svg'}
+            src={`${process.env.REACT_APP_CDN_URL}/searchIcon.svg`}
             alt={'search'}
           />
         )}
@@ -122,7 +122,7 @@ const Search = (props: Search) => {
             onClick={() => {
               removeSearch();
             }}
-            src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/closeIcon.svg'}
+            src={`${process.env.REACT_APP_CDN_URL}/closeIcon.svg`}
             alt={'close'}
           />
         )}
@@ -143,7 +143,7 @@ const Search = (props: Search) => {
                 </div>
                 <img
                   className={'container__bodyLeftItemIcon'}
-                  src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/arrowRight.svg'}
+                  src={`${process.env.REACT_APP_CDN_URL}/arrowRight.svg`}
                   alt={'arrow right'}
                 />
               </div>

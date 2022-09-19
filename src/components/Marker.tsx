@@ -22,21 +22,21 @@ export const Marker = (props: Marker) => {
         className={'marker'}
       >
         {props.type === ClinicType.custom && (
-          <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/pin.svg'} alt={'custom marker'} />
+          <img src={`${process.env.REACT_APP_CDN_URL}/pin.svg`} alt={'custom marker'} />
         )}
         {props.type === ClinicType.emergencyRing && (
           <div
             className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
           >
-            <img src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/emergency_icon_ring.svg'} alt={'emergency cross'} />
+            <img src={`${process.env.REACT_APP_CDN_URL}/emergency_icon_ring.svg`} alt={'emergency cross'} />
           </div>
         )}
         {props.type === ClinicType.clinic && (
           <img
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
-                ? 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_active.png'
-                : 'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/marker_inactive.png'
+                ? `${process.env.REACT_APP_CDN_URL}/marker_active.png`
+                : `${process.env.REACT_APP_CDN_URL}/marker_inactive.png`
             }
             alt={props.clinicName}
           />
@@ -48,7 +48,7 @@ export const Marker = (props: Marker) => {
       <div>
         <img
           className={'positionMarker__clinic'}
-          src={'https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/local_clinic.svg'}
+          src={`${process.env.REACT_APP_CDN_URL}/local_clinic.svg`}
           alt={'local clinicName'}
         />
         <div className={'positionMarker__tooltip'}>
