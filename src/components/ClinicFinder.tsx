@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import '../App.css';
 import axios from 'axios';
 import { Item } from './Item';
-import ClinicDetails from './ClinicDetails';
+import ClinicRegularDetails from './ClinicRegularDetails';
 import ClincDetailsEmergency from './ClincDetailsEmergency';
 import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
@@ -46,7 +46,7 @@ interface GeoLocation {
 
 export default function ClinicFinder(props: ClinicFinder) {
   const [clinicServices, setClinicServices] = useState<ClinicService[]>(null);
-  const [activeInfoCardId, setActiveInfoCardId] = useState<number>(null);
+  const [activeClinicSiteId, setActiveClinicSiteId] = useState<number>(null);
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
   const [clinicServiceDetails, setClinicServiceDetails] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -157,9 +157,9 @@ export default function ClinicFinder(props: ClinicFinder) {
   const toggleInfoCard = async (id: number) => {
     try {
       await axios
-        .get(`http://127.0.0.1:3001/vet-practices/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
         .then(response => {
-          setActiveInfoCardId(id);
+          setActiveClinicSiteId(id);
           setClinicServiceDetails(response.data);
         });
     } catch (e) {
@@ -168,7 +168,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   };
 
   const resetClinicService = () => {
-    setActiveInfoCardId(null);
+    setActiveClinicSiteId(null);
   };
 
   const renderDetails = clinic => {
@@ -183,7 +183,7 @@ export default function ClinicFinder(props: ClinicFinder) {
       );
     } else {
       return (
-        <ClinicDetails
+        <ClinicRegularDetails
           clinicServiceDetails={clinicServiceDetails}
           backToList={() => {
             resetClinicService();
@@ -221,7 +221,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   const moveToSearchLocation = (placeId: string) => {
     axios
       .get(
-        `http://127.0.0.1:3001/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`,
       )
       .then(response => {
         setPositioning(true);
@@ -271,7 +271,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             lat={props.lat}
             lng={props.lng}
             toggleInfoCard={() => {}}
-            activeInfoCardId={activeInfoCardId}
+            activeInfoCardId={activeClinicSiteId}
             hoveredMarker={hoveredMarker}
             clinicName={props.clinic}
           />
@@ -302,7 +302,7 @@ export default function ClinicFinder(props: ClinicFinder) {
                 <Marker
                   key={clinicService.id}
                   id={clinicService.id}
-                  activeInfoCardId={activeInfoCardId}
+                  activeInfoCardId={activeClinicSiteId}
                   toggleInfoCard={id => {
                     toggleInfoCard(id).then(r => setShowItemList(true));
                   }}
@@ -321,7 +321,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               : 'container__bodyRightInactive'
           }
         >
-          {!activeInfoCardId && (
+          {!activeClinicSiteId && (
             <div
               onClick={() => {
                 backToMap();
@@ -333,15 +333,15 @@ export default function ClinicFinder(props: ClinicFinder) {
             </div>
           )}
           {clinicServices &&
-            !activeInfoCardId &&
+            !activeClinicSiteId &&
             sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
               return (
                 <div key={clinicService.id}>
                   <Item
                     id={clinicService.id}
-                    activeInfoCardId={activeInfoCardId}
+                    activeInfoCardId={activeClinicSiteId}
                     toggleInfoCard={id => {
-                      setActiveInfoCardId(id);
+                      setActiveClinicSiteId(id);
                     }}
                     toggleHoveredMarker={id => {
                       setHoveredMarker(id);
@@ -353,8 +353,8 @@ export default function ClinicFinder(props: ClinicFinder) {
                 </div>
               );
             })}
-          {activeInfoCardId &&
-            activeInfoCardId === clinicServiceDetails?.id &&
+          {activeClinicSiteId &&
+            activeClinicSiteId === clinicServiceDetails?.id &&
             renderDetails(clinicServiceDetails)}
         </div>
         {props.providedAt === ProvidedAt.external && (

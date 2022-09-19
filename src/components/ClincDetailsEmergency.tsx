@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClinicDetails } from './ClinicDetails';
+import { ClinicDetails } from './ClinicRegularDetails';
 
 const ClincDetailsEmergency = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
