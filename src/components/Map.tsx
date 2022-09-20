@@ -12,14 +12,14 @@ interface Map {
     };
     zoom: number;
   };
-  positioning: boolean;
+  showCurrentPosition: boolean;
   customPosition: GeoLocation;
   lat: number;
   lng: number;
   activeClinicSiteId: number;
   hoveredMarker: number;
   clinic: string;
-  showPin: boolean;
+  showSearchMarker: boolean;
   userGeoLocation: GeoLocation;
   clinicServices: ClinicService[];
   toggleInfoCard: (value: number) => void;
@@ -27,7 +27,7 @@ interface Map {
 
 const Map = (props: Map) => {
   const defaultProps = props.defaultProps;
-  const positioning = props.positioning;
+  const positioning = props.showCurrentPosition;
   const customPosition = props.customPosition;
   const userGeoLocation = props.userGeoLocation;
   const clinicServices = props.clinicServices;
@@ -55,7 +55,7 @@ const Map = (props: Map) => {
         hoveredMarker={props.hoveredMarker}
         clinicName={props.clinic}
       />
-      {!props.showPin
+      {!props.showSearchMarker
         ? null
         : positioning &&
           customPosition && (

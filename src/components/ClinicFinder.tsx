@@ -5,7 +5,7 @@ import '../App.css';
 import axios from 'axios';
 import { Item } from './Item';
 import ClinicRegularDetails from './ClinicRegularDetails';
-import ClincDetailsEmergency from './ClincDetailsEmergency';
+import ClincDetailsEmergencyRings from './ClincDetailsEmergencyRings';
 import { InfoModal } from './InfoModal';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
@@ -52,10 +52,10 @@ export default function ClinicFinder(props: ClinicFinder) {
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
   const [clinicServiceDetails, setClinicServiceDetails] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [showPin, setShowPin] = useState<boolean>(false);
+  const [showSearchMarker, setShowSearchMarker] = useState<boolean>(false);
   const [showItemList, setShowItemList] = useState<boolean>(false);
   const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null);
-  const [positioning, setPositioning] = useState<boolean>(false);
+  const [showCurrentPosition, setShowCurrentPosition] = useState<boolean>(false);
   const [customPosition, setCustomPosition] = useState<GeoLocation>(null);
   const defaultProps = {
     center: {
@@ -87,12 +87,12 @@ export default function ClinicFinder(props: ClinicFinder) {
     }
     console.log('geolocation: ', navigator.geolocation);
     if (navigator.geolocation) {
-      getGeoLoacation();
+      getUserGeoLocation();
     }
   }, []);
 
   // Geo location
-  const getGeoLoacation = () => {
+  const getUserGeoLocation = () => {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -112,7 +112,6 @@ export default function ClinicFinder(props: ClinicFinder) {
   const distanceBetweenCoordinates = (
     [lat1, lon1]: number[],
     [lat2, lon2]: number[],
-    isMiles = false,
   ) => {
     const toRadian = (angle: number) => (Math.PI / 180) * angle;
     const distance = (a: number, b: number) => (Math.PI / 180) * (a - b);
@@ -132,9 +131,6 @@ export default function ClinicFinder(props: ClinicFinder) {
 
     let finalDistance = RADIUS_OF_EARTH_IN_KM * c;
 
-    if (isMiles) {
-      finalDistance /= 1.60934;
-    }
     return finalDistance;
   };
 
@@ -176,7 +172,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   const renderDetails = clinic => {
     if (clinicServiceDetails.type === ClinicType.emergencyRing) {
       return (
-        <ClincDetailsEmergency
+        <ClincDetailsEmergencyRings
           clinicServiceDetails={clinicServiceDetails}
           backToList={() => {
             resetClinicService();
@@ -202,21 +198,21 @@ export default function ClinicFinder(props: ClinicFinder) {
   };
 
   const clearPosition = () => {
-    setPositioning(false);
+    setShowCurrentPosition(false);
     setUserGeoLocation(null);
     setCustomPosition(null);
   };
 
   const moveToPosition = async () => {
     await clearPosition();
-    await getGeoLoacation();
+    await getUserGeoLocation();
     if (userGeoLocation) {
       setCustomPosition({
         lat: userGeoLocation.lat,
         long: userGeoLocation.long,
       });
-      setShowPin(false);
-      setPositioning(true);
+      setShowSearchMarker(false);
+      setShowCurrentPosition(true);
     }
   };
 
@@ -226,9 +222,9 @@ export default function ClinicFinder(props: ClinicFinder) {
         `${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/location-search/geo-location?place-id=${placeId}`,
       )
       .then(response => {
-        setPositioning(true);
+        setShowCurrentPosition(true);
         setCustomPosition({ lat: response.data.lat, long: response.data.long });
-        setShowPin(true);
+        setShowSearchMarker(true);
       })
       .catch(e => {
         console.log(e);
@@ -259,14 +255,14 @@ export default function ClinicFinder(props: ClinicFinder) {
       <div className={'container__body'}>
         <Map
           defaultProps={defaultProps}
-          positioning={positioning}
+          showCurrentPosition={showCurrentPosition}
           customPosition={customPosition}
           lat={props.lat}
           lng={props.lng}
           activeClinicSiteId={activeClinicSiteId}
           hoveredMarker={hoveredMarker}
           clinic={props.clinic}
-          showPin={showPin}
+          showSearchMarker={showSearchMarker}
           userGeoLocation={userGeoLocation}
           clinicServices={clinicServices}
           toggleInfoCard={id => {
@@ -331,7 +327,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             <div className={'container__bodyLeft'}>
               <Search
                 removePin={() => {
-                  setShowPin(false);
+                  setShowSearchMarker(false);
                 }}
                 moveToSearchLocation={placeId => {
                   moveToSearchLocation(placeId);
