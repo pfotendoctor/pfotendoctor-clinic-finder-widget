@@ -274,7 +274,7 @@ export default function ClinicFinder(props: ClinicFinder) {
         </div>
       </div>
       {isLoading && (
-        <div className={'container__body'}>
+        <div className={'container__bodyFixed'}>
           <LoadingSpinner />
         </div>
       )}
