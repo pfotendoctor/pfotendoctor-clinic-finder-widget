@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../App.css';
+import { ErrorState } from './ClinicFinder';
 
 type Item = {
   id: number;
@@ -13,17 +14,19 @@ type Item = {
 
 export const Item = (props: Item) => {
   const [clinicService, setClinicService] = useState(null);
-
+  const [error, setError] = useState<ErrorState>(null);
   const FetchClinicService = (id: number) => {
-    try {
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
-        .then(response => {
-          setClinicService(response.data);
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
+      .then(response => {
+        setClinicService(response.data);
+      })
+      .catch(e => {
+        setError({
+          code: e.code,
+          message: e.message,
         });
-    } catch (e) {
-      console.log(e);
-    }
+      });
   };
 
   useEffect(() => {
@@ -37,7 +40,14 @@ export const Item = (props: Item) => {
 
   return (
     <div>
-      {clinicService && (
+      {error && (
+        <div>
+          <div className={'container__bodyRight--itemTitle'}>
+            <b>Es gab einen Fehler</b>
+          </div>
+        </div>
+      )}
+      {clinicService && !error && (
         <div
           onClick={() => {
             handleClinicServiceDetails(props.id);

@@ -1,16 +1,6 @@
 import React from 'react';
 import '../App.css';
 
-export interface OpeningHours {
-  monday: { opensAt: string; closesAt: string } | {};
-  tuesday: { opensAt: string; closesAt: string } | {};
-  wednesday: { opensAt: string; closesAt: string } | {};
-  thursday: { opensAt: string; closesAt: string } | {};
-  friday: { opensAt: string; closesAt: string } | {};
-  saturday: { opensAt: string; closesAt: string } | {};
-  sunday: { opensAt: string; closesAt: string } | {};
-}
-
 export interface ClinicDetails {
   clinicServiceDetails: {
     id: number;
@@ -19,7 +9,6 @@ export interface ClinicDetails {
     houseNumber: string;
     zip: string;
     city: string;
-    openingHours: OpeningHours;
     customerTodo: string;
     openingHoursEmergency: string;
     website: string;

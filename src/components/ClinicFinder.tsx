@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Marker } from './Marker';
-import GoogleMapReact from 'google-map-react';
 import '../App.css';
 import axios from 'axios';
 import { Item } from './Item';
 import ClinicRegularDetails from './ClinicRegularDetails';
 import ClincDetailsEmergencyRings from './ClincDetailsEmergencyRings';
-import { InfoModal } from './InfoModal';
-import CurrentPositionMarker from './CurrentPositionMarker';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 import Footer from './Footer';
@@ -43,20 +39,28 @@ export interface ClinicService {
 
 export interface GeoLocation {
   lat: number;
-  long: number;
+  lng: number;
+}
+
+export interface ErrorState {
+  code: number | string;
+  message: string;
 }
 
 export default function ClinicFinder(props: ClinicFinder) {
-  const [clinicServices, setClinicServices] = useState<ClinicService[]>(null);
+  const [clinics, setClinics] = useState<ClinicService[]>(null);
   const [activeClinicSiteId, setActiveClinicSiteId] = useState<number>(null);
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
-  const [clinicServiceDetails, setClinicServiceDetails] = useState(null);
+  const [clinicDetails, setClinicDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showSearchMarker, setShowSearchMarker] = useState<boolean>(false);
   const [showItemList, setShowItemList] = useState<boolean>(false);
   const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null);
-  const [showCurrentPosition, setShowCurrentPosition] = useState<boolean>(false);
+  const [showCurrentPosition, setShowCurrentPosition] =
+    useState<boolean>(false);
   const [customPosition, setCustomPosition] = useState<GeoLocation>(null);
+  const [error, setError] = useState<ErrorState>(null);
   const defaultProps = {
     center: {
       lat: props.lat,
@@ -65,23 +69,25 @@ export default function ClinicFinder(props: ClinicFinder) {
     zoom: 10,
   };
 
-  console.log('PROPS FROM WIDGET2', props);
   // Get clinicName services
-  const FetchClinicServices = () => {
-    try {
-      axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices`)
+  const FetchClinics = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices`)
 
-        .then(response => {
-          setClinicServices(response.data);
-        });
-    } catch (e) {
-      console.log(e);
-    }
+      .then(response => {
+        setClinics(response.data);
+      })
+      .catch(e => {
+        console.log('ERROR', e);
+        setError({ code: e.message, message: e.message });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
-    FetchClinicServices();
+    FetchClinics();
     if (window) {
       setShowItemList(window.innerWidth >= 668);
     }
@@ -100,7 +106,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     };
     const success = pos => {
       const crd = pos.coords;
-      setUserGeoLocation({ lat: crd.latitude, long: crd.longitude });
+      setUserGeoLocation({ lat: crd.latitude, lng: crd.longitude });
     };
     const error = err => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -135,7 +141,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   };
 
   const sortClinicsByDistance = (lat: number, long: number) => {
-    return clinicServices
+    return clinics
       .map((clinic, i) => {
         return {
           ...clinic,
@@ -158,7 +164,7 @@ export default function ClinicFinder(props: ClinicFinder) {
         .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
         .then(response => {
           setActiveClinicSiteId(id);
-          setClinicServiceDetails(response.data);
+          setClinicDetails(response.data);
         });
     } catch (e) {
       console.log(e);
@@ -170,10 +176,10 @@ export default function ClinicFinder(props: ClinicFinder) {
   };
 
   const renderDetails = clinic => {
-    if (clinicServiceDetails.type === ClinicType.emergencyRing) {
+    if (clinicDetails.type === ClinicType.emergencyRing) {
       return (
         <ClincDetailsEmergencyRings
-          clinicServiceDetails={clinicServiceDetails}
+          clinicServiceDetails={clinicDetails}
           backToList={() => {
             resetClinicService();
           }}
@@ -182,7 +188,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     } else {
       return (
         <ClinicRegularDetails
-          clinicServiceDetails={clinicServiceDetails}
+          clinicServiceDetails={clinicDetails}
           backToList={() => {
             resetClinicService();
           }}
@@ -209,7 +215,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     if (userGeoLocation) {
       setCustomPosition({
         lat: userGeoLocation.lat,
-        long: userGeoLocation.long,
+        lng: userGeoLocation.lng,
       });
       setShowSearchMarker(false);
       setShowCurrentPosition(true);
@@ -223,7 +229,7 @@ export default function ClinicFinder(props: ClinicFinder) {
       )
       .then(response => {
         setShowCurrentPosition(true);
-        setCustomPosition({ lat: response.data.lat, long: response.data.long });
+        setCustomPosition({ lat: response.data.lat, lng: response.data.long });
         setShowSearchMarker(true);
       })
       .catch(e => {
@@ -235,15 +241,30 @@ export default function ClinicFinder(props: ClinicFinder) {
     <div className={'container'}>
       <div className={'container__header'}>
         <div className={'container__headerLeft'}>
-          <span className={'emergencyText'}>
-            Notfälle sind lebensbedrohliche Situationen.&nbsp;
-          </span>
-          <span>
-            Sollte Ihr Haustier verunglückt sein, stark bluten oder sich
-            anderweitig besorgniserregend verhalten, kontaktieren Sie außerhalb
-            der Praxis-Öffnungszeiten bitte umgehend einen der untenstehenden
-            Notdienste.
-          </span>
+          {clinics && (
+            <div>
+              <span className={'emergencyText'}>
+                Notfälle sind lebensbedrohliche Situationen.&nbsp;
+              </span>
+              <span>
+                Sollte Ihr Haustier verunglückt sein, stark bluten oder sich
+                anderweitig besorgniserregend verhalten, kontaktieren Sie
+                außerhalb der Praxis-Öffnungszeiten bitte umgehend einen der
+                untenstehenden Notdienste.
+              </span>
+            </div>
+          )}
+          {error && (
+            <div className={'marginBottom'}>
+              <span className={'emergencyText'}>
+                Die Notdienstkarte ist zur Zeit nicht verfügbar.&nbsp;
+              </span>
+              <span>
+                Wir arbeiten an einer Lösung und entschuldigen uns für den
+                Ausfall.
+              </span>
+            </div>
+          )}
         </div>
         <div className={'container__headerRight'}>
           <img
@@ -252,123 +273,131 @@ export default function ClinicFinder(props: ClinicFinder) {
           />
         </div>
       </div>
-      <div className={'container__body'}>
-        <Map
-          defaultProps={defaultProps}
-          showCurrentPosition={showCurrentPosition}
-          customPosition={customPosition}
-          lat={props.lat}
-          lng={props.lng}
-          activeClinicSiteId={activeClinicSiteId}
-          hoveredMarker={hoveredMarker}
-          clinic={props.clinic}
-          showSearchMarker={showSearchMarker}
-          userGeoLocation={userGeoLocation}
-          clinicServices={clinicServices}
-          toggleInfoCard={id => {
-            toggleInfoCard(id).then(r => setShowItemList(true));
-          }}
-        />
-        <div
-          className={
-            showItemList
-              ? 'container__bodyRight'
-              : 'container__bodyRightInactive'
-          }
-        >
-          {!activeClinicSiteId && (
-            <div
-              onClick={() => {
-                backToMap();
-              }}
-              className={'clinicDetails__redRowContainer backToMap'}
-            >
-              <img
-                src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
-                alt={'arrow left'}
-              />
-              <div>Karte</div>
-            </div>
-          )}
-          {clinicServices &&
-            !activeClinicSiteId &&
-            sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-              return (
-                <div key={clinicService.id}>
-                  <Item
-                    id={clinicService.id}
-                    activeInfoCardId={activeClinicSiteId}
-                    toggleInfoCard={id => {
-                      setActiveClinicSiteId(id);
-                    }}
-                    toggleHoveredMarker={id => {
-                      setHoveredMarker(id);
-                    }}
-                    setClinicServiceDetails={clinic => {
-                      setClinicServiceDetails(clinic);
-                    }}
-                  />
-                </div>
-              );
-            })}
-          {activeClinicSiteId &&
-            activeClinicSiteId === clinicServiceDetails?.id &&
-            renderDetails(clinicServiceDetails)}
+      {isLoading && (
+        <div className={'container__body'}>
+          <LoadingSpinner />
         </div>
-        {props.providedAt === ProvidedAt.external && (
-          <div className={'container__bodyLeft'}>
-            <div className={'container__bodyLeftText'}>
-              <h2>Notdienste in unserer Nähe</h2>
-            </div>
-          </div>
-        )}
-        {props.providedAt === ProvidedAt.pfotendoctor && (
-          <div>
-            <div className={'container__bodyLeft'}>
-              <Search
-                removePin={() => {
-                  setShowSearchMarker(false);
-                }}
-                moveToSearchLocation={placeId => {
-                  moveToSearchLocation(placeId);
-                }}
-              />
-            </div>
-          </div>
-        )}
-        <div className={'container__bodyItems'}>
+      )}
+      {clinics && !isLoading && (
+        <div className={'container__body'}>
+          <Map
+            defaultProps={defaultProps}
+            showCurrentPosition={showCurrentPosition}
+            customPosition={customPosition}
+            lat={props.lat}
+            lng={props.lng}
+            activeClinicSiteId={activeClinicSiteId}
+            hoveredMarker={hoveredMarker}
+            clinic={props.clinic}
+            showSearchMarker={showSearchMarker}
+            userGeoLocation={userGeoLocation}
+            clinicServices={clinics}
+            toggleInfoCard={id => {
+              toggleInfoCard(id).then(r => setShowItemList(true));
+            }}
+          />
           <div
-            className={'container__bodyControlsIcon'}
-            onClick={userGeoLocation ? moveToPosition : null}
+            className={
+              showItemList
+                ? 'container__bodyRight'
+                : 'container__bodyRightInactive'
+            }
           >
-            {userGeoLocation && (
-              <img
-                src={`${process.env.REACT_APP_CDN_URL}/controls.svg`}
-                alt={'controls icon'}
-              />
-            )}
-            {!userGeoLocation && (
-              <div className={'container__bodyControlsLoading'}>
-                <div className={'container__bodyControlsLoadingBox'}>
-                  <LoadingSpinner />
-                </div>
+            {!activeClinicSiteId && (
+              <div
+                onClick={() => {
+                  backToMap();
+                }}
+                className={'clinicDetails__redRowContainer backToMap'}
+              >
+                <img
+                  src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
+                  alt={'arrow left'}
+                />
+                <div>Karte</div>
               </div>
             )}
+            {clinics &&
+              !activeClinicSiteId &&
+              sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                return (
+                  <div key={clinicService.id}>
+                    <Item
+                      id={clinicService.id}
+                      activeInfoCardId={activeClinicSiteId}
+                      toggleInfoCard={id => {
+                        setActiveClinicSiteId(id);
+                      }}
+                      toggleHoveredMarker={id => {
+                        setHoveredMarker(id);
+                      }}
+                      setClinicServiceDetails={clinic => {
+                        setClinicDetails(clinic);
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            {activeClinicSiteId &&
+              activeClinicSiteId === clinicDetails?.id &&
+              renderDetails(clinicDetails)}
           </div>
-          <div
-            className={'container__bodyItemsIcon'}
-            onClick={() => {
-              setShowItemList(true);
-            }}
-          >
-            <img
-              src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
-              alt={'items icon'}
-            />
+          {props.providedAt === ProvidedAt.external && (
+            <div className={'container__bodyLeft'}>
+              <div className={'container__bodyLeftText'}>
+                <h2>Notdienste in unserer Nähe</h2>
+              </div>
+            </div>
+          )}
+          {props.providedAt === ProvidedAt.pfotendoctor && (
+            <div>
+              <div className={'container__bodyLeft'}>
+                <Search
+                  removePin={() => {
+                    setShowSearchMarker(false);
+                  }}
+                  moveToSearchLocation={placeId => {
+                    moveToSearchLocation(placeId);
+                  }}
+                />
+              </div>
+            </div>
+          )}
+          <div className={'container__bodyItems'}>
+            <div
+              className={'container__bodyControlsIcon'}
+              onClick={userGeoLocation ? moveToPosition : null}
+            >
+              {userGeoLocation && (
+                <img
+                  src={`${process.env.REACT_APP_CDN_URL}/controls.svg`}
+                  alt={'controls icon'}
+                />
+              )}
+              {!userGeoLocation && (
+                <div className={'container__bodyControlsLoading'}>
+                  <div className={'container__bodyControlsLoadingBox'}>
+                    <LoadingSpinner />
+                  </div>
+                </div>
+              )}
+            </div>
+            <div
+              className={'container__bodyItemsIcon'}
+              onClick={() => {
+                setShowItemList(true);
+              }}
+            >
+              <img
+                src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
+                alt={'items icon'}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Footer
+        error={error}
         providedAt={props.providedAt}
         toggleModal={value => setShowModal(value)}
         showModal={showModal}

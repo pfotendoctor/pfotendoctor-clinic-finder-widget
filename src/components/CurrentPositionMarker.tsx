@@ -1,12 +1,8 @@
 import React from 'react';
 import '../App.css';
+import { GeoLocation } from './ClinicFinder';
 
-interface Coordinates {
-  lat: number;
-  lng: number;
-}
-
-const CurrentPositionMarker = (props: Coordinates) => {
+const CurrentPositionMarker = (props: GeoLocation) => {
   return <div className={'positionMarker'}></div>;
 };
 

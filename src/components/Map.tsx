@@ -26,11 +26,13 @@ interface Map {
 }
 
 const Map = (props: Map) => {
-  const defaultProps = props.defaultProps;
-  const positioning = props.showCurrentPosition;
-  const customPosition = props.customPosition;
-  const userGeoLocation = props.userGeoLocation;
-  const clinicServices = props.clinicServices;
+  const {
+    defaultProps,
+    showCurrentPosition,
+    customPosition,
+    userGeoLocation,
+    clinicServices,
+  } = props;
 
   return (
     <GoogleMapReact
@@ -38,8 +40,8 @@ const Map = (props: Map) => {
       defaultCenter={defaultProps.center}
       defaultZoom={defaultProps.zoom}
       center={
-        positioning && customPosition
-          ? { lat: customPosition.lat, lng: customPosition.long }
+        showCurrentPosition && customPosition
+          ? { lat: customPosition.lat, lng: customPosition.lng }
           : null
       }
       yesIWantToUseGoogleMapApiInternals
@@ -57,14 +59,14 @@ const Map = (props: Map) => {
       />
       {!props.showSearchMarker
         ? null
-        : positioning &&
+        : showCurrentPosition &&
           customPosition && (
             <Marker
               key={10000}
               id={1}
               type={ClinicType.custom}
               lat={customPosition.lat}
-              lng={customPosition.long}
+              lng={customPosition.lng}
               toggleInfoCard={() => {}}
               activeInfoCardId={null}
               hoveredMarker={null}
@@ -73,7 +75,7 @@ const Map = (props: Map) => {
       {userGeoLocation && (
         <CurrentPositionMarker
           lat={userGeoLocation.lat}
-          lng={userGeoLocation.long}
+          lng={userGeoLocation.lng}
         />
       )}
       {clinicServices &&

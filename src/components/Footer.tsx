@@ -1,8 +1,9 @@
 import React from 'react';
-import { ProvidedAt } from './ClinicFinder';
+import { ErrorState, ProvidedAt } from './ClinicFinder';
 import { InfoModal } from './InfoModal';
 
 interface Footer {
+  error: ErrorState;
   providedAt: ProvidedAt;
   toggleModal: (value: boolean) => void;
   showModal: boolean;
@@ -19,7 +20,12 @@ const Footer = (props: Footer) => {
         }
       >
         <div className={'clinicDetails__emergencyInfo--title'}>
-          <h2>Nicht sicher, ob es sich um einen Notfall handelt?</h2>
+          {props.error && (
+            <h2>In der Zwischenzeit online einen Tierarzt sprechen</h2>
+          )}
+          {!props.error && (
+            <h2>Nicht sicher, ob es sich um einen Notfall handelt?</h2>
+          )}
         </div>
         {props.providedAt === ProvidedAt.external && (
           <>
