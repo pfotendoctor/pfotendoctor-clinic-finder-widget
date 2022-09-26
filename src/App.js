@@ -5,7 +5,7 @@ import ClinicFinder from './components/ClinicFinder';
 function App({ domElement }) {
   const lng = parseFloat(domElement.getAttribute('data-longitude'));
   const lat = parseFloat(domElement.getAttribute('data-latitude'));
-  const clinic = domElement.getAttribute('data-clinicName');
+  const clinic = domElement.getAttribute('data-clinicname');
   const providedAt = domElement.getAttribute('data-provided-at');
 
   return (
