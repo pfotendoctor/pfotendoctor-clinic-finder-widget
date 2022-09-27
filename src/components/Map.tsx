@@ -2,7 +2,12 @@ import React from 'react';
 import { Marker } from './Marker';
 import CurrentPositionMarker from './CurrentPositionMarker';
 import GoogleMapReact from 'google-map-react';
-import { ClinicService, ClinicType, GeoLocation } from './ClinicFinder';
+import {
+  ClinicService,
+  ClinicType,
+  GeoLocation,
+  ProvidedAt,
+} from './ClinicFinder';
 
 interface Map {
   defaultProps: {
@@ -23,6 +28,7 @@ interface Map {
   userGeoLocation: GeoLocation;
   clinicServices: ClinicService[];
   toggleInfoCard: (value: number) => void;
+  providedAt: ProvidedAt;
 }
 
 const Map = (props: Map) => {
@@ -56,6 +62,7 @@ const Map = (props: Map) => {
         activeInfoCardId={props.activeClinicSiteId}
         hoveredMarker={props.hoveredMarker}
         clinicName={props.clinic}
+        providedAt={props.providedAt}
       />
       {!props.showSearchMarker
         ? null
@@ -70,6 +77,7 @@ const Map = (props: Map) => {
               toggleInfoCard={() => {}}
               activeInfoCardId={null}
               hoveredMarker={null}
+              providedAt={props.providedAt}
             />
           )}
       {userGeoLocation && (
@@ -92,6 +100,7 @@ const Map = (props: Map) => {
               lng={clinicService.coordinatesLong}
               type={clinicService.type}
               hoveredMarker={props.hoveredMarker}
+              providedAt={props.providedAt}
             />
           );
         })}

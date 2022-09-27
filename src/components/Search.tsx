@@ -104,11 +104,11 @@ const Search = (props: Search) => {
         <div className={'container__bodyLeftSearchIconContainer'}>
           {resultListLoading && <LoadingSpinner />}
           {!resultListLoading && (
-              <img
-                  className={'container__bodyLeftSearchIcon'}
-                  src={`${process.env.REACT_APP_CDN_URL}/searchIcon.svg`}
-                  alt={'search'}
-              />
+            <img
+              className={'container__bodyLeftSearchIcon'}
+              src={`${process.env.REACT_APP_CDN_URL}/searchIcon.svg`}
+              alt={'search'}
+            />
           )}
         </div>
         <input

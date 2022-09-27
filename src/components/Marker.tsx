@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClinicType } from './ClinicFinder';
+import { ClinicType, ProvidedAt } from './ClinicFinder';
 
 interface Marker {
   key: number;
@@ -11,6 +11,7 @@ interface Marker {
   activeInfoCardId: number | null;
   hoveredMarker: number | null;
   clinicName?: string;
+  providedAt: ProvidedAt;
 }
 
 export const Marker = (props: Marker) => {
@@ -50,19 +51,23 @@ export const Marker = (props: Marker) => {
       </div>
     );
   } else {
-    return (
-      <div>
-        <img
-          className={'positionMarker__clinic'}
-          src={`${process.env.REACT_APP_CDN_URL}/local_clinic.svg`}
-          alt={'local clinicName'}
-        />
-        <div className={'positionMarker__tooltip'}>
-          <div className={'positionMarker__tooltipText'}>
-            {props.clinicName}
+    if (props.providedAt === ProvidedAt.external) {
+      return (
+        <div>
+          <img
+            className={'positionMarker__clinic'}
+            src={`${process.env.REACT_APP_CDN_URL}/local_clinic.svg`}
+            alt={'local clinicName'}
+          />
+          <div className={'positionMarker__tooltip'}>
+            <div className={'positionMarker__tooltipText'}>
+              {props.clinicName}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <></>;
+    }
   }
 };

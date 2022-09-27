@@ -286,6 +286,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             customPosition={customPosition}
             lat={props.lat}
             lng={props.lng}
+            providedAt={props.providedAt}
             activeClinicSiteId={activeClinicSiteId}
             hoveredMarker={hoveredMarker}
             clinic={props.clinic}

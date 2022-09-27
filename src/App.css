@@ -15,17 +15,17 @@ html {
   -moz-osx-font-smoothing: grayscale !important;
   -webkit-font-smoothing: antialiased !important;
   font-size: 1rem !important;
-  font-weight: bold !important;;
-  margin: 0 !important;;
+  font-weight: bold !important;
+  margin: 0 !important;
 }
 
 .container h3 {
   font-family: 'Roboto', sans-serif !important;
   -moz-osx-font-smoothing: grayscale !important;
   -webkit-font-smoothing: antialiased !important;
-  margin: 0 !important;;
-  font-size: 1rem !important;;
-  font-weight: 400 !important;;
+  margin: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
 }
 
 .container p {
