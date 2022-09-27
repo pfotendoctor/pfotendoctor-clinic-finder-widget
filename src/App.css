@@ -228,8 +228,15 @@ html {
   box-shadow: 0px 0px 9px 0px rgba(10, 3, 3, 0.11);
 }
 
+.container__bodyLeftSearchIconContainer {
+  margin-right: 0.61rem;
+  width: 1rem;
+  height: 1rem;
+}
+
 .container__bodyLeftSearch .loader .loader__size__small {
-  margin-right: 0.61rem !important;
+  width: 100%;
+  height: auto;
 }
 
 .container__bodyLeftSearch input {
@@ -825,7 +832,7 @@ html {
 
 .loader__size__small {
   width: 13px;
-  height: 11px;
+  height: 13px;
   border: 2px solid #f3f3f3; /* Light grey */
   border-top: 2px solid #ff8766; /* Blue */
   border-radius: 200%;
