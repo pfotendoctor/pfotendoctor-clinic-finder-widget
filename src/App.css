@@ -521,6 +521,10 @@ html {
   margin-bottom: 1rem;
 }
 
+.clinicDetails__redRowContainer h3 {
+  color: #f50001 !important;
+}
+
 .clinicDetails__redRowContainer:hover {
   cursor: pointer;
 }
