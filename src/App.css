@@ -111,31 +111,26 @@ html {
   display: none !important;
 }
 
-.container__bodyItemsIcon {
-  position: relative;
+.container__bodyItemsIcon, .container__bodyControlsIcon {
+  position: absolute;
   z-index: 99;
   right: 50px;
   width: 27px;
+  height: 27px;
   padding: 7px;
   background: white;
   border-radius: 10px;
-  height: 25px;
-  top: 6.6rem;
+}
+
+.container__bodyItemsIcon {
+  top: 21.6rem;
 }
 
 .container__bodyControlsIcon {
-  position: relative;
-  z-index: 99;
-  right: 50px;
-  width: 27px;
-  padding: 7px;
-  background: white;
-  border-radius: 10px;
-  height: 25px;
-  top: 6.2rem;
+  top: 18.6rem;
 }
 
-.container__bodyControlsIcon img {
+.container__bodyControlsIcon img, .container__bodyItemsIcon img {
   width: 100%;
   height: auto;
 }
