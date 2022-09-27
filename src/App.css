@@ -827,15 +827,14 @@ html {
   border-top: 16px solid #ff8766; /* Blue */
   border-radius: 50%;
   animation: spin 2s linear infinite;
-  margin-right: 0.45rem;
+  width: 1rem;
+  height: 100%;
+  position: relative;
 }
 
 .loader__size__small {
-  width: 13px;
-  height: 13px;
   border: 2px solid #f3f3f3; /* Light grey */
   border-top: 2px solid #ff8766; /* Blue */
-  border-radius: 200%;
 }
 
 @keyframes spin {
