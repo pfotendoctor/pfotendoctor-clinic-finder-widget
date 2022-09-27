@@ -278,6 +278,27 @@ export default function ClinicFinder(props: ClinicFinder) {
           <LoadingSpinner />
         </div>
       )}
+      {props.providedAt === ProvidedAt.external && (
+          <div className={'container__bodyLeft'}>
+            <div className={'container__bodyLeftText'}>
+              <h2>Notdienste in unserer Nähe</h2>
+            </div>
+          </div>
+      )}
+      {props.providedAt === ProvidedAt.pfotendoctor && (
+          <div>
+            <div className={'container__bodyLeft'}>
+              <Search
+                  removePin={() => {
+                    setShowSearchMarker(false);
+                  }}
+                  moveToSearchLocation={placeId => {
+                    moveToSearchLocation(placeId);
+                  }}
+              />
+            </div>
+          </div>
+      )}
       {clinics && !isLoading && (
         <div className={'container__body'}>
           <Map
@@ -343,27 +364,7 @@ export default function ClinicFinder(props: ClinicFinder) {
               activeClinicSiteId === clinicDetails?.id &&
               renderDetails(clinicDetails)}
           </div>
-          {props.providedAt === ProvidedAt.external && (
-            <div className={'container__bodyLeft'}>
-              <div className={'container__bodyLeftText'}>
-                <h2>Notdienste in unserer Nähe</h2>
-              </div>
-            </div>
-          )}
-          {props.providedAt === ProvidedAt.pfotendoctor && (
-            <div>
-              <div className={'container__bodyLeft'}>
-                <Search
-                  removePin={() => {
-                    setShowSearchMarker(false);
-                  }}
-                  moveToSearchLocation={placeId => {
-                    moveToSearchLocation(placeId);
-                  }}
-                />
-              </div>
-            </div>
-          )}
+
           <div className={'container__bodyItems'}>
             <div
               className={'container__bodyControlsIcon'}

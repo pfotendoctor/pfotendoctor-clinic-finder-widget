@@ -179,6 +179,7 @@ html {
 
 .container__bodyLeft {
   width: 0;
+  height: 0;
   /*margin-top: -1.5rem;*/
 }
 .container__bodyLeftText {
@@ -196,12 +197,11 @@ html {
 .container__bodyLeftContainer {
   position: relative;
   z-index: 99;
-  right: 100vw;
   border-radius: 10px;
   background: transparent;
   width: 300px;
   padding: 0.1rem 0;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem;
 }
 
 .container__bodyLeftContainerActive {
@@ -224,7 +224,7 @@ html {
   font-size: 1rem;
   font-weight: bold;
   color: #2b3656;
-  margin: 1rem;
+  margin: 0.5rem;
   box-shadow: 0px 0px 9px 0px rgba(10, 3, 3, 0.11);
 }
 
