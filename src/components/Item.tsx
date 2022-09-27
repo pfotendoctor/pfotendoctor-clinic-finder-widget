@@ -59,7 +59,7 @@ export const Item = (props: Item) => {
           className={'container__bodyRight--item'}
         >
           <div className={'container__bodyRight--itemTitle'}>
-            <b>{clinicService.name}</b>
+            {clinicService.name}
           </div>
           <div className={'container__bodyRight--itemActiveStreet'}>
             {clinicService.street} {clinicService.houseNumber}

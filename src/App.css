@@ -2,12 +2,12 @@
 
 body,
 html {
-  font-family: 'Roboto', sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  color: rgba(43, 54, 86, 0.75);
-  font-weight: 400;
-  margin: 0;
+  font-family: 'Roboto', sans-serif !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: rgba(43, 54, 86, 0.75) !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
 }
 
 .container h2 {
@@ -29,9 +29,9 @@ html {
 }
 
 .container p {
-  font-family: 'Roboto', sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', sans-serif !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
   margin: 0;
 }
 
@@ -228,8 +228,8 @@ html {
   box-shadow: 0px 0px 9px 0px rgba(10, 3, 3, 0.11);
 }
 
-.container__bodyLeftSearch .loader__size__small {
-  margin-right: 0.61rem;
+.container__bodyLeftSearch .loader .loader__size__small {
+  margin-right: 0.61rem !important;
 }
 
 .container__bodyLeftSearch input {
@@ -321,10 +321,12 @@ html {
 
 .container__bodyRight--item:hover .container__bodyRight--itemTitle {
   color: #f50001;
+  font-weight: bold;
 }
 
 .container__bodyRight--itemTitle {
   color: #2b3656;
+  font-weight: bold;
 }
 
 .container__bodyRight--itemTitle,
