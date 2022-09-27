@@ -10,26 +10,29 @@ html {
   margin: 0;
 }
 
-h1 {
+.container h2 {
+  font-family: 'Roboto', sans-serif !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;;
+  margin: 0 !important;;
 }
 
-h2 {
-  font-size: 1rem;
-  font-weight: bold;
+.container h3 {
+  font-family: 'Roboto', sans-serif !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  margin: 0 !important;;
+  font-size: 1rem !important;;
+  font-weight: 400 !important;;
+}
+
+.container p {
+  font-family: 'Roboto', sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
-}
-
-h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-p {
-  margin: 0;
-}
-
-.marker {
 }
 
 .blob {
@@ -123,12 +126,13 @@ p {
 .container__bodyControlsIcon {
   position: relative;
   z-index: 99;
-  right: 73px;
-  width: 72px;
+  right: 50px;
+  width: 27px;
   padding: 7px;
+  background: white;
   border-radius: 10px;
   height: 25px;
-  top: 5rem;
+  top: 6.2rem;
 }
 
 .container__bodyControlsIcon img {
@@ -831,13 +835,11 @@ p {
 }
 
 .container__bodyControlsLoading {
-  background: white;
   width: 40px;
   height: 40px;
-  right: -16px;
+  right: 6px;
   position: relative;
-  top: 0.6rem;
-  border-radius: 10px;
+  top: -0.4rem;
 }
 
 .container__bodyControlsLoadingBox {

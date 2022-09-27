@@ -370,7 +370,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             >
               {userGeoLocation && (
                 <img
-                  src={`${process.env.REACT_APP_CDN_URL}/controls.svg`}
+                  src={`${process.env.REACT_APP_CDN_URL}/controlsBlank.svg`}
                   alt={'controls icon'}
                 />
               )}
