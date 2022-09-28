@@ -111,7 +111,8 @@ html {
   display: none !important;
 }
 
-.container__bodyItemsIcon, .container__bodyControlsIcon {
+.container__bodyItemsIcon,
+.container__bodyControlsIcon {
   position: relative;
   z-index: 99;
   float: right;
@@ -124,14 +125,15 @@ html {
 }
 
 .container__bodyItemsIcon {
-  top: 8rem;
+  top: 8.8rem;
 }
 
 .container__bodyControlsIcon {
   top: 6rem;
 }
 
-.container__bodyControlsIcon img, .container__bodyItemsIcon img {
+.container__bodyControlsIcon img,
+.container__bodyItemsIcon img {
   width: 100%;
   height: auto;
 }
@@ -182,7 +184,6 @@ html {
   position: relative;
   width: 200px;
   z-index: 99;
-  right: 100vw;
   background: white;
   padding: 0.5rem 1rem 0.5rem 1.5rem;
   border-top: 1px solid #f0f0f0;
@@ -203,7 +204,6 @@ html {
 .container__bodyLeftContainerActive {
   position: relative;
   z-index: 99;
-  right: 100vw;
   border-radius: 10px;
   background: #f5fafa;
   width: 300px;

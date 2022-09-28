@@ -9,7 +9,7 @@ function App({ domElement }) {
   const providedAt = domElement.getAttribute('data-provided-at');
 
   return (
-    <div style={{margin: "0 3rem"}}>
+    <div style={{ margin: '0 3rem' }}>
       {lat && lng && (
         <ClinicFinder
           lat={lat}

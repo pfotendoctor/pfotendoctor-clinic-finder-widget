@@ -278,55 +278,58 @@ export default function ClinicFinder(props: ClinicFinder) {
           <LoadingSpinner />
         </div>
       )}
-      <div className={'container__bodyLeft'}>
-        {props.providedAt === ProvidedAt.external && (
-              <div className={'container__bodyLeftText'}>
-                <h2>Notdienste in unserer Nähe</h2>
-            </div>
-        )}
-        {props.providedAt === ProvidedAt.pfotendoctor && (
 
-            <Search
-                removePin={() => {
-                  setShowSearchMarker(false);
-                }}
-                moveToSearchLocation={placeId => {
-                  moveToSearchLocation(placeId);
-                }}
-            />
-        )}
-      </div>
+      {props.providedAt === ProvidedAt.external && (
+        <div className={'container__bodyLeft'}>
+          <div className={'container__bodyLeftText'}>
+            <h2>Notdienste in unserer Nähe</h2>
+          </div>
+        </div>
+      )}
+
+      {props.providedAt === ProvidedAt.pfotendoctor && (
+        <div className={'container__bodyLeft'}>
+          <Search
+            removePin={() => {
+              setShowSearchMarker(false);
+            }}
+            moveToSearchLocation={placeId => {
+              moveToSearchLocation(placeId);
+            }}
+          />
+        </div>
+      )}
 
       <div className={'container__bodyItems'}>
         <div
-            className={'container__bodyControlsIcon'}
-            onClick={userGeoLocation ? moveToPosition : null}
+          className={'container__bodyControlsIcon'}
+          onClick={userGeoLocation ? moveToPosition : null}
         >
           {userGeoLocation && (
-              <img
-                  src={`${process.env.REACT_APP_CDN_URL}/controlsBlank.svg`}
-                  alt={'controls icon'}
-              />
+            <img
+              src={`${process.env.REACT_APP_CDN_URL}/controlsBlank.svg`}
+              alt={'controls icon'}
+            />
           )}
           {!userGeoLocation && (
-              <div className={'container__bodyControlsLoading'}>
-                <div className={'container__bodyControlsLoadingBox'}>
-                  <LoadingSpinner />
-                </div>
+            <div className={'container__bodyControlsLoading'}>
+              <div className={'container__bodyControlsLoadingBox'}>
+                <LoadingSpinner />
               </div>
+            </div>
           )}
         </div>
       </div>
       <div className={'container__bodyItems'}>
         <div
-            className={'container__bodyItemsIcon'}
-            onClick={() => {
-              setShowItemList(true);
-            }}
+          className={'container__bodyItemsIcon'}
+          onClick={() => {
+            setShowItemList(true);
+          }}
         >
           <img
-              src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
-              alt={'items icon'}
+            src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
+            alt={'items icon'}
           />
         </div>
       </div>
