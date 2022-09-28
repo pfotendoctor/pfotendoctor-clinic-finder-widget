@@ -320,12 +320,14 @@ export default function ClinicFinder(props: ClinicFinder) {
           )}
         </div>
       </div>
-      <div className={'container__bodyItems'}>
-        <div
-          className={'container__bodyItemsIcon'}
+      <div
+          className={'container__bodyItems'}
           onClick={() => {
             setShowItemList(true);
           }}
+      >
+        <div
+          className={'container__bodyItemsIcon'}
         >
           <img
             src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
