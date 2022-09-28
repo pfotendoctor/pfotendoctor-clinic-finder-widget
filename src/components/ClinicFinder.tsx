@@ -316,6 +316,8 @@ export default function ClinicFinder(props: ClinicFinder) {
               </div>
           )}
         </div>
+      </div>
+      <div className={'container__bodyItems'}>
         <div
             className={'container__bodyItemsIcon'}
             onClick={() => {
