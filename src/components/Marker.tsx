@@ -19,7 +19,9 @@ export const Marker = (props: Marker) => {
     return (
       <div
         key={props.key}
-        onClick={() => props.toggleInfoCard(props.id)}
+        onClick={() => {
+          props.toggleInfoCard(props.id);
+        }}
         className={'marker'}
       >
         {props.type === ClinicType.custom && (
@@ -29,13 +31,12 @@ export const Marker = (props: Marker) => {
           />
         )}
         {props.type === ClinicType.emergencyRing && (
-          <div
-            className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
-          >
+          <div>
             <img
               src={`${process.env.REACT_APP_CDN_URL}/emergency_icon_ring.svg`}
               alt={'emergency cross'}
             />
+            <div className={props.type === ClinicType.emergencyRing ? 'blob' : ''}></div>
           </div>
         )}
         {props.type === ClinicType.clinic && (
