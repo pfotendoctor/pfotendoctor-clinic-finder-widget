@@ -91,7 +91,6 @@ export default function ClinicFinder(props: ClinicFinder) {
     if (window) {
       setShowItemList(window.innerWidth >= 668);
     }
-    console.log('geolocation: ', navigator.geolocation);
     if (navigator.geolocation) {
       getUserGeoLocation();
     }

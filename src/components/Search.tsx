@@ -77,7 +77,6 @@ const Search = (props: Search) => {
   };
 
   const handleSearchClick = item => {
-    console.log(item);
     props.moveToSearchLocation(item.placeId);
     setTextInput(item.searchTermResult);
     setActive(false);
