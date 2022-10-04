@@ -29,7 +29,7 @@ className, data-provided-at: Bitte so beibehalten.
 
 Script unterhalb des widgets einfügen:
 
-<Script src="https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/indexV3.js"></Script>
+<script src="https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/indexV3.js"></script>
 
 ## Für Pfotendoctor:
 
