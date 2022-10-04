@@ -42,9 +42,15 @@ const Map = (props: Map) => {
     clinicServices,
   } = props;
 
+  const OPTIONS = {
+    minZoom: 9,
+    maxZoom: 18,
+  }
+
   return (
       <div className={props.showItemList ? 'mapContainerInactive': 'mapContainerActive'}>
         <GoogleMapReact
+            options={OPTIONS}
             bootstrapURLKeys={{ key: 'AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ' }}
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}
