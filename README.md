@@ -1,15 +1,6 @@
-## Pfotendoctor Clinic Finder Widget
+## Anleitung
 
-npm run start
-
-To build minified JS/CSS npm run run build:widget
-
-
-
-
-Anleitung
-
-Für Benutzer:
+# Für Benutzer:
 
 Auf der gewünschten Seite binden Sie den link in den Header ein:
 
@@ -42,7 +33,7 @@ Script unterhalb des widgets einfügen:
 
 ———————————————————————————————————
 
-Für Pfotendoctor:
+# Für Pfotendoctor:
 
 Wie Benutzer: 
 1. Link einbinden
