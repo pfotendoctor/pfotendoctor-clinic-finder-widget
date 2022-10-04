@@ -31,8 +31,6 @@ Script unterhalb des widgets einfügen:
 
 <Script src="https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/indexV3.js"></Script>
 
-———————————————————————————————————
-
 ## Für Pfotendoctor:
 
 Wie Benutzer: 
