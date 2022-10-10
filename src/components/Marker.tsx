@@ -33,7 +33,7 @@ export const Marker = (props: Marker) => {
         {props.type === ClinicType.emergencyRing && (
           <div>
             <img
-              src={`${process.env.REACT_APP_CDN_URL}/emergency_icon_ring.svg`}
+              src={`${process.env.REACT_APP_CDN_URL}/marker_emergency.svg`}
               alt={'emergency cross'}
             />
             <div className={props.type === ClinicType.emergencyRing ? 'blob' : ''}></div>
@@ -43,8 +43,8 @@ export const Marker = (props: Marker) => {
           <img
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
-                ? `${process.env.REACT_APP_CDN_URL}/marker_active.svg`
-                : `${process.env.REACT_APP_CDN_URL}/marker_inactive.svg`
+                ? `${process.env.REACT_APP_CDN_URL}/marker_location_active.svg`
+                : `${process.env.REACT_APP_CDN_URL}/marker_location_inactive.svg`
             }
             alt={props.clinicName}
           />
