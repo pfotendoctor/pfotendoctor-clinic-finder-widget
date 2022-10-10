@@ -103,16 +103,40 @@ html {
 }
 
 .container__headerRight {
-  height: 8rem;
+  height: 6rem;
   margin-left: auto;
 }
 
 .container__headerRight img {
   position: relative;
   right: -2.5rem;
-  bottom: 3.25rem;
+  bottom: 2.5rem;
   height: 180%;
 }
+
+
+@media (max-width: 1178px) {
+  .container__headerRight img {
+    bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 836px) {
+  .container__headerRight img {
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 722px) {
+  .container__headerRight img {
+    bottom: 1rem;
+    height: 225%;
+    left: 3rem;
+
+  }
+}
+
+
 
 .container__bodyItems {
   width: 100%;
