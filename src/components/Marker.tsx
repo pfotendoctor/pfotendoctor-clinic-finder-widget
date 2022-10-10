@@ -44,7 +44,7 @@ export const Marker = (props: Marker) => {
             src={
               props.id === (props.activeInfoCardId || props.hoveredMarker)
                 ? `${process.env.REACT_APP_CDN_URL}/marker_location_active.svg`
-                : `${process.env.REACT_APP_CDN_URL}/marker-active.svg`
+                : `${process.env.REACT_APP_CDN_URL}/marker-inactive.svg`
             }
             alt={props.clinicName}
           />
