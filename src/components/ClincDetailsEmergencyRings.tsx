@@ -3,6 +3,7 @@ import { ClinicDetails } from './ClinicRegularDetails';
 
 const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
+
   return (
     <div className={'clinicDetails'}>
       <div

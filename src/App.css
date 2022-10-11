@@ -73,7 +73,7 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 3rem;
+  width: 2rem;
   height: auto;
   transform: translate(-50%, -50%);
 }

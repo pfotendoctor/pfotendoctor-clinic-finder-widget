@@ -353,6 +353,9 @@ export default function ClinicFinder(props: ClinicFinder) {
             toggleInfoCard={id => {
               toggleInfoCard(id).then(r => setShowItemList(true));
             }}
+            // toggleHoveredMarker={id => {
+            //   setHoveredMarker(id);
+            // }}
           />
           <div
             className={
