@@ -243,15 +243,17 @@ export default function ClinicFinder(props: ClinicFinder) {
         <div className={'container__headerLeft'}>
           {clinics && (
             <div>
-              <span className={'emergencyText'}>
-                Notfälle sind lebensbedrohliche Situationen.&nbsp;
-              </span>
-              <span>
-                Sollte Ihr Haustier verunglückt sein, stark bluten oder sich
-                anderweitig besorgniserregend verhalten, kontaktieren Sie
-                außerhalb der Praxis-Öffnungszeiten bitte umgehend einen der
-                untenstehenden Notdienste.
-              </span>
+              <p>
+                <span className={'emergencyText'}>
+                  Notfälle sind lebensbedrohliche Situationen.&nbsp;
+                </span>
+                <span>
+                  Sollte Ihr Haustier verunglückt sein, stark bluten oder sich
+                  anderweitig besorgniserregend verhalten, kontaktieren Sie
+                  außerhalb der Praxis-Öffnungszeiten bitte umgehend einen der
+                  untenstehenden Notdienste.
+                </span>
+              </p>
             </div>
           )}
           {error && (
@@ -378,26 +380,32 @@ export default function ClinicFinder(props: ClinicFinder) {
               </div>
             )}
             {clinics &&
-              !activeClinicSiteId &&
-              sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
-                return (
-                  <div key={clinicService.id}>
-                    <Item
-                      id={clinicService.id}
-                      activeInfoCardId={activeClinicSiteId}
-                      toggleInfoCard={id => {
-                        setActiveClinicSiteId(id);
-                      }}
-                      toggleHoveredMarker={id => {
-                        setHoveredMarker(id);
-                      }}
-                      setClinicServiceDetails={clinic => {
-                        setClinicDetails(clinic);
-                      }}
-                    />
-                  </div>
-                );
-              })}
+              !activeClinicSiteId && (
+                    <div className={"container__bodyRight--itemBox"}>
+                      {
+                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                          return (
+                                <Item
+                                    hoveredMarker={hoveredMarker}
+                                    key={clinicService.id}
+                                    id={clinicService.id}
+                                    activeInfoCardId={activeClinicSiteId}
+                                    toggleInfoCard={id => {
+                                      setActiveClinicSiteId(id);
+                                    }}
+                                    toggleHoveredMarker={id => {
+                                      setHoveredMarker(id);
+                                    }}
+                                    setClinicServiceDetails={clinic => {
+                                      setClinicDetails(clinic);
+                                    }}
+                                />
+                          );
+                        })
+                      }
+                    </div>
+                )
+              }
             {activeClinicSiteId &&
               activeClinicSiteId === clinicDetails?.id &&
               renderDetails(clinicDetails)}

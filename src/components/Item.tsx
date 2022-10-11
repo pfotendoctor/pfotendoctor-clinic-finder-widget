@@ -6,6 +6,7 @@ import { ErrorState } from './ClinicFinder';
 
 type Item = {
   id: number;
+  hoveredMarker: number
   activeInfoCardId: number;
   toggleInfoCard: (id: number) => void;
   toggleHoveredMarker: (id: number) => void;
@@ -39,7 +40,7 @@ export const Item = (props: Item) => {
   };
 
   return (
-    <div>
+    <>
       {error && (
         <div>
           <div className={'container__bodyRight--itemTitle'}>
@@ -52,11 +53,11 @@ export const Item = (props: Item) => {
           onClick={() => {
             handleClinicServiceDetails(props.id);
           }}
-          onMouseEnter={() => {props.toggleHoveredMarker(props.id);}}
+          onMouseEnter={() => {props.toggleHoveredMarker(props.id)}}
           onMouseLeave={() => props.toggleHoveredMarker(null)}
           className={'container__bodyRight--item'}
         >
-          <div className={'container__bodyRight--itemTitle'}>
+          <div className={props.id === props.hoveredMarker ? 'container__bodyRight--itemTitleActive' : 'container__bodyRight--itemTitle'}>
             {clinicService.name}
           </div>
           <div className={'container__bodyRight--itemActiveStreet'}>
@@ -65,6 +66,6 @@ export const Item = (props: Item) => {
           <div>{clinicService.city}</div>
         </div>
       )}
-    </div>
+    </>
   );
 };

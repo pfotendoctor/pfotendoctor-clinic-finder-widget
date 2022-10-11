@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import { Marker } from './Marker';
 import CurrentPositionMarker from './CurrentPositionMarker';
@@ -31,6 +32,7 @@ interface Map {
   toggleInfoCard: (value: number) => void;
   providedAt: ProvidedAt;
   showItemList: boolean;
+  onHover: (id: number) => void
 }
 
 const Map = (props: Map) => {
@@ -47,6 +49,7 @@ const Map = (props: Map) => {
     maxZoom: 18,
   }
 
+  // @ts-ignore
   return (
       <div className={props.showItemList ? 'mapContainerInactive': 'mapContainerActive'}>
         <GoogleMapReact
@@ -61,18 +64,21 @@ const Map = (props: Map) => {
             }
             yesIWantToUseGoogleMapApiInternals
         >
-          <Marker
-              key={0}
-              id={0}
-              type={ClinicType.clinic}
-              lat={props.lat}
-              lng={props.lng}
-              toggleInfoCard={() => {}}
-              activeInfoCardId={props.activeClinicSiteId}
-              hoveredMarker={props.hoveredMarker}
-              clinicName={props.clinic}
-              providedAt={props.providedAt}
-          />
+
+          {/*<Marker*/}
+          {/*    key={0}*/}
+          {/*    id={0}*/}
+          {/*    type={ClinicType.clinic}*/}
+          {/*    lat={props.lat}*/}
+          {/*    lng={props.lng}*/}
+          {/*    toggleInfoCard={() => {}}*/}
+          {/*    activeInfoCardId={props.activeClinicSiteId}*/}
+          {/*    hoveredMarker={props.hoveredMarker}*/}
+          {/*    clinicName={props.clinic}*/}
+          {/*    providedAt={props.providedAt}*/}
+          {/*    onHover={(id) => props.onHover(id)}*/}
+
+          {/*/>*/}
           {!props.showSearchMarker
               ? null
               : showCurrentPosition &&
@@ -87,6 +93,7 @@ const Map = (props: Map) => {
                       activeInfoCardId={null}
                       hoveredMarker={null}
                       providedAt={props.providedAt}
+                      onHover={() => {}}
                   />
               )}
           {userGeoLocation && (
@@ -110,6 +117,7 @@ const Map = (props: Map) => {
                     type={clinicService.type}
                     hoveredMarker={props.hoveredMarker}
                     providedAt={props.providedAt}
+                    onHover={(id) => props.onHover(id)}
                 />
             );
           })}
