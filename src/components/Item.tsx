@@ -52,10 +52,8 @@ export const Item = (props: Item) => {
           onClick={() => {
             handleClinicServiceDetails(props.id);
           }}
-          onMouseEnter={() => {
-            props.toggleHoveredMarker(props.id);
-          }}
-          onMouseLeave={() => {}}
+          onMouseEnter={() => {props.toggleHoveredMarker(props.id);}}
+          onMouseLeave={() => props.toggleHoveredMarker(null)}
           className={'container__bodyRight--item'}
         >
           <div className={'container__bodyRight--itemTitle'}>

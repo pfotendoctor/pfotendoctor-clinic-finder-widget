@@ -236,6 +236,7 @@ export default function ClinicFinder(props: ClinicFinder) {
       });
   };
 
+
   return (
     <div className={'container'}>
       <div className={'container__header'}>
@@ -353,9 +354,7 @@ export default function ClinicFinder(props: ClinicFinder) {
             toggleInfoCard={id => {
               toggleInfoCard(id).then(r => setShowItemList(true));
             }}
-            // toggleHoveredMarker={id => {
-            //   setHoveredMarker(id);
-            // }}
+            onHover={(id) => {setHoveredMarker(id)}}
           />
           <div
             className={
