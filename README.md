@@ -1,71 +1,61 @@
-# Preact + Typescript + Webpack 5 + LESS + Docker / boilerplate
+# Anleitung
 
-Preact v10.0 with hooks demo
+## Für Benutzer:
 
-## Things under the hood:
+Auf der gewünschten Seite binden Sie den link in den Header ein:
 
-* [Preact](https://preactjs.com/)
-* [Typescript](https://www.typescriptlang.org/)
-* [Webpack 5](https://webpack.js.org/)
-* [LESS](http://lesscss.org/)
-* [Docker](https://www.docker.com/)
+<link
+  href="https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/indexV3.css"
+  rel="stylesheet"
+/>
 
-Initial idea [Dominic St-Pierre](https://dominicstpierre.com/how-to-start-with-typescript-and-preact-a9ea3e0ba4dc)
+Nun an die gewünschte Stelle auf der Seite das widget einfügen:
 
-I've tried to keep things as simple as possible.
+<div
+  className="clinic_finder_widget"
+  data-latitude="52.520008"
+  data-longitude="13.404954"
+  data-clinicname=“Ihre “Tierklinik
+  data-provided-at=“external”
+></div>
 
-## Changelog
+data-latitude/ data-longitude: 
+Es ist wichtig, dass sie die genauen Koordinaten ihrer Klinik angeben! (data-latitude, data-latitude)
+Diese lassen sich via google maps leicht herausfinden (https://support.google.com/maps/answer/18539?hl=de&co=GENIE.Platform%desktop).
 
-[16-March-2021] 
-- Webpack and dependencies were upgraded to version 5
-- Typescript 4
-- LESS 4
-- TSLint replaced with ESLint
-- Syntax aligned with ESLint rules
-- Docker and docker-compose build modes were added
+data-clinicname: Name ihrer Tierklinik, welche als Tooltip auf Ihren Marker erscheint.
 
-## Installation
+className, data-provided-at: Bitte so beibehalten.
 
-1. Clone repository.
-2. Run 'npm install' in the local copy (I hope you have NodeJS and NPM installed =)
-3. Use one of:
-    * `npm run build` for production build
-    * `npm run dev` for development build (no minification)
-    * `npm run start` for live server on `http://localhost:3030/`
+Script unterhalb des widgets einfügen:
 
-Also, Windows shortcuts are here. See `*.bat` files.
+<script src="https://cdn.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/indexV3.js"></script>
 
-## Screenshot
+## Für Pfotendoctor:
 
-![screenshot](screenshot.png)
+Wie Benutzer: 
+1. Link einbinden
+2. Widget einbinden
+3. Script einbinden
 
-## Docker
+data-provided-at=“Pfotendoctor”. 
+data-clinicname=“Pfotendoctor”
 
-### Quick start
+Ansonsten alles beibehalten. 
 
-You can just run `docker_build.cmd` script.
+Github: https://github.com/pfotendoctor/pfotendoctor-clinic-finder-widget
 
-Before run please remove `dist` folder, if any.
+Bei Änderungen am Widget:
 
-## Modes
+Optional:  yarn prettier --write .
+Wichtig: npm run build:widget
 
-### Production mode (build `dist` folder and exit)
+Es wird eine minified JS/CSS file im Ordner “docs” erstellt bzw. überschrieben.  
+Committen & pushen
 
-In root folder run `docker-compose up` to build the files. Result will be
-placed into `dist` folder. Stop the container afterwards.
+Falls Änderungen schnellstmöglich live gehen sollen im Browser einfach einer der folgenden Dinge ausführen: 
 
-#### Development + watch mode (build and watch changes)
+https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/index.js
+https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/index.css
+Bei Bildern: https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/image.svg
 
-In root folder run `docker-compose -f docker-compose.watch.yml up` to build the files. Result will be placed into `dist` folder and Webpack will start watching.
-
-`node_modules` and `dist` folders will be mapped.
-
-#### Development + devserver mode (build and run development server)
-
-In root folder run `docker-compose -f docker-compose.start.yml up` to build the files. Result will be placed into `dist` folder and application will start watching. Webserver will be available on URL `localhost:3030`.
-
-`node_modules` and `dist` folders will be mapped.
-
-## Credits
-
-[photo-camera-with-a-flash](https://www.svgrepo.com/svg/5111/photo-camera-with-a-flash)
