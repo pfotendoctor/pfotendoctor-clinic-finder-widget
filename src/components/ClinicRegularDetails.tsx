@@ -53,7 +53,16 @@ const ClinicRegularDetails = (props: ClinicDetails) => {
         </div>
       </div>
       <div className={'clinicDetails__buttonContainer'}>
-        <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+          {clinicService.phoneNumberRegular &&
+            <>
+                {window.innerWidth >= 668 &&
+                  <p>Telefon: <span className={"clinicDetails__buttonContainerPhoneDesktop"}>{clinicService.phoneNumberRegular}</span> </p>
+                }
+                {window.innerWidth <= 668 &&
+                  <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+                }
+            </>
+          }
         <button
           onClick={() => {
             window.open(clinicService.website, '_blank');

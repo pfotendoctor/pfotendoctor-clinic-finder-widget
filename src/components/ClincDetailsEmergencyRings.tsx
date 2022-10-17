@@ -41,16 +41,25 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
             {clinicService.customerTodo}
           </div>
         </div>
-        <div className={'clinicDetails__buttonContainer'}>
-          <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
-          <button
-            onClick={() => {
-              window.open(clinicService.website, '_blank');
-            }}
-          >
-            Website öffnen
-          </button>
-        </div>
+          <div className={'clinicDetails__buttonContainer'}>
+              {clinicService.phoneNumberRegular &&
+                <>
+                    {window.innerWidth >= 668 &&
+                      <p>Telefon: <span className={"clinicDetails__buttonContainerPhoneDesktop"}>{clinicService.phoneNumberRegular}</span> </p>
+                    }
+                    {window.innerWidth <= 668 &&
+                      <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+                    }
+                </>
+              }
+              <button
+                  onClick={() => {
+                      window.open(clinicService.website, '_blank');
+                  }}
+              >
+                  Website öffnen
+              </button>
+          </div>
       </div>
       <div className={'marginBottom'}>
         <div className={'clinicDetails__detailContainer--address'}>

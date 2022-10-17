@@ -102,6 +102,7 @@ html {
 .container__headerLeft {
   padding: 1.5rem;
   line-height: 1.5rem;
+  max-width: 800px;
 }
 
 .container__headerRight {
@@ -402,6 +403,10 @@ html {
   padding: 1.5rem;
 }
 
+.container__footer p, .container__footerInternal p {
+  max-width: 800px;
+}
+
 .container__footer--button {
   display: flex;
   flex-direction: row;
@@ -687,6 +692,20 @@ html {
   color: #f50001;
   text-decoration: none;
   font-size: 1rem;
+}
+
+.clinicDetails__buttonContainer p {
+  text-align: center;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  padding: 0.7rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.clinicDetails__buttonContainerPhoneDesktop {
+  color: #2b3656;
 }
 
 .clinicDetails__buttonContainer button:hover,
