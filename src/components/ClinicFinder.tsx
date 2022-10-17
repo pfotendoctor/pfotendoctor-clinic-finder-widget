@@ -57,6 +57,8 @@ export default function ClinicFinder(props: ClinicFinder) {
   const [showSearchMarker, setShowSearchMarker] = useState<boolean>(false);
   const [showItemList, setShowItemList] = useState<boolean>(false);
   const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null);
+  const [geoPermissions, setGeoPermissions] = useState<boolean>(false)
+  const [loadingGeoLocation, setLoadingGeolocation] = useState<boolean>(false)
   const [showCurrentPosition, setShowCurrentPosition] =
     useState<boolean>(false);
   const [customPosition, setCustomPosition] = useState<GeoLocation>(null);
@@ -86,17 +88,16 @@ export default function ClinicFinder(props: ClinicFinder) {
       });
   };
 
+
   useEffect(() => {
     FetchClinics();
     if (window) {
       setShowItemList(window.innerWidth >= 668);
     }
-    if (navigator.geolocation) {
-      getUserGeoLocation();
-    }
   }, []);
 
   // Geo location
+
   const getUserGeoLocation = () => {
     const options = {
       enableHighAccuracy: true,
@@ -209,8 +210,12 @@ export default function ClinicFinder(props: ClinicFinder) {
   };
 
   const moveToPosition = async () => {
+    setLoadingGeolocation(true)
+    setLoadingGeolocation(true)
     await clearPosition();
-    await getUserGeoLocation();
+    if (navigator.geolocation) {
+      await getUserGeoLocation();
+    }
     if (userGeoLocation) {
       setCustomPosition({
         lat: userGeoLocation.lat,
@@ -220,6 +225,12 @@ export default function ClinicFinder(props: ClinicFinder) {
       setShowCurrentPosition(true);
     }
   };
+
+  useEffect(() => {
+    if(userGeoLocation) {
+      setLoadingGeolocation(false)
+    }
+  }, [userGeoLocation])
 
   const moveToSearchLocation = (placeId: string) => {
     axios
@@ -305,15 +316,15 @@ export default function ClinicFinder(props: ClinicFinder) {
       <div className={'container__bodyItems'}>
         <div
           className={'container__bodyControlsIcon'}
-          onClick={userGeoLocation ? moveToPosition : null}
         >
-          {userGeoLocation && (
+          {!loadingGeoLocation && (
             <img
               src={`${process.env.REACT_APP_CDN_URL}/controlsBlank.svg`}
               alt={'controls icon'}
+              onClick={moveToPosition}
             />
           )}
-          {!userGeoLocation && (
+          {loadingGeoLocation && (
             <div className={'container__bodyControlsLoading'}>
               <div className={'container__bodyControlsLoadingBox'}>
                 <LoadingSpinner />
@@ -366,18 +377,18 @@ export default function ClinicFinder(props: ClinicFinder) {
             }
           >
             {!activeClinicSiteId && (
-              <div
-                onClick={() => {
-                  backToMap();
-                }}
-                className={'clinicDetails__redRowContainer backToMap'}
-              >
-                <img
-                  src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
-                  alt={'arrow left'}
-                />
-                <div>Karte</div>
-              </div>
+                <div
+                    onClick={() => {
+                      backToMap();
+                    }}
+                    className={'clinicDetails__redRowContainer backToMap'}
+                >
+                  <img
+                      src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
+                      alt={'arrow left'}
+                  />
+                  <div>Karte</div>
+                </div>
             )}
             {clinics &&
               !activeClinicSiteId && (
