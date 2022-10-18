@@ -60,7 +60,7 @@ const Footer = (props: Footer) => {
             <button
               className={'container__footer--buttonInternal'}
               onClick={() =>
-                window.open('https://pfotendoctor.de/termin-buchen', '_blank')
+                window.open('https://pfotendoctor.de/terminbuchung?utm_source=website&utm_medium=clinic_finder&utm_campaign=clinic_finder', '_blank')
               }
             >
               <div>Videosprechstunde buchen</div>
