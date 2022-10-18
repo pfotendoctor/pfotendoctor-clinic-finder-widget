@@ -315,7 +315,7 @@ export default function ClinicFinder(props: ClinicFinder) {
 
       <div className={'container__bodyItems'}>
         <div
-          className={'container__bodyControlsIcon'}
+          className={window.innerWidth <= 668 ? 'container__bodyControlsIcon' : 'container__bodyControlsIconActive'}
         >
           {!loadingGeoLocation && (
             <img
@@ -376,7 +376,7 @@ export default function ClinicFinder(props: ClinicFinder) {
                 : 'container__bodyRightInactive'
             }
           >
-            {!activeClinicSiteId && (
+            {!activeClinicSiteId && window.innerWidth <= 668 && (
                 <div
                     onClick={() => {
                       backToMap();
