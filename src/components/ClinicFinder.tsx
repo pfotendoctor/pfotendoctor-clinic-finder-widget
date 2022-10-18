@@ -376,7 +376,7 @@ export default function ClinicFinder(props: ClinicFinder) {
                 : 'container__bodyRightInactive'
             }
           >
-            {!activeClinicSiteId && window.innerWidth <= 668 && (
+            {!activeClinicSiteId && (
                 <div
                     onClick={() => {
                       backToMap();
