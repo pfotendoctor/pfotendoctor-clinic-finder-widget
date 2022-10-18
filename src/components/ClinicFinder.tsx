@@ -315,7 +315,7 @@ export default function ClinicFinder(props: ClinicFinder) {
 
       <div className={'container__bodyItems'}>
         <div
-          className={window.innerWidth <= 668 ? 'container__bodyControlsIcon' : 'container__bodyControlsIconActive'}
+          className={'container__bodyControlsIcon'}
         >
           {!loadingGeoLocation && (
             <img
