@@ -253,8 +253,8 @@ export default function ClinicFinder(props: ClinicFinder) {
       <div className={'container__header'}>
         <div className={'container__headerLeft'}>
           {clinics && (
-            <div>
-              <p>
+            <div className={'container__headerLeftTextBox'}>
+              <p className={'container__headerLeftText'}>
                 <span className={'emergencyText'}>
                   Notfälle sind lebensbedrohliche Situationen.&nbsp;
                 </span>

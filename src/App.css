@@ -102,19 +102,26 @@ html {
 .container__headerLeft {
   padding: 1.5rem;
   line-height: 1.5rem;
+}
+
+.container__headerLeftTextBox {
+  width: 100%;
+}
+
+.container__headerLeftText {
   max-width: 800px;
 }
 
 .container__headerRight {
-  height: 6rem;
+  height: 170px;
+  width: 170px;
   margin-left: auto;
 }
 
 .container__headerRight img {
-  position: relative !important;
-  right: -2.5rem !important;
-  bottom: 1.5rem !important;
-  height: 180% !important;
+  object-fit: cover;
+  position: relative!important;
+  bottom: 1.5rem!important;
 }
 
 
