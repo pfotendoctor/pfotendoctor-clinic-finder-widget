@@ -71,13 +71,13 @@ html {
 }
 
 .marker img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2rem;
-  height: auto;
-  transform: translate(-50%, -50%);
-  filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.2));
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 2rem !important;
+  height: auto !important;
+  transform: translate(-50%, -50%) !important;
+  filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.2)) !important;
 }
 
 .marker:hover {
@@ -111,30 +111,30 @@ html {
 }
 
 .container__headerRight img {
-  position: relative;
-  right: -2.5rem;
-  bottom: 1.5rem;
-  height: 180%;
+  position: relative !important;
+  right: -2.5rem !important;
+  bottom: 1.5rem !important;
+  height: 180% !important;
 }
 
 
 @media (max-width: 1178px) {
   .container__headerRight img {
-    bottom: 1.5rem;
+    bottom: 1.5rem !important;
   }
 }
 
 @media (max-width: 836px) {
   .container__headerRight img {
-    bottom: 1rem;
+    bottom: 1rem !important;
   }
 }
 
 @media (max-width: 722px) {
   .container__headerRight img {
-    bottom: 1rem;
-    height: 225%;
-    left: 3rem;
+    bottom: 1rem !important;
+    height: 225% !important;
+    left: 3rem !important;
 
   }
 }
@@ -186,8 +186,8 @@ html {
 
 .container__bodyControlsIcon img,
 .container__bodyItemsIcon img, .container__bodyControlsIconActive img {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
 }
 
 .container__bodyControlsIcon:hover, .container__bodyControlsIconActive:hover {
@@ -199,8 +199,8 @@ html {
 }
 
 .container__bodyItemsIcon img {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
 }
 
 .emergencyText {
@@ -477,9 +477,6 @@ html {
   cursor: pointer;
 }
 
-.container__footer--infoContainer img {
-}
-
 .mapContainerActive, .mapContainerInactive {
   width: 100%;
 }
@@ -536,11 +533,11 @@ html {
   }
 
   .container__headerRight img {
-    position: relative;
-    right: 0;
-    bottom: -1rem;
-    left: 1rem;
-    height: 100%;
+    position: relative !important;
+    right: 0 !important;
+    bottom: -1rem !important;
+    left: 1rem !important;
+    height: 100% !important;
   }
 
   .gmnoprint {
@@ -626,8 +623,8 @@ html {
 }
 
 .clinicDetails__detailContainerBox .clinicDetails__redRowContainer img {
-  height: 1.5rem;
-  width: auto;
+  height: 1.5rem !important;
+  width: auto !important;
 }
 
 .clinicDetails__detailContainer--title {
@@ -773,6 +770,10 @@ html {
   margin-bottom: 0.5rem;
 }
 
+.backToMap img {
+  width: 12px !important;
+}
+
 .gm-fullscreen-control {
   border-radius: 10px !important;
 }
@@ -828,7 +829,7 @@ html {
 }
 
 .infoModal__header img:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .infoModal__body {
@@ -851,9 +852,9 @@ html {
 }
 
 .infoModal__bodyBox img {
-  height: 4rem;
-  width: auto;
-  margin-bottom: 1rem;
+  height: 4rem !important;
+  width: auto !important;
+  margin-bottom: 1rem !important;
 }
 
 .infoModal__bodyBox--title {
