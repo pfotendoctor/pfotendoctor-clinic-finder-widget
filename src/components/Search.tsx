@@ -129,7 +129,7 @@ const Search = (props: Search) => {
         )}
       </div>
       {resultList && (
-        <div>
+        <div className={'container__bodyLeftBox'}>
           {resultList.map((item, i) => {
             return (
               <div

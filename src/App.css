@@ -160,36 +160,36 @@ html {
 
 .container__bodyItemsIcon,
 .container__bodyControlsIcon {
-  position: relative;
-  z-index: 99;
-  float: right;
-  width: 40px;
-  height: 40px;
-  padding: 7px;
-  background: white;
-  border-radius: 10px;
-  margin-right: 10px;
+  position: relative !important;
+  z-index: 99 !important;
+  float: right !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 7px !important;
+  background: white !important;
+  border-radius: 10px !important;
+  margin-right: 10px !important;
 }
 
 .container__bodyControlsIconActive {
-  position: relative;
-  z-index: 99;
-  float: right;
-  width: 40px;
-  height: 40px;
-  padding: 7px;
-  background: white;
-  border-radius: 10px;
-  margin-right: 10px;
-  right: 298px;
+  position: relative !important;
+  z-index: 99 !important;
+  float: right !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 7px !important;
+  background: white !important;
+  border-radius: 10px !important;
+  margin-right: 10px !important;
+  right: 298px !important;
 }
 
 .container__bodyItemsIcon {
-  top: 8.8rem;
+  top: 8.8rem !important;
 }
 
 .container__bodyControlsIcon, .container__bodyControlsIconActive {
-  top: 6rem;
+  top: 6rem !important;
 }
 
 .container__bodyControlsIcon img,
@@ -299,6 +299,8 @@ html {
   color: #2B3656;
   width: 100%;
   border: none;
+  font-size: 16px;
+  line-height: 1.3rem;
 }
 
 .container__bodyLeftSearch input:focus-visible {
@@ -307,11 +309,11 @@ html {
 
 .container__bodyLeftSearchIcon {
   margin-right: 0.5rem;
-  width: 1.25rem;
+  width: 1.25rem !important;
 }
 
 .container__bodyLeftCloseIcon {
-  width: 1.25rem;
+  width: 1.25rem !important;
 }
 
 .container__bodyLeftCloseIcon:hover {
@@ -323,10 +325,15 @@ html {
   flex-direction: row;
   align-items: center;
   margin: 0.5rem 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8px;
+  line-height: 1.3rem;
   padding-left: 0.25rem;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
   color: #2B3656;
+}
+
+.container__bodyLeftBox .container__bodyLeftItem:last-child {
+  border-bottom: none;
 }
 
 .container__bodyLeftItemResult {
@@ -338,6 +345,7 @@ html {
 }
 
 .container__bodyLeftItemIcon {
+  width: 7px !important;
   margin-left: auto;
 }
 
