@@ -625,14 +625,14 @@ html {
   letter-spacing: 0.01em;
 }
 
-.clinicDetails__detailContainerBox .clinicDetails__redRowContainer {
+.clinicDetails__redRowContainer {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.clinicDetails__detailContainerBox .clinicDetails__redRowContainer img {
+.clinicDetails__redRowContainer img {
   height: 1.5rem !important;
-  width: auto !important;
+  width: 12px !important;
 }
 
 .clinicDetails__detailContainer--title {
