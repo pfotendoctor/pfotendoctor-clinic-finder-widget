@@ -249,7 +249,7 @@ export default function ClinicFinder(props: ClinicFinder) {
 
 
   return (
-    <div className={'container'}>
+    <div className={props.providedAt === ProvidedAt.pfotendoctor ? 'containerInternal' : 'container'}>
       <div className={'container__header'}>
         <div className={'container__headerLeft'}>
           {clinics && (
