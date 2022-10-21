@@ -102,7 +102,7 @@ html {
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 551px) {
   .containerInternal {
     margin-left: -4%;
     margin-right: -4%;
@@ -287,6 +287,12 @@ html {
   width: 300px;
   padding: 0.1rem 0;
   margin: 0.5rem 1rem;
+}
+
+@media (max-width: 360px) {
+  .container__bodyLeftContainer, .container__bodyLeftContainerActive {
+    width: 250px;
+  }
 }
 
 .container__bodyLeftSearch {
