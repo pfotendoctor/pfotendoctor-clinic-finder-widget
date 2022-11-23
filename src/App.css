@@ -289,12 +289,6 @@ html {
   margin: 0.5rem 1rem;
 }
 
-@media (max-width: 360px) {
-  .container__bodyLeftContainer, .container__bodyLeftContainerActive {
-    width: 250px;
-  }
-}
-
 .container__bodyLeftSearch {
   display: flex;
   flex-direction: row;
@@ -577,7 +571,8 @@ html {
     right: 0 !important;
     bottom: -1rem !important;
     left: 1rem !important;
-    height: 100% !important;
+    height: 3rem !important;
+    width: 3rem !important;
   }
 
   .gmnoprint {
@@ -600,6 +595,18 @@ html {
 @media (max-width: 434px) {
   .container__bodyRight {
     top: 13.5rem;
+  }
+  .container__bodyLeftContainer, .container__bodyLeftContainerActive {
+    width: 100% ;
+  }
+  .gmnoprint {
+    top: 2rem !important;
+  }
+  .container__bodyControlsIcon, .container__bodyControlsIconActive {
+    top: 10rem !important;
+  }
+  .container__bodyItemsIcon {
+    top: 13.65rem !important;
   }
 }
 
@@ -816,11 +823,6 @@ html {
 
 .gm-fullscreen-control {
   border-radius: 10px !important;
-}
-
-.gmnoprint {
-  bottom: auto !important;
-  top: 0 !important;
 }
 
 .gmnoprint > div {

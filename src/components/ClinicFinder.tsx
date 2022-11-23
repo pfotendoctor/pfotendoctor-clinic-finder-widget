@@ -33,7 +33,7 @@ export interface ClinicService {
   coordinatesLong: number;
   id: number;
   name: string;
-  showInMobileApp: boolean;
+  showForCustomer: boolean;
   type: ClinicType;
 }
 
@@ -46,8 +46,7 @@ export interface ErrorState {
   code: number | string;
   message: string;
 }
-
-export default function ClinicFinder(props: ClinicFinder) {
+const ClinicFinder = (props: ClinicFinder) => {
   const [clinics, setClinics] = useState<ClinicService[]>(null);
   const [activeClinicSiteId, setActiveClinicSiteId] = useState<number>(null);
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
@@ -74,7 +73,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   // Get clinicName services
   const FetchClinics = () => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices`)
 
       .then(response => {
         setClinics(response.data);
@@ -104,11 +103,12 @@ export default function ClinicFinder(props: ClinicFinder) {
       timeout: 5000,
       maximumAge: 0,
     };
-    const success = pos => {
+    const success = (pos:any) => {
+      console.log(pos)
       const crd = pos.coords;
       setUserGeoLocation({ lat: crd.latitude, lng: crd.longitude });
     };
-    const error = err => {
+    const error = (err:any) => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     };
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -161,7 +161,7 @@ export default function ClinicFinder(props: ClinicFinder) {
   const toggleInfoCard = async (id: number) => {
     try {
       await axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/vet-practices/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices/${id}`)
         .then(response => {
           setActiveClinicSiteId(id);
           setClinicDetails(response.data);
@@ -175,7 +175,7 @@ export default function ClinicFinder(props: ClinicFinder) {
     setActiveClinicSiteId(null);
   };
 
-  const renderDetails = clinic => {
+  const renderDetails = (clinic:any) => {
     if (clinicDetails.type === ClinicType.emergencyRing) {
       return (
         <ClincDetailsEmergencyRings
@@ -432,3 +432,5 @@ export default function ClinicFinder(props: ClinicFinder) {
     </div>
   );
 }
+
+export default ClinicFinder
