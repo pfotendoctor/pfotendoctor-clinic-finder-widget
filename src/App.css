@@ -598,6 +598,7 @@ html {
   }
   .container__bodyLeftContainer, .container__bodyLeftContainerActive {
     width: 100% ;
+    padding: .1rem 0.5rem .1rem 0;
   }
   .gmnoprint {
     top: 2rem !important;
@@ -606,7 +607,7 @@ html {
     top: 10rem !important;
   }
   .container__bodyItemsIcon {
-    top: 13.65rem !important;
+    top: 12.8rem !important;
   }
 }
 
@@ -828,6 +829,24 @@ html {
 .gmnoprint > div {
   box-shadow: none !important;
   border-radius: 10px !important;
+}
+
+/*upselling modal*/
+.upsellingModalContainer {
+  width: 100%;
+  height: 500px;
+  top: 12rem;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.upsellingModal {
+  background: pink;
+  width: 100%;
+  height: 100%;
+  margin: 0 1rem;
 }
 
 /*InfoModal*/

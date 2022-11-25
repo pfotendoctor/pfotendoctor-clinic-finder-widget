@@ -65,19 +65,6 @@ const Map = (props: Map) => {
             yesIWantToUseGoogleMapApiInternals
         >
 
-          {/*<Marker*/}
-          {/*    key={0}*/}
-          {/*    id={0}*/}
-          {/*    type={ClinicType.clinic}*/}
-          {/*    lat={props.lat}*/}
-          {/*    lng={props.lng}*/}
-          {/*    toggleInfoCard={() => {}}*/}
-          {/*    activeInfoCardId={props.activeClinicSiteId}*/}
-          {/*    hoveredMarker={props.hoveredMarker}*/}
-          {/*    clinicName={props.clinic}*/}
-          {/*    providedAt={props.providedAt}*/}
-          {/*    onHover={(id) => props.onHover(id)}*/}
-
           {/*/>*/}
           {!props.showSearchMarker
               ? null

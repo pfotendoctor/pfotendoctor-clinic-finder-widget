@@ -8,6 +8,7 @@ import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 import Footer from './Footer';
 import Map from './Map';
+import UpSellingModal from "./upSellingModal";
 
 interface ClinicFinder {
   lat: number;
@@ -62,6 +63,8 @@ const ClinicFinder = (props: ClinicFinder) => {
     useState<boolean>(false);
   const [customPosition, setCustomPosition] = useState<GeoLocation>(null);
   const [error, setError] = useState<ErrorState>(null);
+  const [numberOfMarkerClicks, setNumberOfMarkerClicks] = useState<number>(0)
+  const [showUpsellingModal, setShowUpsellingModal] = useState<boolean>(false)
   const defaultProps = {
     center: {
       lat: props.lat,
@@ -158,7 +161,14 @@ const ClinicFinder = (props: ClinicFinder) => {
       .slice(0, 10);
   };
 
+  useEffect(() => {
+    if(numberOfMarkerClicks === 1) {
+      setShowUpsellingModal(true)
+    } else {setShowUpsellingModal(false)}
+  },[numberOfMarkerClicks])
+
   const toggleInfoCard = async (id: number) => {
+    setNumberOfMarkerClicks(numberOfMarkerClicks + 1)
     try {
       await axios
         .get(`${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices/${id}`)
@@ -178,21 +188,21 @@ const ClinicFinder = (props: ClinicFinder) => {
   const renderDetails = (clinic:any) => {
     if (clinicDetails.type === ClinicType.emergencyRing) {
       return (
-        <ClincDetailsEmergencyRings
-          clinicServiceDetails={clinicDetails}
-          backToList={() => {
-            resetClinicService();
-          }}
-        />
+          <ClincDetailsEmergencyRings
+              clinicServiceDetails={clinicDetails}
+              backToList={() => {
+                resetClinicService();
+              }}
+          />
       );
     } else {
       return (
-        <ClinicRegularDetails
-          clinicServiceDetails={clinicDetails}
-          backToList={() => {
-            resetClinicService();
-          }}
-        />
+          <ClinicRegularDetails
+              clinicServiceDetails={clinicDetails}
+              backToList={() => {
+                resetClinicService();
+              }}
+          />
       );
     }
   };
@@ -299,7 +309,16 @@ const ClinicFinder = (props: ClinicFinder) => {
           </div>
         </div>
       )}
-
+      {showUpsellingModal && (
+          <div
+              className={'upsellingModalContainer'}
+              onClick={() => {
+                setShowUpsellingModal(false);
+              }}
+          >
+            <UpSellingModal />
+          </div>
+      )}
       {props.providedAt === ProvidedAt.pfotendoctor && (
         <div className={'container__bodyLeft'}>
           <Search
