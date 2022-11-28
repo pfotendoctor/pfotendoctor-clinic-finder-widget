@@ -486,12 +486,6 @@ html {
   cursor: pointer;
 }
 
-.upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
-  max-width: 520px;
-  gap: 0.75rem;
-  padding: 1rem;
-}
-
 .upsellingModal__buttonSecondary {
   display: flex;
   flex-direction: row;
@@ -503,8 +497,16 @@ html {
   border: 1px solid #ff8766;
   border-radius: 6px;
   margin-top: 1rem;
-  padding: 1rem 2rem;
-  align-items: center;
+}
+
+.upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+  max-width: 480px;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.upsellingModal__buttonPrimary:hover, .upsellingModal__buttonSecondary:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 779px) {
@@ -859,9 +861,9 @@ html {
 }
 
 /*upselling modal*/
+
 .upsellingModalContainer {
-  width: 100%;
-  height: 460px;
+  width: 100vw;
   top: 12rem;
   position: absolute;
   z-index: 1000;
@@ -873,10 +875,10 @@ html {
   display: flex;
   flex-direction: column;
   background: white;
-  width: 100%;
-  height: 100%;
   margin: 0 1rem;
   padding: 1.5rem;
+  max-width: 800px;
+  border-radius: 6px;
 }
 
 .upsellingModal__header {
@@ -907,14 +909,18 @@ html {
   margin: 0.5rem 0;
 }
 
-.upsellingModal__subTitle--description {}
-
 .upsellingModal__pledgeText {
   margin: 0.5rem 0;
 }
 
 .upsellingModal__pledgeText span{
   font-style: italic;
+}
+
+@media (max-width: 547px) {
+  .upsellingModalContainer {
+    top: 20rem;
+  }
 }
 
 /*InfoModal*/

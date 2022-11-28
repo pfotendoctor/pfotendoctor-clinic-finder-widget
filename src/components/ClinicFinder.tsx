@@ -164,7 +164,10 @@ const ClinicFinder = (props: ClinicFinder) => {
   useEffect(() => {
     if(numberOfMarkerClicks === 1) {
       setShowUpsellingModal(true)
-    } else {setShowUpsellingModal(false)}
+    }
+    else {
+      setShowUpsellingModal(false)
+    }
   },[numberOfMarkerClicks])
 
   const toggleInfoCard = async (id: number) => {
@@ -185,25 +188,27 @@ const ClinicFinder = (props: ClinicFinder) => {
     setActiveClinicSiteId(null);
   };
 
-  const renderDetails = (clinic:any) => {
-    if (clinicDetails.type === ClinicType.emergencyRing) {
-      return (
-          <ClincDetailsEmergencyRings
-              clinicServiceDetails={clinicDetails}
-              backToList={() => {
-                resetClinicService();
-              }}
-          />
-      );
-    } else {
-      return (
-          <ClinicRegularDetails
-              clinicServiceDetails={clinicDetails}
-              backToList={() => {
-                resetClinicService();
-              }}
-          />
-      );
+  const renderDetails = (clinic:ClinicFinder) => {
+    if (numberOfMarkerClicks > 1) {
+      if (clinicDetails.type === ClinicType.emergencyRing) {
+        return (
+            <ClincDetailsEmergencyRings
+                clinicServiceDetails={clinicDetails}
+                backToList={() => {
+                  resetClinicService();
+                }}
+            />
+        );
+      } else {
+        return (
+            <ClinicRegularDetails
+                clinicServiceDetails={clinicDetails}
+                backToList={() => {
+                  resetClinicService();
+                }}
+            />
+        );
+      }
     }
   };
 
@@ -312,11 +317,8 @@ const ClinicFinder = (props: ClinicFinder) => {
       {showUpsellingModal && (
           <div
               className={'upsellingModalContainer'}
-              onClick={() => {
-                setShowUpsellingModal(false);
-              }}
           >
-            <UpsellingModal />
+            <UpsellingModal onClick={() => setNumberOfMarkerClicks(numberOfMarkerClicks + 1)}/>
           </div>
       )}
       {props.providedAt === ProvidedAt.pfotendoctor && (
@@ -386,11 +388,12 @@ const ClinicFinder = (props: ClinicFinder) => {
             toggleInfoCard={id => {
               toggleInfoCard(id).then(r => setShowItemList(true));
             }}
+            numberOfMarkerClicks={numberOfMarkerClicks}
             onHover={(id) => {setHoveredMarker(id)}}
           />
           <div
             className={
-              showItemList
+              showItemList && numberOfMarkerClicks !== 1
                 ? 'container__bodyRight'
                 : 'container__bodyRightInactive'
             }
@@ -442,12 +445,14 @@ const ClinicFinder = (props: ClinicFinder) => {
           </div>
         </div>
       )}
-      <Footer
-        error={error}
-        providedAt={props.providedAt}
-        toggleModal={value => setShowModal(value)}
-        showModal={showModal}
-      />
+      {numberOfMarkerClicks !== 1 &&
+          <Footer
+              error={error}
+              providedAt={props.providedAt}
+              toggleModal={value => setShowModal(value)}
+              showModal={showModal}
+          />
+      }
     </div>
   );
 }

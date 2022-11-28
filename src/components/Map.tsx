@@ -33,6 +33,7 @@ interface Map {
   providedAt: ProvidedAt;
   showItemList: boolean;
   onHover: (id: number) => void
+  numberOfMarkerClicks: number
 }
 
 const Map = (props: Map) => {
@@ -49,9 +50,9 @@ const Map = (props: Map) => {
     maxZoom: 18,
   }
 
-  // @ts-ignore
+  console.log(props.numberOfMarkerClicks === 1);
   return (
-      <div className={props.showItemList ? 'mapContainerInactive': 'mapContainerActive'}>
+      <div className={!props.showItemList || props.numberOfMarkerClicks === 1 ? ' mapContainerActive': 'mapContainerInactive'}>
         <GoogleMapReact
             options={OPTIONS}
             bootstrapURLKeys={{ key: 'AIzaSyCy22mfVK_HzEe6aYr-aV0YE-10qAcWSXQ' }}

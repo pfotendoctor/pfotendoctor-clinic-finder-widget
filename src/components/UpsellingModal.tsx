@@ -2,7 +2,11 @@ import React from 'react';
 import dayjs from "dayjs";
 
 
-const UpsellingModal = () => {
+interface UpsellingModal {
+    onClick: () => void
+}
+
+const UpsellingModal = (props: UpsellingModal) => {
     const isDay = () => {
         const hours = dayjs().hour()
         return (hours >= 7 && hours < 22)
@@ -10,15 +14,6 @@ const UpsellingModal = () => {
 
     return (
         <div className={'upsellingModal'}>
-
-            {/*<img*/}
-            {/*    src={`${process.env.REACT_APP_CDN_URL}/camera_white.svg`}*/}
-            {/*    alt={'controls icon'}*/}
-            {/*/>*/}
-            {/*<img*/}
-            {/*    src={`${process.env.REACT_APP_CDN_URL}/map.svg`}*/}
-            {/*    alt={'controls icon'}*/}
-            {/*/>*/}
             <div className={'upsellingModal__header'}>
                 <img
                     src={`${process.env.REACT_APP_CDN_URL}/stats.svg`}
@@ -38,7 +33,6 @@ const UpsellingModal = () => {
                 onClick={() => window.open('https://pfotendoctor.de/termin-buchen-3', '_blank')}
             >
                 <img
-                    className={'upsellingModal__buttonPrimary'}
                     src={`${process.env.REACT_APP_CDN_URL}/video_icon_white.svg`}
                     alt={'video call icon'}
                 />
@@ -46,7 +40,7 @@ const UpsellingModal = () => {
             </button>
             <button
                 className={'upsellingModal__buttonSecondary'}
-                onClick={() => window.open('https://pfotendoctor.de/termin-buchen-3', '_blank')}
+                onClick={props.onClick}
             >
                 <img
                     src={`${process.env.REACT_APP_CDN_URL}/map.svg`}
