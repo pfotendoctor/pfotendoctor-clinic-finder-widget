@@ -466,7 +466,7 @@ html {
   align-items: center;
 }
 
-.container__footer--buttonInternal {
+.container__footer--buttonInternal, .upsellingModal__buttonPrimary {
   display: flex;
   flex-direction: row;
   background: #ff8766;
@@ -484,6 +484,33 @@ html {
 .container__footer--button:hover,
 .container__footer--buttonInternal:hover {
   cursor: pointer;
+}
+
+.upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+  max-width: 520px;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.upsellingModal__buttonSecondary {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  font-size: 1rem;
+  color: #ff8766;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid #ff8766;
+  border-radius: 6px;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+@media (max-width: 779px) {
+  .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+    width: 100%;
+  }
 }
 
 .container__footer--infoContainer {
@@ -834,7 +861,7 @@ html {
 /*upselling modal*/
 .upsellingModalContainer {
   width: 100%;
-  height: 500px;
+  height: 460px;
   top: 12rem;
   position: absolute;
   z-index: 1000;
@@ -843,10 +870,51 @@ html {
 }
 
 .upsellingModal {
-  background: pink;
+  display: flex;
+  flex-direction: column;
+  background: white;
   width: 100%;
   height: 100%;
   margin: 0 1rem;
+  padding: 1.5rem;
+}
+
+.upsellingModal__header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem
+}
+
+.upsellingModal__header--text {
+  color: #ff8766;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5rem !important;
+}
+
+.upsellingModal--title {
+  margin: 0.5rem 0;
+}
+
+.upsellingModal__title--description {
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.upsellingModal__subTitle {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.upsellingModal__subTitle--description {}
+
+.upsellingModal__pledgeText {
+  margin: 0.5rem 0;
+}
+
+.upsellingModal__pledgeText span{
+  font-style: italic;
 }
 
 /*InfoModal*/
@@ -918,7 +986,7 @@ html {
   margin-bottom: 1rem !important;
 }
 
-.infoModal__bodyBox--title {
+.infoModal__bodyBox--title, .upsellingModal--title {
   font-size: 1.2rem;
   font-weight: bold;
 }

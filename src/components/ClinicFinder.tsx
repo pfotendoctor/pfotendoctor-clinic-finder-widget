@@ -8,7 +8,7 @@ import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 import Footer from './Footer';
 import Map from './Map';
-import UpSellingModal from "./upSellingModal";
+import UpsellingModal from "./UpsellingModal";
 
 interface ClinicFinder {
   lat: number;
@@ -316,7 +316,7 @@ const ClinicFinder = (props: ClinicFinder) => {
                 setShowUpsellingModal(false);
               }}
           >
-            <UpSellingModal />
+            <UpsellingModal />
           </div>
       )}
       {props.providedAt === ProvidedAt.pfotendoctor && (
