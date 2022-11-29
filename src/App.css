@@ -559,6 +559,9 @@ html {
   .gmnoprint {
     top: 0 !important;
   }
+  .upsellingModalContainer {
+    top: 30rem
+  }
 }
 
 @media (max-width: 779px) {
@@ -886,7 +889,7 @@ html {
   display: flex;
   flex-direction: column;
   background: white;
-  margin: 0 1rem;
+  margin: 3rem 2rem;
   padding: 1.5rem;
   max-width: 800px;
   border-radius: 6px;
@@ -926,12 +929,6 @@ html {
 
 .upsellingModal__pledgeText span{
   font-style: italic;
-}
-
-@media (max-width: 547px) {
-  .upsellingModalContainer {
-    top: 20rem;
-  }
 }
 
 /*InfoModal*/
