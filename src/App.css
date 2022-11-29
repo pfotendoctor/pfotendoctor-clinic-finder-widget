@@ -481,6 +481,11 @@ html {
   align-items: center;
 }
 
+.upsellingModal--icon {
+  width: auto;
+  height: 1.5rem;
+}
+
 .container__footer--button:hover,
 .container__footer--buttonInternal:hover {
   cursor: pointer;
@@ -489,6 +494,7 @@ html {
 .upsellingModal__buttonSecondary {
   display: flex;
   flex-direction: row;
+  justify-content: left;
   background: white;
   font-size: 1rem;
   color: #ff8766;
@@ -500,9 +506,10 @@ html {
 }
 
 .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
-  max-width: 480px;
+  max-width: 520px;
   gap: 0.75rem;
   padding: 1rem;
+  line-height: 1.5;
 }
 
 .upsellingModal__buttonPrimary:hover, .upsellingModal__buttonSecondary:hover {
@@ -512,6 +519,10 @@ html {
 @media (max-width: 779px) {
   .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
     width: 100%;
+    justify-content: center;
+  }
+  .upsellingModal__buttonPrimary img, .upsellingModal__buttonSecondary img {
+    display: none;
   }
 }
 

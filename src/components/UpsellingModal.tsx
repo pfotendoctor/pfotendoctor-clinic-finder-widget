@@ -1,16 +1,37 @@
 import React from 'react';
 import dayjs from "dayjs";
-
+import {useEffect, useState} from 'react';
 
 interface UpsellingModal {
     onClick: () => void
 }
 
 const UpsellingModal = (props: UpsellingModal) => {
+    function getWindowSize() {
+        console.log(window);
+        const {innerWidth, innerHeight} = window;
+        return {innerWidth, innerHeight};
+    }
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     const isDay = () => {
         const hours = dayjs().hour()
         return (hours >= 7 && hours < 22)
     }
+
+    console.log(windowSize.innerWidth)
 
     return (
         <div className={'upsellingModal'}>
@@ -18,6 +39,7 @@ const UpsellingModal = (props: UpsellingModal) => {
                 <img
                     src={`${process.env.REACT_APP_CDN_URL}/stats.svg`}
                     alt={'statistic icon'}
+                    className={'upsellingModal--icon'}
                 />
                 <div className={'upsellingModal__header--text'}>Tierärztliche Statistiken zeigen</div>
             </div>
@@ -32,21 +54,35 @@ const UpsellingModal = (props: UpsellingModal) => {
                 className={'upsellingModal__buttonPrimary'}
                 onClick={() => window.open('https://pfotendoctor.de/termin-buchen-3', '_blank')}
             >
-                <img
-                    src={`${process.env.REACT_APP_CDN_URL}/video_icon_white.svg`}
-                    alt={'video call icon'}
-                />
+                {windowSize.innerWidth >= 360 &&
+                    <img
+                        src={`${process.env.REACT_APP_CDN_URL}/video_icon_white.svg`}
+                        alt={'video call icon'}
+                        className={'upsellingModal--icon'}
+                    />
+                }
                 <div>Videosprechstunde buchen</div>
             </button>
             <button
                 className={'upsellingModal__buttonSecondary'}
                 onClick={props.onClick}
             >
-                <img
-                    src={`${process.env.REACT_APP_CDN_URL}/map.svg`}
-                    alt={'video call icon'}
-                />
-                <div><span>Nein danke</span><span>, weiter zu den lokalen Notdiensten</span></div>
+                    <>
+                        {windowSize.innerWidth > 360 &&
+                            <img
+                                src={`${process.env.REACT_APP_CDN_URL}/map.svg`}
+                                alt={'video call icon'}
+                                className={'upsellingModal--icon'}
+                            />
+                        }
+                        {windowSize.innerWidth <= 360 ?
+                            <div>Weiter zu den lokalen Notdiensten</div> :
+                            <div>Nein danke, weiter zu den lokalen Notdiensten</div>
+                        }
+                    </>
+
+
+
             </button>
         </div>
     );
