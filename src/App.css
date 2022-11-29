@@ -558,12 +558,17 @@ html {
   width: 100%;
 }
 
+
+@media (min-width: 1800px) {
+  .upsellingModalContainer {
+    top: 35rem;
+    right: 12rem;
+  }
+}
+
 @media (min-width: 768px) {
   .gmnoprint {
     top: 0 !important;
-  }
-  .upsellingModalContainer {
-    top: 30rem
   }
 }
 
@@ -632,9 +637,20 @@ html {
   }
 }
 
+
+
+@media (max-width: 768px) {
+  .upsellingModalContainer {
+    top: 34rem;
+  }
+}
+
 @media (max-width: 547px) {
   .container__bodyRight {
     top: 12rem;
+  }
+  .upsellingModalContainer {
+    top: 35rem;
   }
 }
 
@@ -654,6 +670,15 @@ html {
   }
   .container__bodyItemsIcon {
     top: 12.8rem !important;
+  }
+}
+
+@media (max-width: 422px) {
+  .upsellingModalContainer {
+    top: 38rem;
+  }
+  .upsellingModal {
+    margin: 3rem 1rem;
   }
 }
 
@@ -892,7 +917,7 @@ html {
   display: flex;
   flex-direction: column;
   background: white;
-  margin: 3rem 2rem;
+  margin: 6rem 2rem;
   padding: 1.5rem;
   max-width: 800px;
   border-radius: 6px;

@@ -54,7 +54,7 @@ const UpsellingModal = (props: UpsellingModal) => {
                 className={'upsellingModal__buttonPrimary'}
                 onClick={() => window.open('https://pfotendoctor.de/termin-buchen-3', '_blank')}
             >
-                {windowSize.innerWidth >= 360 &&
+                {windowSize.innerWidth >= 547 &&
                     <img
                         src={`${process.env.REACT_APP_CDN_URL}/video_icon_white.svg`}
                         alt={'video call icon'}
@@ -68,14 +68,14 @@ const UpsellingModal = (props: UpsellingModal) => {
                 onClick={props.onClick}
             >
                     <>
-                        {windowSize.innerWidth > 360 &&
+                        {windowSize.innerWidth > 547 &&
                             <img
                                 src={`${process.env.REACT_APP_CDN_URL}/map.svg`}
                                 alt={'video call icon'}
                                 className={'upsellingModal--icon'}
                             />
                         }
-                        {windowSize.innerWidth <= 360 ?
+                        {windowSize.innerWidth <= 547 ?
                             <div>Weiter zu den lokalen Notdiensten</div> :
                             <div>Nein danke, weiter zu den lokalen Notdiensten</div>
                         }
