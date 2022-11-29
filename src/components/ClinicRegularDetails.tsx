@@ -29,7 +29,7 @@ const ClinicRegularDetails = (props: ClinicDetails) => {
           src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
           alt={'arrow left'}
         />
-        <h3>Notdienstübersicht</h3>
+        <div>Notdienstübersicht</div>
       </div>
       <div className={'clinicDetails__detailContainer'}>
         <div className={'clinicDetails__detailContainer--title'}>

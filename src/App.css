@@ -108,6 +108,9 @@ html {
     margin-right: -4%;
     border-radius: 0;
   }
+  .upsellingModal {
+    margin: 5rem 0.5rem;
+  }
 }
 
 .container__header {
@@ -683,7 +686,7 @@ html {
   margin-bottom: 1rem;
 }
 
-.clinicDetails__redRowContainer h3 {
+.clinicDetails__redRowContainer {
   color: #f50001 !important;
   line-height: 1.3rem !important;
 }

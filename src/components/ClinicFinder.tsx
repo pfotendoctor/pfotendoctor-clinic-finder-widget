@@ -61,7 +61,7 @@ const ClinicFinder = (props: ClinicFinder) => {
   const [loadingGeoLocation, setLoadingGeolocation] = useState<boolean>(false)
   const [showCurrentPosition, setShowCurrentPosition] =
     useState<boolean>(false);
-  const [customPosition, setCustomPosition] = useState<GeoLocation>(null);
+  const [customPosition, setCustomPosition] = useState<GeoLocation>({lat: props.lat, lng: props.lng});
   const [error, setError] = useState<ErrorState>(null);
   const [numberOfMarkerClicks, setNumberOfMarkerClicks] = useState<number>(0)
   const [showUpsellingModal, setShowUpsellingModal] = useState<boolean>(false)
@@ -416,7 +416,7 @@ const ClinicFinder = (props: ClinicFinder) => {
               !activeClinicSiteId && (
                     <div className={"container__bodyRight--itemBox"}>
                       {
-                        sortClinicsByDistance(props.lat, props.lng).map(clinicService => {
+                        sortClinicsByDistance(customPosition.lat, customPosition.lng).map(clinicService => {
                           return (
                                 <Item
                                     hoveredMarker={hoveredMarker}
