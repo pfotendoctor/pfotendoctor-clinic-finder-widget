@@ -424,6 +424,7 @@ const ClinicFinder = (props: ClinicFinder) => {
                                     activeInfoCardId={activeClinicSiteId}
                                     toggleInfoCard={id => {
                                       setActiveClinicSiteId(id);
+                                      setNumberOfMarkerClicks(numberOfMarkerClicks + 1)
                                     }}
                                     toggleHoveredMarker={id => {
                                       setHoveredMarker(id);
