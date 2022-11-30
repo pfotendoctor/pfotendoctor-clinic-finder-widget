@@ -50,7 +50,6 @@ const Map = (props: Map) => {
     maxZoom: 18,
   }
 
-  console.log(props.numberOfMarkerClicks === 1);
   return (
       <div className={!props.showItemList || props.numberOfMarkerClicks === 1 ? ' mapContainerActive': 'mapContainerInactive'}>
         <GoogleMapReact

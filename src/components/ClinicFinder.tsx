@@ -107,7 +107,6 @@ const ClinicFinder = (props: ClinicFinder) => {
       maximumAge: 0,
     };
     const success = (pos:any) => {
-      console.log(pos)
       const crd = pos.coords;
       setUserGeoLocation({ lat: crd.latitude, lng: crd.longitude });
     };
@@ -321,7 +320,7 @@ const ClinicFinder = (props: ClinicFinder) => {
             <UpsellingModal onClick={() => setNumberOfMarkerClicks(numberOfMarkerClicks + 1)}/>
           </div>
       )}
-      {props.providedAt === ProvidedAt.pfotendoctor && (
+      {props.providedAt === ProvidedAt.pfotendoctor && numberOfMarkerClicks !== 1 && (
         <div className={'container__bodyLeft'}>
           <Search
             removePin={() => {

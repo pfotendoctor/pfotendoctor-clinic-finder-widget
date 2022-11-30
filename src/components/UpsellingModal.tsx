@@ -8,7 +8,6 @@ interface UpsellingModal {
 
 const UpsellingModal = (props: UpsellingModal) => {
     function getWindowSize() {
-        console.log(window);
         const {innerWidth, innerHeight} = window;
         return {innerWidth, innerHeight};
     }
@@ -30,8 +29,6 @@ const UpsellingModal = (props: UpsellingModal) => {
         const hours = dayjs().hour()
         return (hours >= 7 && hours < 22)
     }
-
-    console.log(windowSize.innerWidth)
 
     return (
         <div className={'upsellingModal'}>
