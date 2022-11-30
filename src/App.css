@@ -950,17 +950,10 @@ html {
 
 /*Responsive media screens*/
 
-@media (min-width: 1800px) {
+@media (min-width: 1600px) {
   .upsellingModalContainer {
-    top: 32rem;
-    right: 10rem;
-  }
-}
-
-@media (min-width: 1800px) {
-  .upsellingModalContainer {
-    top: 35rem;
-    right: 12rem;
+    top: 28rem;
+    right: 9rem;
   }
 }
 
@@ -1064,15 +1057,6 @@ html {
 @media (max-width: 768px) {
   .upsellingModalContainer {
     top: 34rem;
-  }
-}
-
-@media (max-width: 722px) {
-  .container__headerRight img {
-    bottom: 1rem !important;
-    height: 225% !important;
-    left: 3rem !important;
-
   }
 }
 
