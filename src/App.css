@@ -102,16 +102,7 @@ html {
   border-radius: 10px;
 }
 
-@media (max-width: 551px) {
-  .containerInternal {
-    margin-left: -4%;
-    margin-right: -4%;
-    border-radius: 0;
-  }
-  .upsellingModal {
-    margin: 5rem 0.5rem;
-  }
-}
+
 
 .container__header {
   display: flex;
@@ -145,30 +136,6 @@ html {
   bottom: 1.5rem!important;
   width: fit-content !important;
 }
-
-
-@media (max-width: 1178px) {
-  .container__headerRight img {
-    bottom: 1.5rem !important;
-  }
-}
-
-@media (max-width: 836px) {
-  .container__headerRight img {
-    /*bottom: 1rem !important;*/
-  }
-}
-
-@media (max-width: 722px) {
-  .container__headerRight img {
-    bottom: 1rem !important;
-    height: 225% !important;
-    left: 3rem !important;
-
-  }
-}
-
-
 
 .container__bodyItems {
   width: 100%;
@@ -519,16 +486,6 @@ html {
   cursor: pointer;
 }
 
-@media (max-width: 779px) {
-  .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
-    width: 100%;
-    justify-content: center;
-  }
-  .upsellingModal__buttonPrimary img, .upsellingModal__buttonSecondary img {
-    display: none;
-  }
-}
-
 .container__footer--infoContainer {
   display: flex;
   flex-direction: row;
@@ -556,142 +513,6 @@ html {
 
 .mapContainerActive, .mapContainerInactive {
   width: 100%;
-}
-
-
-@media (min-width: 1800px) {
-  .upsellingModalContainer {
-    top: 35rem;
-    right: 12rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .gmnoprint {
-    top: 0 !important;
-  }
-}
-
-@media (max-width: 779px) {
-  .container__bodyRight {
-    top: 9rem;
-  }
-}
-
-@media (max-width: 868px) {
-  .container__footer--infoContainer {
-    margin-top: 1rem;
-  }
-
-  .container__footer--infoText {
-    display: block;
-  }
-
-  .container__header {
-    flex-direction: column-reverse;
-  }
-
-  .container__bodyLeft {
-    top: 15rem;
-  }
-
-  .container__headerRight {
-    height: 3rem;
-    margin-left: 0;
-  }
-
-  .clinicDetails {
-    background: white;
-  }
-
-  .mapContainerInactive {
-    width: 10%;
-    transition: width 150ms;
-  }
-
-  .container__bodyRight {
-    width: 100%;
-    z-index: 100;
-    background: white;
-    top: 10.5rem;
-    height: 550px;
-  }
-
-  .container__headerRight img {
-    position: relative !important;
-    right: 0 !important;
-    bottom: -1rem !important;
-    left: 1rem !important;
-    height: 3rem !important;
-    width: 3rem !important;
-  }
-
-  .gmnoprint {
-    top: 0rem !important;
-  }
-}
-
-@media only screen and (min-width: 663px) and (max-width: 768px) {
-  .container__bodyRight {
-    top: 9rem;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .upsellingModalContainer {
-    top: 34rem;
-  }
-}
-
-@media (max-width: 547px) {
-  .container__bodyRight {
-    top: 12rem;
-  }
-  .upsellingModalContainer {
-    top: 35rem;
-  }
-}
-
-@media (max-width: 434px) {
-  .container__bodyRight {
-    top: 13.5rem;
-  }
-  .container__bodyLeftContainer, .container__bodyLeftContainerActive {
-    width: 100% ;
-    padding: .1rem 0.5rem .1rem 0;
-  }
-  .gmnoprint {
-    top: 2rem !important;
-  }
-  .container__bodyControlsIcon, .container__bodyControlsIconActive {
-    top: 10rem !important;
-  }
-  .container__bodyItemsIcon {
-    top: 12.8rem !important;
-  }
-}
-
-@media (max-width: 422px) {
-  .upsellingModalContainer {
-    top: 38rem;
-  }
-  .upsellingModal {
-    margin: 3rem 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .container__bodyRight {
-    top: 15rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .container__bodyRight {
-    top: 16.5rem;
-  }
 }
 
 /*Clinic Details*/
@@ -981,12 +802,6 @@ html {
   border-radius: 6px;
 }
 
-@media (max-width: 547px) {
-  .infoModal {
-    width: 20rem;
-  }
-}
-
 .infoModal__header {
   display: flex;
   flex-direction: row;
@@ -1131,3 +946,196 @@ html {
   height: 18px;
   margin-right: 0;
 }
+
+
+/*Responsive media screens*/
+
+@media (min-width: 1800px) {
+  .upsellingModalContainer {
+    top: 32rem;
+    right: 10rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .upsellingModalContainer {
+    top: 35rem;
+    right: 12rem;
+  }
+}
+
+@media (max-width: 1178px) {
+  .container__headerRight img {
+    bottom: 1.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .gmnoprint {
+    top: 0 !important;
+  }
+}
+
+@media (max-width: 779px) {
+  .container__bodyRight {
+    top: 9rem;
+  }
+  .upsellingModalContainer {
+    top: 34rem;
+    right: 0;
+  }
+}
+
+@media (max-width: 868px) {
+  .container__footer--infoContainer {
+    margin-top: 1rem;
+  }
+
+  .container__footer--infoText {
+    display: block;
+  }
+
+  .container__header {
+    flex-direction: column-reverse;
+  }
+
+  .container__bodyLeft {
+    top: 15rem;
+  }
+
+  .container__headerRight {
+    height: 3rem;
+    margin-left: 0;
+  }
+
+  .clinicDetails {
+    background: white;
+  }
+
+  .mapContainerInactive {
+    width: 10%;
+    transition: width 150ms;
+  }
+
+  .container__bodyRight {
+    width: 100%;
+    z-index: 100;
+    background: white;
+    top: 10.5rem;
+    height: 550px;
+  }
+
+  .container__headerRight img {
+    position: relative !important;
+    right: 0 !important;
+    bottom: -1rem !important;
+    left: 1rem !important;
+    height: 3rem !important;
+    width: 3rem !important;
+  }
+
+  .gmnoprint {
+    top: 0rem !important;
+  }
+}
+
+@media (max-width: 836px) {
+  .container__headerRight img {
+    /*bottom: 1rem !important;*/
+  }
+}
+
+@media (max-width: 779px) {
+  .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .upsellingModal__buttonPrimary img, .upsellingModal__buttonSecondary img {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 663px) and (max-width: 768px) {
+  .container__bodyRight {
+    top: 9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .upsellingModalContainer {
+    top: 34rem;
+  }
+}
+
+@media (max-width: 722px) {
+  .container__headerRight img {
+    bottom: 1rem !important;
+    height: 225% !important;
+    left: 3rem !important;
+
+  }
+}
+
+@media (max-width: 551px) {
+  .containerInternal {
+    margin-left: -4%;
+    margin-right: -4%;
+    border-radius: 0;
+  }
+  .upsellingModal {
+    margin: 5rem 0.5rem;
+  }
+}
+
+@media (max-width: 547px) {
+  .container__bodyRight {
+    top: 12rem;
+  }
+  .upsellingModalContainer {
+    top: 35rem;
+  }
+  .upsellingModal {
+    margin: 3rem 0.5rem;
+  }
+  .infoModal {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 434px) {
+  .container__bodyRight {
+    top: 13.5rem;
+  }
+  .container__bodyLeftContainer, .container__bodyLeftContainerActive {
+    width: 100% ;
+    padding: .1rem 0.5rem .1rem 0;
+  }
+  .gmnoprint {
+    top: 2rem !important;
+  }
+  .container__bodyControlsIcon, .container__bodyControlsIconActive {
+    top: 10rem !important;
+  }
+  .container__bodyItemsIcon {
+    top: 12.8rem !important;
+  }
+}
+
+@media (max-width: 422px) {
+  .upsellingModalContainer {
+    top: 38rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container__bodyRight {
+    top: 15rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container__bodyRight {
+    top: 16.5rem;
+  }
+}
+
