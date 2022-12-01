@@ -23,9 +23,6 @@ const Footer = (props: Footer) => {
           {props.error && (
             <h2>In der Zwischenzeit online einen Tierarzt sprechen</h2>
           )}
-          {!props.error && (
-            <h2>Nicht sicher, ob es sich um einen Notfall handelt?</h2>
-          )}
         </div>
         {props.providedAt === ProvidedAt.external && (
           <>
@@ -50,21 +47,27 @@ const Footer = (props: Footer) => {
         )}
         {props.providedAt === ProvidedAt.pfotendoctor && (
           <>
-            <div>
+            <div className={'container__footer--description'}>
               <p>
-                Unsere erfahrenen Tierärzte können dir per Videosprechstunde
-                innerhalb weniger Minuten eine erste Einschätzung bieten und
-                dich zu den nächsten Schritten beraten.
+                <span className={'clinicDetails__redText'}>
+                  <b>Notfälle sind lebensbedrohliche Situationen.</b>
+                </span>{' '}
+                Sollte dein Haustier verunglückt sein, stark bluten oder sich
+                anderweitig besorgniserregend verhalten, kontaktiere außerhalb
+                der Praxis-Öffnungszeiten bitte einen der aufgeführten
+                Notdienste.
+              </p>
+              <p>
+                Nutze die{' '}
+                <span className={'container__footer--link'}>
+                  <a href={'https://pfotendoctor.de/termin-buchen-3'}>
+                    <b>Notfall-Sprechstunde</b>
+                  </a>
+                </span>{' '}
+                per Video oder Telefon, falls du Hilfe bei der Einschätzung
+                deiner Situation brauchst.
               </p>
             </div>
-            <button
-              className={'container__footer--buttonInternal'}
-              onClick={() =>
-                window.open('https://pfotendoctor.de/terminbuchung?utm_source=website&utm_medium=clinic_finder&utm_campaign=clinic_finder', '_blank')
-              }
-            >
-              <div>Videosprechstunde buchen</div>
-            </button>
           </>
         )}
       </div>

@@ -12,7 +12,7 @@ interface Marker {
   hoveredMarker: number | null;
   clinicName?: string;
   providedAt: ProvidedAt;
-  onHover: (id: number) => void
+  onHover: (id: number) => void;
 }
 
 export const Marker = (props: Marker) => {
@@ -37,20 +37,26 @@ export const Marker = (props: Marker) => {
               src={`${process.env.REACT_APP_CDN_URL}/marker_emergency.svg`}
               alt={'emergency cross'}
             />
-            <div className={props.type === ClinicType.emergencyRing ? 'blob' : ''}></div>
+            <div
+              className={props.type === ClinicType.emergencyRing ? 'blob' : ''}
+            ></div>
           </div>
         )}
         {props.type === ClinicType.clinic && (
-              <img
-                  onMouseEnter={() => {props.onHover(props.id)}}
-                  onMouseLeave={() => {props.onHover(null)}}
-                  src={
-                    props.id === (props.activeInfoCardId || props.hoveredMarker)
-                        ? `${process.env.REACT_APP_CDN_URL}/marker-active.svg`
-                        : `${process.env.REACT_APP_CDN_URL}/marker-inactive.svg`
-                  }
-                  alt={props.clinicName}
-              />
+          <img
+            onMouseEnter={() => {
+              props.onHover(props.id);
+            }}
+            onMouseLeave={() => {
+              props.onHover(null);
+            }}
+            src={
+              props.id === (props.activeInfoCardId || props.hoveredMarker)
+                ? `${process.env.REACT_APP_CDN_URL}/marker-active.svg`
+                : `${process.env.REACT_APP_CDN_URL}/marker-inactive.svg`
+            }
+            alt={props.clinicName}
+          />
         )}
       </div>
     );

@@ -21,45 +21,65 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
       </div>
       <div className={'clinicDetails__detailContainerBox'}>
         <div className={'clinicDetails__redRowContainer'}>
-          <img
-            src={`${process.env.REACT_APP_CDN_URL}/emergency_ring.svg`}
-            alt={clinicService.name}
-          />
-          <div>Wichtiger Hinweis</div>
+          {/*<img*/}
+          {/*  src={`${process.env.REACT_APP_CDN_URL}/emergency_ring.svg`}*/}
+          {/*  alt={clinicService.name}*/}
+          {/*/>*/}
+          {/*<div>Wichtiger Hinweis</div>*/}
         </div>
         <div className={'clinicDetails__detailContainer--title'}>
-          Der Notdienst wird von mehreren Praxen im Wechsel geleistet.
+          <span className={'clinicDetails__redText'}>Hinweis: </span>
+          <span>
+            Nur 2 von 10 Fällen sind wirkliche Notfälle die akut behandelt
+            werden müssen
+          </span>
         </div>
         <div className={'clinicDetails__detailContainer--subTitle'}>
-          Bitte informieren Sie sich unbedingt über den aktuellen Dienstplan.
+          Sprich in wenigen Minuten mit einem erfahrenen Pfotendoctor-Tierarzt,
+          falls du dir nicht sicher bist ob ein Notfall vorliegt.
         </div>
-        <div className={'clinicDetails__attentionContainer'}>
-          <div className={'clinicDetails__attentionContainer--title'}>
-            Vor ihrem Besuch
-          </div>
-          <div className={'clinicDetails__attentionContainer--info'}>
-            {clinicService.customerTodo}
-          </div>
+        <div className={'clinicDetails__buttonContainer'}>
+          <button
+            onClick={() => {
+              window.open('https://pfotendoctor.de/termin-buchen-3', '_blank');
+            }}
+          >
+            Jetzt tierärztlichen Rat erhalten
+          </button>
         </div>
-          <div className={'clinicDetails__buttonContainer'}>
-              {clinicService.phoneNumberRegular &&
-                <>
-                    {window.innerWidth >= 668 &&
-                      <p>Telefon: <span className={"clinicDetails__buttonContainerPhoneDesktop"}>{clinicService.phoneNumberRegular}</span> </p>
-                    }
-                    {window.innerWidth <= 668 &&
-                      <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
-                    }
-                </>
-              }
-              <button
-                  onClick={() => {
-                      window.open(clinicService.website, '_blank');
-                  }}
-              >
-                  Website öffnen
-              </button>
-          </div>
+      </div>
+      {/*TODO*/}
+      <div className={'clinicDetails__attentionContainer'}>
+        <div className={'clinicDetails__attentionContainer--title'}>
+          Vor ihrem Besuch
+        </div>
+        <div className={'clinicDetails__attentionContainer--info'}>
+          {clinicService.customerTodo}
+        </div>
+      </div>
+      <div className={'clinicDetails__buttonContainer'}>
+        {clinicService.phoneNumberRegular && (
+          <>
+            {window.innerWidth >= 668 && (
+              <p>
+                Telefon:{' '}
+                <span className={'clinicDetails__buttonContainerPhoneDesktop'}>
+                  {clinicService.phoneNumberRegular}
+                </span>{' '}
+              </p>
+            )}
+            {window.innerWidth <= 668 && (
+              <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+            )}
+          </>
+        )}
+        <button
+          onClick={() => {
+            window.open(clinicService.website, '_blank');
+          }}
+        >
+          Website öffnen
+        </button>
       </div>
       <div className={'marginBottom'}>
         <div className={'clinicDetails__detailContainer--address'}>

@@ -8,7 +8,7 @@ import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
 import Footer from './Footer';
 import Map from './Map';
-import UpsellingModal from "./UpsellingModal";
+import UpsellingModal from './UpsellingModal';
 
 interface ClinicFinder {
   lat: number;
@@ -57,14 +57,17 @@ const ClinicFinder = (props: ClinicFinder) => {
   const [showSearchMarker, setShowSearchMarker] = useState<boolean>(false);
   const [showItemList, setShowItemList] = useState<boolean>(false);
   const [userGeoLocation, setUserGeoLocation] = useState<GeoLocation>(null);
-  const [geoPermissions, setGeoPermissions] = useState<boolean>(false)
-  const [loadingGeoLocation, setLoadingGeolocation] = useState<boolean>(false)
+  const [geoPermissions, setGeoPermissions] = useState<boolean>(false);
+  const [loadingGeoLocation, setLoadingGeolocation] = useState<boolean>(false);
   const [showCurrentPosition, setShowCurrentPosition] =
     useState<boolean>(false);
-  const [customPosition, setCustomPosition] = useState<GeoLocation>({lat: props.lat, lng: props.lng});
+  const [customPosition, setCustomPosition] = useState<GeoLocation>({
+    lat: props.lat,
+    lng: props.lng,
+  });
   const [error, setError] = useState<ErrorState>(null);
-  const [numberOfMarkerClicks, setNumberOfMarkerClicks] = useState<number>(0)
-  const [showUpsellingModal, setShowUpsellingModal] = useState<boolean>(false)
+  const [numberOfMarkerClicks, setNumberOfMarkerClicks] = useState<number>(0);
+  const [showUpsellingModal, setShowUpsellingModal] = useState<boolean>(false);
   const defaultProps = {
     center: {
       lat: props.lat,
@@ -76,7 +79,9 @@ const ClinicFinder = (props: ClinicFinder) => {
   // Get clinicName services
   const FetchClinics = () => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices`,
+      )
 
       .then(response => {
         setClinics(response.data);
@@ -89,7 +94,6 @@ const ClinicFinder = (props: ClinicFinder) => {
         setIsLoading(false);
       });
   };
-
 
   useEffect(() => {
     FetchClinics();
@@ -106,11 +110,11 @@ const ClinicFinder = (props: ClinicFinder) => {
       timeout: 5000,
       maximumAge: 0,
     };
-    const success = (pos:any) => {
+    const success = (pos: any) => {
       const crd = pos.coords;
       setUserGeoLocation({ lat: crd.latitude, lng: crd.longitude });
     };
-    const error = (err:any) => {
+    const error = (err: any) => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     };
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -161,19 +165,20 @@ const ClinicFinder = (props: ClinicFinder) => {
   };
 
   useEffect(() => {
-    if(numberOfMarkerClicks === 1) {
-      setShowUpsellingModal(true)
+    if (numberOfMarkerClicks === 1) {
+      setShowUpsellingModal(true);
+    } else {
+      setShowUpsellingModal(false);
     }
-    else {
-      setShowUpsellingModal(false)
-    }
-  },[numberOfMarkerClicks])
+  }, [numberOfMarkerClicks]);
 
   const toggleInfoCard = async (id: number) => {
-    setNumberOfMarkerClicks(numberOfMarkerClicks + 1)
+    setNumberOfMarkerClicks(numberOfMarkerClicks + 1);
     try {
       await axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices/${id}`)
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}/mobile-app-frontend/vet-finder/vet-practices/${id}`,
+        )
         .then(response => {
           setActiveClinicSiteId(id);
           setClinicDetails(response.data);
@@ -187,25 +192,25 @@ const ClinicFinder = (props: ClinicFinder) => {
     setActiveClinicSiteId(null);
   };
 
-  const renderDetails = (clinic:ClinicFinder) => {
+  const renderDetails = (clinic: ClinicFinder) => {
     if (numberOfMarkerClicks > 1) {
       if (clinicDetails.type === ClinicType.emergencyRing) {
         return (
-            <ClincDetailsEmergencyRings
-                clinicServiceDetails={clinicDetails}
-                backToList={() => {
-                  resetClinicService();
-                }}
-            />
+          <ClincDetailsEmergencyRings
+            clinicServiceDetails={clinicDetails}
+            backToList={() => {
+              resetClinicService();
+            }}
+          />
         );
       } else {
         return (
-            <ClinicRegularDetails
-                clinicServiceDetails={clinicDetails}
-                backToList={() => {
-                  resetClinicService();
-                }}
-            />
+          <ClinicRegularDetails
+            clinicServiceDetails={clinicDetails}
+            backToList={() => {
+              resetClinicService();
+            }}
+          />
         );
       }
     }
@@ -224,8 +229,8 @@ const ClinicFinder = (props: ClinicFinder) => {
   };
 
   const moveToPosition = async () => {
-    setLoadingGeolocation(true)
-    setLoadingGeolocation(true)
+    setLoadingGeolocation(true);
+    setLoadingGeolocation(true);
     await clearPosition();
     if (navigator.geolocation) {
       await getUserGeoLocation();
@@ -241,10 +246,10 @@ const ClinicFinder = (props: ClinicFinder) => {
   };
 
   useEffect(() => {
-    if(userGeoLocation) {
-      setLoadingGeolocation(false)
+    if (userGeoLocation) {
+      setLoadingGeolocation(false);
     }
-  }, [userGeoLocation])
+  }, [userGeoLocation]);
 
   const moveToSearchLocation = (placeId: string) => {
     axios
@@ -261,9 +266,14 @@ const ClinicFinder = (props: ClinicFinder) => {
       });
   };
 
-
   return (
-    <div className={props.providedAt === ProvidedAt.pfotendoctor ? 'containerInternal' : 'container'}>
+    <div
+      className={
+        props.providedAt === ProvidedAt.pfotendoctor
+          ? 'containerInternal'
+          : 'container'
+      }
+    >
       <div className={'container__header'}>
         <div className={'container__headerLeft'}>
           {clinics && (
@@ -314,29 +324,28 @@ const ClinicFinder = (props: ClinicFinder) => {
         </div>
       )}
       {showUpsellingModal && (
-          <div
-              className={'upsellingModalContainer'}
-          >
-            <UpsellingModal onClick={() => setNumberOfMarkerClicks(numberOfMarkerClicks + 1)}/>
-          </div>
-      )}
-      {props.providedAt === ProvidedAt.pfotendoctor && numberOfMarkerClicks !== 1 && (
-        <div className={'container__bodyLeft'}>
-          <Search
-            removePin={() => {
-              setShowSearchMarker(false);
-            }}
-            moveToSearchLocation={placeId => {
-              moveToSearchLocation(placeId);
-            }}
+        <div className={'upsellingModalContainer'}>
+          <UpsellingModal
+            onClick={() => setNumberOfMarkerClicks(numberOfMarkerClicks + 1)}
           />
         </div>
       )}
+      {props.providedAt === ProvidedAt.pfotendoctor &&
+        numberOfMarkerClicks !== 1 && (
+          <div className={'container__bodyLeft'}>
+            <Search
+              removePin={() => {
+                setShowSearchMarker(false);
+              }}
+              moveToSearchLocation={placeId => {
+                moveToSearchLocation(placeId);
+              }}
+            />
+          </div>
+        )}
 
       <div className={'container__bodyItems'}>
-        <div
-          className={'container__bodyControlsIcon'}
-        >
+        <div className={'container__bodyControlsIcon'}>
           {!loadingGeoLocation && (
             <img
               src={`${process.env.REACT_APP_CDN_URL}/controlsBlank.svg`}
@@ -354,14 +363,12 @@ const ClinicFinder = (props: ClinicFinder) => {
         </div>
       </div>
       <div
-          className={'container__bodyItems'}
-          onClick={() => {
-            setShowItemList(true);
-          }}
+        className={'container__bodyItems'}
+        onClick={() => {
+          setShowItemList(true);
+        }}
       >
-        <div
-          className={'container__bodyItemsIcon'}
-        >
+        <div className={'container__bodyItemsIcon'}>
           <img
             src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
             alt={'items icon'}
@@ -388,7 +395,9 @@ const ClinicFinder = (props: ClinicFinder) => {
               toggleInfoCard(id).then(r => setShowItemList(true));
             }}
             numberOfMarkerClicks={numberOfMarkerClicks}
-            onHover={(id) => {setHoveredMarker(id)}}
+            onHover={id => {
+              setHoveredMarker(id);
+            }}
           />
           <div
             className={
@@ -398,63 +407,62 @@ const ClinicFinder = (props: ClinicFinder) => {
             }
           >
             {!activeClinicSiteId && (
-                <div
-                    onClick={() => {
-                      backToMap();
-                    }}
-                    className={'clinicDetails__redRowContainer backToMap'}
-                >
-                  <img
-                      src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
-                      alt={'arrow left'}
-                  />
-                  <div>Karte</div>
-                </div>
+              <div
+                onClick={() => {
+                  backToMap();
+                }}
+                className={'clinicDetails__redRowContainer backToMap'}
+              >
+                <img
+                  src={`${process.env.REACT_APP_CDN_URL}/arrow_left.svg`}
+                  alt={'arrow left'}
+                />
+                <div>Karte</div>
+              </div>
             )}
-            {clinics &&
-              !activeClinicSiteId && (
-                    <div className={"container__bodyRight--itemBox"}>
-                      {
-                        sortClinicsByDistance(customPosition.lat, customPosition.lng).map(clinicService => {
-                          return (
-                                <Item
-                                    hoveredMarker={hoveredMarker}
-                                    key={clinicService.id}
-                                    id={clinicService.id}
-                                    activeInfoCardId={activeClinicSiteId}
-                                    toggleInfoCard={id => {
-                                      setActiveClinicSiteId(id);
-                                      setNumberOfMarkerClicks(numberOfMarkerClicks + 1)
-                                    }}
-                                    toggleHoveredMarker={id => {
-                                      setHoveredMarker(id);
-                                    }}
-                                    setClinicServiceDetails={clinic => {
-                                      setClinicDetails(clinic);
-                                    }}
-                                />
-                          );
-                        })
-                      }
-                    </div>
-                )
-              }
+            {clinics && !activeClinicSiteId && (
+              <div className={'container__bodyRight--itemBox'}>
+                {sortClinicsByDistance(
+                  customPosition.lat,
+                  customPosition.lng,
+                ).map(clinicService => {
+                  return (
+                    <Item
+                      hoveredMarker={hoveredMarker}
+                      key={clinicService.id}
+                      id={clinicService.id}
+                      activeInfoCardId={activeClinicSiteId}
+                      toggleInfoCard={id => {
+                        setActiveClinicSiteId(id);
+                        setNumberOfMarkerClicks(numberOfMarkerClicks + 1);
+                      }}
+                      toggleHoveredMarker={id => {
+                        setHoveredMarker(id);
+                      }}
+                      setClinicServiceDetails={clinic => {
+                        setClinicDetails(clinic);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            )}
             {activeClinicSiteId &&
               activeClinicSiteId === clinicDetails?.id &&
               renderDetails(clinicDetails)}
           </div>
         </div>
       )}
-      {numberOfMarkerClicks !== 1 &&
-          <Footer
-              error={error}
-              providedAt={props.providedAt}
-              toggleModal={value => setShowModal(value)}
-              showModal={showModal}
-          />
-      }
+      {numberOfMarkerClicks !== 1 && (
+        <Footer
+          error={error}
+          providedAt={props.providedAt}
+          toggleModal={value => setShowModal(value)}
+          showModal={showModal}
+        />
+      )}
     </div>
   );
-}
+};
 
-export default ClinicFinder
+export default ClinicFinder;
