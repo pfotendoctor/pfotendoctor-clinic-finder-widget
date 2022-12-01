@@ -438,9 +438,9 @@ html {
   color: #2b3656;
 }
 
-.container__footer--description {
-  font-size: 1rem;
-  line-height: 1.5;
+.container__footer--description p {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
 }
 
 .container__footer--button {
