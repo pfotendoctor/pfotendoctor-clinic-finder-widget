@@ -274,42 +274,7 @@ const ClinicFinder = (props: ClinicFinder) => {
           : 'container'
       }
     >
-      <div className={'container__header'}>
-        <div className={'container__headerLeft'}>
-          {clinics && (
-            <div className={'container__headerLeftTextBox'}>
-              <p className={'container__headerLeftText'}>
-                <span className={'emergencyText'}>
-                  Notfälle sind lebensbedrohliche Situationen.&nbsp;
-                </span>
-                <span>
-                  Sollte Ihr Haustier verunglückt sein, stark bluten oder sich
-                  anderweitig besorgniserregend verhalten, kontaktieren Sie
-                  außerhalb der Praxis-Öffnungszeiten bitte umgehend einen der
-                  untenstehenden Notdienste.
-                </span>
-              </p>
-            </div>
-          )}
-          {error && (
-            <div className={'marginBottom'}>
-              <span className={'emergencyText'}>
-                Die Notdienstkarte ist zur Zeit nicht verfügbar.&nbsp;
-              </span>
-              <span>
-                Wir arbeiten an einer Lösung und entschuldigen uns für den
-                Ausfall.
-              </span>
-            </div>
-          )}
-        </div>
-        <div className={'container__headerRight'}>
-          <img
-            src={`${process.env.REACT_APP_CDN_URL}/red_cross.png`}
-            alt={'emergency cross'}
-          />
-        </div>
-      </div>
+
       {isLoading && (
         <div className={'container__bodyFixed'}>
           <LoadingSpinner />
