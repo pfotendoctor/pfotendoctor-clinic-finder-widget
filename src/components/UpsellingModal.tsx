@@ -46,10 +46,12 @@ const UpsellingModal = (props: UpsellingModal) => {
         Nur eine von fünf Situationen, die ein Tierbesitzer als Notfall
         einstuft, ist ein tatsächlicher Notfall und akut behandlungsbedürftig
       </div>
-      <div className={'upsellingModal__title--description'}>
-        Falsch eingeschätzte Situationen können für Tierbesitzer zu erhöhten
-        Wartezeiten im Notdienst führen und unnötige Kosten verursachen.
-      </div>
+        {windowSize.innerWidth > 547 &&
+            <div className={'upsellingModal__title--description'}>
+                Falsch eingeschätzte Situationen können für Tierbesitzer zu erhöhten
+                Wartezeiten im Notdienst führen und unnötige Kosten verursachen.
+            </div>
+        }
       <div className={'upsellingModal__subTitle'}>
         Nicht sicher, ob es sich bei dir um einen Notfall handelt?
       </div>

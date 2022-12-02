@@ -1141,6 +1141,18 @@ html {
   .upsellingModalContainer {
     top: 38rem;
   }
+  .upsellingModal--title {
+    font-size: 1rem;
+  }
+  .upsellingModal__title--description {
+    font-size: 0.9rem;
+  }
+  .upsellingModal__subTitle--description {
+    font-size: 0.9rem;
+  }
+  .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 400px) {
