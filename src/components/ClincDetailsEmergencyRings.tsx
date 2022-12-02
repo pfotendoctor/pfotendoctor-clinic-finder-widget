@@ -1,5 +1,6 @@
 import React from 'react';
 import { ClinicDetails } from './ClinicRegularDetails';
+import UpsellingBox from "./UpsellingBox";
 
 const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
@@ -19,36 +20,7 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
       <div className={'clinicDetails__detailContainer--title'}>
         {clinicService.name}
       </div>
-      <div className={'clinicDetails__detailContainerBox'}>
-        <div className={'clinicDetails__redRowContainer'}>
-          {/*<img*/}
-          {/*  src={`${process.env.REACT_APP_CDN_URL}/emergency_ring.svg`}*/}
-          {/*  alt={clinicService.name}*/}
-          {/*/>*/}
-          {/*<div>Wichtiger Hinweis</div>*/}
-        </div>
-        <div className={'clinicDetails__detailContainer--title'}>
-          <span className={'clinicDetails__redText'}>Hinweis: </span>
-          <span>
-            Nur 2 von 10 Fällen sind wirkliche Notfälle die akut behandelt
-            werden müssen
-          </span>
-        </div>
-        <div className={'clinicDetails__detailContainer--subTitle'}>
-          Sprich in wenigen Minuten mit einem erfahrenen Pfotendoctor-Tierarzt,
-          falls du dir nicht sicher bist ob ein Notfall vorliegt.
-        </div>
-        <div className={'clinicDetails__buttonContainer'}>
-          <button
-            onClick={() => {
-              window.open('https://pfotendoctor.de/termin-buchen-3', '_blank');
-            }}
-          >
-            Jetzt tierärztlichen Rat erhalten
-          </button>
-        </div>
-      </div>
-      {/*TODO*/}
+      <UpsellingBox />
       <div className={'clinicDetails__attentionContainer'}>
         <div className={'clinicDetails__attentionContainer--title'}>
           Vor ihrem Besuch

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import UpsellingBox from "./UpsellingBox";
 
 export interface ClinicDetails {
   clinicServiceDetails: {
@@ -44,6 +45,7 @@ const ClinicRegularDetails = (props: ClinicDetails) => {
           <div>{clinicService.city}</div>
         </div>
       </div>
+      <UpsellingBox />
       <div className={'clinicDetails__attentionContainer'}>
         <div className={'clinicDetails__attentionContainer--title'}>
           Vor ihrem Besuch
