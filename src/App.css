@@ -980,7 +980,7 @@ html {
 
 @media (min-width: 1600px) {
   .upsellingModalContainer {
-    top: 28rem;
+    top: 19rem;
     right: 9rem;
   }
 }
@@ -1002,7 +1002,7 @@ html {
     top: 9rem;
   }
   .upsellingModalContainer {
-    top: 34rem;
+    top: 19rem;
     right: 0;
   }
 }
@@ -1086,7 +1086,7 @@ html {
 
 @media (max-width: 768px) {
   .upsellingModalContainer {
-    top: 34rem;
+    top: 19rem;
   }
 }
 
@@ -1106,7 +1106,7 @@ html {
     top: 12rem;
   }
   .upsellingModalContainer {
-    top: 35rem;
+    top: 24rem;
   }
   .upsellingModal {
     margin: 3rem 0.5rem;
