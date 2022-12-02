@@ -755,7 +755,6 @@ html {
 
 .upsellingModalContainer {
   position: absolute;
-  top: 29rem;
   right: 0;
   z-index: 1000;
   display: flex;
@@ -1139,7 +1138,7 @@ html {
 
 @media (max-width: 422px) {
   .upsellingModalContainer {
-    top: 38rem;
+    top: 26rem;
   }
   .upsellingModal--title {
     font-size: 1rem;
