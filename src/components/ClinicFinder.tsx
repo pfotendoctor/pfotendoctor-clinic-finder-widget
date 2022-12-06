@@ -327,19 +327,21 @@ const ClinicFinder = (props: ClinicFinder) => {
           )}
         </div>
       </div>
-      <div
-        className={'container__bodyItems'}
-        onClick={() => {
-          setShowItemList(true);
-        }}
-      >
-        <div className={'container__bodyItemsIcon'}>
-          <img
-            src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
-            alt={'items icon'}
-          />
-        </div>
-      </div>
+      {numberOfMarkerClicks > 1 &&
+          <div
+              className={'container__bodyItems'}
+              onClick={() => {
+                setShowItemList(true);
+              }}
+          >
+            <div className={'container__bodyItemsIcon'}>
+              <img
+                  src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
+                  alt={'items icon'}
+              />
+            </div>
+          </div>
+      }
       {clinics && !isLoading && (
         <div className={'container__body'}>
           <Map
@@ -414,6 +416,7 @@ const ClinicFinder = (props: ClinicFinder) => {
             )}
             {activeClinicSiteId &&
               activeClinicSiteId === clinicDetails?.id &&
+              numberOfMarkerClicks > 1 &&
               renderDetails(clinicDetails)}
           </div>
         </div>

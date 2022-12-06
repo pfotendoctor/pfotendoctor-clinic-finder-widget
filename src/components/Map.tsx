@@ -53,9 +53,10 @@ const Map = (props: Map) => {
   return (
     <div
       className={
-        !props.showItemList || props.numberOfMarkerClicks > 1
-          ? ' mapContainerActive'
-          : 'mapContainerInactive'
+        props.showItemList &&
+        props.numberOfMarkerClicks > 1
+          ? 'mapContainerInactive'
+          : 'mapContainerActive'
       }
     >
       <GoogleMapReact

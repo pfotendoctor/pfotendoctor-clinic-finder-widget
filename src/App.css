@@ -533,8 +533,7 @@ html {
   cursor: pointer;
 }
 
-.mapContainerActive,
-.mapContainerInactive {
+.mapContainerActive, .mapContainerInactive {
   width: 100%;
 }
 
@@ -552,13 +551,14 @@ html {
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 1rem;
-  color: #f50001 !important;
+  color: rgba(245, 0, 1, 1) !important;
   line-height: 1.3rem !important;
 }
 
 .clinicDetails__redText {
-  color: #f50001 !important;
+  color: rgba(245, 0, 1, 1) !important;
   line-height: 1.3rem !important;
+  font-weight: 600 !important;
 }
 
 .clinicDetails__redRowContainer:hover {
@@ -769,6 +769,7 @@ html {
   padding: 1.5rem;
   max-width: 800px;
   border-radius: 6px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .upsellingModal__header {
