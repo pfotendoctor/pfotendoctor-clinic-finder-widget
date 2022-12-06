@@ -366,7 +366,7 @@ const ClinicFinder = (props: ClinicFinder) => {
           />
           <div
             className={
-              showItemList && numberOfMarkerClicks !== 1
+              showItemList && numberOfMarkerClicks > 1
                 ? 'container__bodyRight'
                 : 'container__bodyRightInactive'
             }
@@ -418,14 +418,12 @@ const ClinicFinder = (props: ClinicFinder) => {
           </div>
         </div>
       )}
-      {numberOfMarkerClicks !== 1 && (
-        <Footer
+      <Footer
           error={error}
           providedAt={props.providedAt}
           toggleModal={value => setShowModal(value)}
           showModal={showModal}
-        />
-      )}
+      />
     </div>
   );
 };
