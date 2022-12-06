@@ -339,7 +339,7 @@ html {
 }
 
 .container__bodyRight {
-  width: 35rem;
+  width: 25rem;
   overflow-y: scroll;
   z-index: 100;
   background: white;
@@ -755,7 +755,6 @@ html {
 
 .upsellingModalContainer {
   position: absolute;
-  top: 19rem;
   right: 0;
   z-index: 1000;
   display: flex;
