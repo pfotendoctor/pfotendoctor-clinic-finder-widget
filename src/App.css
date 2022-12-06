@@ -257,14 +257,14 @@ html {
   background: #f5fafa;
   width: 300px;
   padding: 0.1rem 0;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem;
 }
 
 .container__bodyLeftSearch {
   display: flex;
   flex-direction: row;
   background: white;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
@@ -274,9 +274,8 @@ html {
 }
 
 .container__bodyLeftSearchIconContainer {
-  margin-right: 0.61rem;
-  width: 1rem;
-  height: 1rem;
+  margin-right: 0.25rem;
+  height: 1rem !important;
 }
 
 .container__bodyLeftSearch .loader .loader__size__small {
@@ -289,7 +288,6 @@ html {
   width: 100%;
   border: none;
   font-size: 16px;
-  line-height: 1.3rem;
 }
 
 .container__bodyLeftSearch input:focus-visible {
@@ -298,11 +296,12 @@ html {
 
 .container__bodyLeftSearchIcon {
   margin-right: 0.5rem;
-  width: 1.25rem !important;
+  width: auto !important;
+  height: 0.85rem !important;
 }
 
 .container__bodyLeftCloseIcon {
-  width: 1.25rem !important;
+  width: 0.85rem !important;
 }
 
 .container__bodyLeftCloseIcon:hover {
@@ -552,13 +551,14 @@ html {
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 1rem;
-  color: #f50001 !important;
+  color: rgba(245, 0, 1, 1) !important;
   line-height: 1.3rem !important;
 }
 
 .clinicDetails__redText {
-  color: #f50001 !important;
+  color: rgba(245, 0, 1, 1) !important;
   line-height: 1.3rem !important;
+  font-weight: 600;
 }
 
 .clinicDetails__redRowContainer:hover {
@@ -730,7 +730,7 @@ html {
 }
 
 .marginBottom {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .backToMap {
@@ -755,18 +755,22 @@ html {
 
 .upsellingModalContainer {
   position: absolute;
-  top: 19rem;
-  right: 0;
+  /* top: 0rem; */
+  /* right: 12%; */
   z-index: 1000;
   display: flex;
   justify-content: center;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
 }
 
 .upsellingModal {
   display: flex;
+  width: 90vw;
   flex-direction: column;
   background: white;
-  margin: 6rem 2rem;
+  /*margin: 6rem 2rem;*/
   padding: 1.5rem;
   max-width: 800px;
   border-radius: 6px;
@@ -979,10 +983,6 @@ html {
 /*Responsive media screens*/
 
 @media (min-width: 1600px) {
-  .upsellingModalContainer {
-    top: 19rem;
-    right: 9rem;
-  }
 }
 
 @media (max-width: 1178px) {
@@ -1000,10 +1000,6 @@ html {
 @media (max-width: 779px) {
   .container__bodyRight {
     top: 9rem;
-  }
-  .upsellingModalContainer {
-    top: 19rem;
-    right: 0;
   }
 }
 
@@ -1084,16 +1080,10 @@ html {
   }
 }
 
-@media (max-width: 768px) {
-  .upsellingModalContainer {
-    top: 19rem;
-  }
-}
-
 @media (max-width: 551px) {
   .containerInternal {
-    margin-left: -4%;
-    margin-right: -4%;
+    /*margin-left: -4%;*/
+    /*margin-right: -4%;*/
     border-radius: 0;
   }
   .upsellingModal {
@@ -1104,9 +1094,6 @@ html {
 @media (max-width: 547px) {
   .container__bodyRight {
     top: 12rem;
-  }
-  .upsellingModalContainer {
-    top: 24rem;
   }
   .upsellingModal {
     margin: 3rem 0.5rem;

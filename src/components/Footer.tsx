@@ -48,9 +48,9 @@ const Footer = (props: Footer) => {
         {props.providedAt === ProvidedAt.pfotendoctor && (
           <>
             <div className={'container__footer--description'}>
-              <p>
+              <p className='marginBottom'>
                 <span className={'clinicDetails__redText'}>
-                  <b>Notfälle sind lebensbedrohliche Situationen.</b>
+                  Notfälle sind lebensbedrohliche Situationen.
                 </span>{' '}
                 Sollte dein Haustier verunglückt sein, stark bluten oder sich
                 anderweitig besorgniserregend verhalten, kontaktiere außerhalb
