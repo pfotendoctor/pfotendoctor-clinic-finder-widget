@@ -1177,6 +1177,7 @@ html {
   height: 550px;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 @media (min-width: 1600px) {
@@ -1220,9 +1221,9 @@ html {
   }
 }
 
-@media (max-width: 552px) {
+@media (max-width: 551px) {
   .upsellingModal__bg {
-    width: 102vw;
+    width: 100vw;
     border-radius: 0;
   }
 }
