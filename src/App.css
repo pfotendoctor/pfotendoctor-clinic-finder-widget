@@ -1110,6 +1110,7 @@ html {
   }
   .upsellingModalContainer {
     top: 24rem;
+    right: -3px;
   }
   .upsellingModal {
     margin: 3rem 0.5rem;
@@ -1223,7 +1224,8 @@ html {
 
 @media (max-width: 551px) {
   .upsellingModal__bg {
-    width: 100vw;
+    width: 100%;
+    right: -3px;
     border-radius: 0;
   }
 }
