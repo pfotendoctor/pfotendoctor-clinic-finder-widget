@@ -61,7 +61,7 @@ const Footer = (props: Footer) => {
                 Nutze die{' '}
                 <span className={'container__footer--link'}>
                   <a href={'https://pfotendoctor.de/termin-buchen-3'}>
-                    <b>Notfall-Sprechstunde</b>
+                    Notfall-Sprechstunde
                   </a>
                 </span>{' '}
                 per Video oder Telefon, falls du Hilfe bei der Einschätzung

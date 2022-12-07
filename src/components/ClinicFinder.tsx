@@ -288,6 +288,9 @@ const ClinicFinder = (props: ClinicFinder) => {
           </div>
         </div>
       )}
+      {showUpsellingModal &&
+          <div className={'upsellingModal__bg'}></div>
+      }
       {showUpsellingModal && (
         <div className={'upsellingModalContainer'}>
           <UpsellingModal

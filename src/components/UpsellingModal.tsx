@@ -73,7 +73,7 @@ const UpsellingModal = (props: UpsellingModal) => {
       >
         {windowSize.innerWidth >= 547 && (
           <img
-            src={`${process.env.REACT_APP_CDN_URL}/video_icon_white.svg`}
+            src={`${process.env.REACT_APP_CDN_URL}/camera_filled.svg.svg`}
             alt={'video call icon'}
             className={'upsellingModal--icon'}
           />
