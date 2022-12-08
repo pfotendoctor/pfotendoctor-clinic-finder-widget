@@ -154,7 +154,7 @@ html {
   padding: 7px !important;
   background: white !important;
   border-radius: 10px !important;
-  margin-right: 10px !important;
+  margin-right: 20px !important;
 }
 
 .container__bodyControlsIconActive {
@@ -166,7 +166,7 @@ html {
   padding: 7px !important;
   background: white !important;
   border-radius: 10px !important;
-  margin-right: 10px !important;
+  margin-right: 20px !important;
   right: 298px !important;
 }
 
@@ -252,7 +252,7 @@ html {
 
 .container__bodyLeftContainerActive {
   position: relative;
-  z-index: 99;
+  z-index: 100;
   border-radius: 10px;
   background: #f5fafa;
   width: 300px;
@@ -264,8 +264,8 @@ html {
   display: flex;
   flex-direction: row;
   background: white;
-  height: 2.25rem;
-  padding: 0.5rem 0.75rem;
+  height: 2.75rem;
+  padding: 0.65rem 0.75rem;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
@@ -476,7 +476,7 @@ html {
 
 .upsellingModal--icon {
   width: auto !important;
-  height: 1.5rem !important;
+  height: 1.25rem !important;
 }
 
 .container__footer--button:hover,
@@ -747,6 +747,10 @@ html {
 
 .gm-fullscreen-control {
   border-radius: 10px !important;
+}
+
+.gmnoprint {
+  right: 50px !important;
 }
 
 .gmnoprint > div {
@@ -1095,8 +1099,8 @@ html {
 
 @media (max-width: 551px) {
   .containerInternal {
-    margin-left: -4%;
-    margin-right: -4%;
+    margin-left: -18px;
+    margin-right: -18px;
     border-radius: 0;
   }
   .upsellingModal {
@@ -1118,6 +1122,9 @@ html {
   .infoModal {
     width: 20rem;
   }
+  .upsellingModal--title {
+    font-size: 1rem !important;
+  }
 }
 
 @media (max-width: 434px) {
@@ -1126,18 +1133,21 @@ html {
   }
   .container__bodyLeftContainer,
   .container__bodyLeftContainerActive {
-    width: 100%;
-    padding: 0.1rem 0.5rem 0.1rem 0;
+    width: 99%;
+    padding: 0;
+    overflow: hidden;
+    left: -14px;
+    margin: 0.5rem 1rem 0 0.9rem;
   }
   .gmnoprint {
     top: 2rem !important;
   }
   .container__bodyControlsIcon,
   .container__bodyControlsIconActive {
-    top: 10rem !important;
+    top: 10.5rem !important;
   }
   .container__bodyItemsIcon {
-    top: 12.8rem !important;
+    top: 13.8rem!important
   }
 }
 
