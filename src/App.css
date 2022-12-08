@@ -276,7 +276,8 @@ html {
 
 .container__bodyLeftSearchIconContainer {
   margin-right: 10px;
-  height: 100% !important;
+  width: 50px;
+  height: 50px;
   line-height: 1;
   padding: 2px;
 }
@@ -701,6 +702,10 @@ html {
   line-height: 1.3rem;
 }
 
+.clinicDetails__buttonContainer--emergency:hover {
+  cursor: pointer;
+}
+
 .clinicDetails__buttonContainer a {
   text-align: center;
   background: #fff2f2;
@@ -988,8 +993,8 @@ html {
   border-top: 16px solid #ff8766; /* Blue */
   border-radius: 50%;
   animation: spin 2s linear infinite;
-  width: 1rem;
-  height: 100%;
+  width: 50px;
+  height: 50px;
   position: relative;
 }
 
