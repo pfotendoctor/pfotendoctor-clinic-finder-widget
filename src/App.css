@@ -341,7 +341,7 @@ html {
 }
 
 .container__bodyRight {
-  width: 25rem;
+  width: 35rem;
   overflow-y: scroll;
   z-index: 100;
   background: white;
@@ -792,6 +792,10 @@ html {
 
 .gmnoprint {
   right: 50px !important;
+}
+
+.hideGmnoprint .gmnoprint {
+  display: none !important;
 }
 
 .gmnoprint > div {

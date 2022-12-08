@@ -343,7 +343,7 @@ const ClinicFinder = (props: ClinicFinder) => {
         </div>
       )}
       {clinics && !isLoading && (
-        <div className={'container__body'}>
+        <div className={numberOfMarkerClicks === 1 ? 'container__body hideGmnoprint' : 'container__body'}>
           <Map
             defaultProps={defaultProps}
             showCurrentPosition={showCurrentPosition}

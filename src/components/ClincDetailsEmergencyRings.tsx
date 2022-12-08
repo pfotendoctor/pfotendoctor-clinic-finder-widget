@@ -18,15 +18,15 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
         />
         <div>Notdienstübersicht</div>
       </div>
-      <div className={'clinicDetails__detailContainer--title marginLeft'}>
+      <div className={'clinicDetails__detailContainer--title'}>
         {clinicService.name}
       </div>
       <div className={'marginBottom'}>
-        <div className={'clinicDetails__detailContainer--address marginLeft'}>
+        <div className={'clinicDetails__detailContainer--address'}>
           <div>{clinicService.street}</div>
           <div>{clinicService.houseNumber}</div>
         </div>
-        <div className={'clinicDetails__detailContainer--address marginLeft'}>
+        <div className={'clinicDetails__detailContainer--address'}>
           <div>{clinicService.zip}</div>
           <div>{clinicService.city}</div>
         </div>
