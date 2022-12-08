@@ -274,7 +274,6 @@ const ClinicFinder = (props: ClinicFinder) => {
           : 'container'
       }
     >
-
       {isLoading && (
         <div className={'container__bodyFixed'}>
           <LoadingSpinner />
@@ -288,9 +287,7 @@ const ClinicFinder = (props: ClinicFinder) => {
           </div>
         </div>
       )}
-      {showUpsellingModal &&
-          <div className={'upsellingModal__bg'}></div>
-      }
+      {showUpsellingModal && <div className={'upsellingModal__bg'}></div>}
       {showUpsellingModal && (
         <div className={'upsellingModalContainer'}>
           <UpsellingModal
@@ -330,21 +327,21 @@ const ClinicFinder = (props: ClinicFinder) => {
           )}
         </div>
       </div>
-      {numberOfMarkerClicks > 1 &&
-          <div
-              className={'container__bodyItems'}
-              onClick={() => {
-                setShowItemList(true);
-              }}
-          >
-            <div className={'container__bodyItemsIcon'}>
-              <img
-                  src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
-                  alt={'items icon'}
-              />
-            </div>
+      {numberOfMarkerClicks > 1 && (
+        <div
+          className={'container__bodyItems'}
+          onClick={() => {
+            setShowItemList(true);
+          }}
+        >
+          <div className={'container__bodyItemsIcon'}>
+            <img
+              src={`${process.env.REACT_APP_CDN_URL}/items_icon.svg`}
+              alt={'items icon'}
+            />
           </div>
-      }
+        </div>
+      )}
       {clinics && !isLoading && (
         <div className={'container__body'}>
           <Map
@@ -425,10 +422,10 @@ const ClinicFinder = (props: ClinicFinder) => {
         </div>
       )}
       <Footer
-          error={error}
-          providedAt={props.providedAt}
-          toggleModal={value => setShowModal(value)}
-          showModal={showModal}
+        error={error}
+        providedAt={props.providedAt}
+        toggleModal={value => setShowModal(value)}
+        showModal={showModal}
       />
     </div>
   );

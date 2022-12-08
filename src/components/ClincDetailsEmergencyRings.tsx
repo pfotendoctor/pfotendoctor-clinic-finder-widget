@@ -1,6 +1,7 @@
 import React from 'react';
 import { ClinicDetails } from './ClinicRegularDetails';
-import UpsellingBox from "./UpsellingBox";
+import UpsellingBox from './UpsellingBox';
+import UpsellingBoxEmergency from './UpsellingBoxEmergency';
 
 const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
   const clinicService = props.clinicServiceDetails;
@@ -17,52 +18,63 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
         />
         <div>Notdienstübersicht</div>
       </div>
-      <div className={'clinicDetails__detailContainer--title'}>
+      <div className={'clinicDetails__detailContainer--title marginLeft'}>
         {clinicService.name}
       </div>
-      <UpsellingBox />
-      <div className={'clinicDetails__attentionContainer'}>
-        <div className={'clinicDetails__attentionContainer--title'}>
-          Vor ihrem Besuch
-        </div>
-        <div className={'clinicDetails__attentionContainer--info'}>
-          {clinicService.customerTodo}
-        </div>
-      </div>
-      <div className={'clinicDetails__buttonContainer'}>
-        {clinicService.phoneNumberRegular && (
-          <>
-            {window.innerWidth >= 668 && (
-              <p>
-                Telefon:{' '}
-                <span className={'clinicDetails__buttonContainerPhoneDesktop'}>
-                  {clinicService.phoneNumberRegular}
-                </span>{' '}
-              </p>
-            )}
-            {window.innerWidth <= 668 && (
-              <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
-            )}
-          </>
-        )}
-        <button
-          onClick={() => {
-            window.open(clinicService.website, '_blank');
-          }}
-        >
-          Website öffnen
-        </button>
-      </div>
       <div className={'marginBottom'}>
-        <div className={'clinicDetails__detailContainer--address'}>
+        <div className={'clinicDetails__detailContainer--address marginLeft'}>
           <div>{clinicService.street}</div>
           <div>{clinicService.houseNumber}</div>
         </div>
-        <div className={'clinicDetails__detailContainer--address'}>
+        <div className={'clinicDetails__detailContainer--address marginLeft'}>
           <div>{clinicService.zip}</div>
           <div>{clinicService.city}</div>
         </div>
       </div>
+      <div className={'clinicDetails__detailContainerBox'}>
+        <div className={'clinicDetails__redRowContainer--emergency'}>
+          <img
+            src={`${process.env.REACT_APP_CDN_URL}/emergency_ring.svg`}
+            alt={clinicService.name}
+          />
+          <div className={'clinicDetails__redText--regular'}>
+            Wichtiger Hinweis
+          </div>
+        </div>
+        <div className={'clinicDetails__detailContainer--title'}>
+          Der Notdienst wird von mehreren Praxen im Wechsel geleistet.
+        </div>
+        <div className={'clinicDetails__detailContainer--subTitle'}>
+          Bitte informieren Sie sich unbedingt über den aktuellen Dienstplan.
+        </div>
+        <div className={'clinicDetails__buttonContainer'}>
+          {clinicService.phoneNumberRegular && (
+            <>
+              {window.innerWidth >= 668 && (
+                <p>
+                  Telefon:{' '}
+                  <span
+                    className={'clinicDetails__buttonContainerPhoneDesktop'}
+                  >
+                    {clinicService.phoneNumberRegular}
+                  </span>{' '}
+                </p>
+              )}
+              {window.innerWidth <= 668 && (
+                <a href={`tel:${clinicService.phoneNumberRegular}`}>Anrufen</a>
+              )}
+            </>
+          )}
+          <button
+            onClick={() => {
+              window.open(clinicService.website, '_blank');
+            }}
+          >
+            Website öffnen
+          </button>
+        </div>
+      </div>
+      <UpsellingBoxEmergency />
       <div className={'clinicDetails__emergencyInfo'}>
         <div className={'clinicDetails__emergencyInfo--title'}>
           Notdienst-Öffnungszeiten

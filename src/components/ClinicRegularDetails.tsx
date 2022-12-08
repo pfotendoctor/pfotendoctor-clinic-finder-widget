@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import UpsellingBox from "./UpsellingBox";
+import UpsellingBox from './UpsellingBox';
 
 export interface ClinicDetails {
   clinicServiceDetails: {

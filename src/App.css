@@ -536,7 +536,8 @@ html {
   cursor: pointer;
 }
 
-.mapContainerActive, .mapContainerInactive {
+.mapContainerActive,
+.mapContainerInactive {
   width: 100%;
 }
 
@@ -564,7 +565,13 @@ html {
   font-weight: 600 !important;
 }
 
-.clinicDetails__redRowContainer:hover {
+.clinicDetails__redText--regular {
+  color: rgba(245, 0, 1, 1) !important;
+  line-height: 1.3rem !important;
+}
+
+.clinicDetails__redRowContainer:hover,
+.clinicDetails__redRowContainer--emergency:hover {
   cursor: pointer;
 }
 
@@ -584,9 +591,22 @@ html {
   letter-spacing: 0.01em;
 }
 
-.clinicDetails__redRowContainer {
+.clinicDetails__detailContainerBox--emergency {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 10px;
+  letter-spacing: 0.01em;
+}
+
+.clinicDetails__redRowContainer,
+.clinicDetails__redRowContainer--emergency {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  grid-gap: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .clinicDetails__redRowContainer img {
@@ -594,11 +614,16 @@ html {
   width: 12px !important;
 }
 
+.clinicDetails__redRowContainer--emergency img {
+  height: 1.5rem !important;
+  width: 22px !important;
+}
+
 .clinicDetails__detailContainer--title {
   color: #2b3656;
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.3rem;
 }
 
@@ -642,20 +667,32 @@ html {
   font-weight: 600;
 }
 
-.clinicDetails__buttonContainer {
+.clinicDetails__buttonContainer,
+.clinicDetails__buttonContainer--emergency {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   gap: 0.5rem;
 }
 
-.clinicDetails__detailContainerBox .clinicDetails__buttonContainer {
+.clinicDetails__detailContainerBox .clinicDetails__buttonContainer,
+.clinicDetails__buttonContainer--emergency {
   margin-bottom: 0;
 }
 
 .clinicDetails__buttonContainer button,
 .infoModal__footer button {
   background: #fff2f2;
+  border: none;
+  padding: 0.7rem;
+  color: #f50001;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+
+.clinicDetails__buttonContainer--emergency button {
+  background: rgba(245, 0, 1, 0.05);
   border: none;
   padding: 0.7rem;
   color: #f50001;
@@ -734,6 +771,10 @@ html {
 
 .marginBottom {
   margin-bottom: 1rem !important;
+}
+
+.marginLeft {
+  margin-left: 1rem;
 }
 
 .backToMap {
@@ -1128,6 +1169,10 @@ html {
 }
 
 @media (max-width: 434px) {
+  .container__bodyLeftSearch {
+    margin: 0.5rem 1rem 0.5rem 1.5rem;
+  }
+
   .container__bodyRight {
     top: 13.5rem;
   }
@@ -1147,7 +1192,7 @@ html {
     top: 10.5rem !important;
   }
   .container__bodyItemsIcon {
-    top: 13.8rem!important
+    top: 13.8rem !important;
   }
 }
 
@@ -1164,7 +1209,8 @@ html {
   .upsellingModal__subTitle--description {
     font-size: 0.9rem;
   }
-  .upsellingModal__buttonPrimary, .upsellingModal__buttonSecondary {
+  .upsellingModal__buttonPrimary,
+  .upsellingModal__buttonSecondary {
     font-size: 0.8rem;
   }
 }
@@ -1180,7 +1226,6 @@ html {
     top: 16.5rem;
   }
 }
-
 
 /*Upselling modal */
 .upsellingModal__bg {
@@ -1239,6 +1284,3 @@ html {
     border-radius: 0;
   }
 }
-
-
-

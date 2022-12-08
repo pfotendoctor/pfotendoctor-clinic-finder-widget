@@ -46,12 +46,12 @@ const UpsellingModal = (props: UpsellingModal) => {
         Nur eine von fünf Situationen, die ein Tierbesitzer als Notfall
         einstuft, ist ein tatsächlicher Notfall und akut behandlungsbedürftig
       </div>
-        {windowSize.innerWidth > 547 &&
-            <div className={'upsellingModal__title--description'}>
-                Falsch eingeschätzte Situationen können für Tierbesitzer zu erhöhten
-                Wartezeiten im Notdienst führen und unnötige Kosten verursachen.
-            </div>
-        }
+      {windowSize.innerWidth > 547 && (
+        <div className={'upsellingModal__title--description'}>
+          Falsch eingeschätzte Situationen können für Tierbesitzer zu erhöhten
+          Wartezeiten im Notdienst führen und unnötige Kosten verursachen.
+        </div>
+      )}
       <div className={'upsellingModal__subTitle'}>
         Nicht sicher, ob es sich bei dir um einen Notfall handelt?
       </div>
@@ -73,7 +73,7 @@ const UpsellingModal = (props: UpsellingModal) => {
       >
         {windowSize.innerWidth >= 547 && (
           <img
-            src={`${process.env.REACT_APP_CDN_URL}/camera_filled.svg`}
+            src={`${process.env.REACT_APP_CDN_URL}/camera_icon_filled.svg`}
             alt={'video call icon'}
             className={'upsellingModal--icon'}
           />
@@ -87,7 +87,7 @@ const UpsellingModal = (props: UpsellingModal) => {
         <>
           {windowSize.innerWidth > 547 && (
             <img
-              src={`${process.env.REACT_APP_CDN_URL}/map.svg`}
+              src={`${process.env.REACT_APP_CDN_URL}/map_icon.svg`}
               alt={'video call icon'}
               className={'upsellingModal--icon'}
             />

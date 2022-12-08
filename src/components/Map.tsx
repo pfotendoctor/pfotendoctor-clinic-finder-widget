@@ -53,8 +53,7 @@ const Map = (props: Map) => {
   return (
     <div
       className={
-        props.showItemList &&
-        props.numberOfMarkerClicks > 1
+        props.showItemList && props.numberOfMarkerClicks > 1
           ? 'mapContainerInactive'
           : 'mapContainerActive'
       }

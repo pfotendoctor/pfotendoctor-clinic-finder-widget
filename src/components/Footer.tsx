@@ -48,7 +48,7 @@ const Footer = (props: Footer) => {
         {props.providedAt === ProvidedAt.pfotendoctor && (
           <>
             <div className={'container__footer--description'}>
-              <p className='marginBottom'>
+              <p className="marginBottom">
                 <span className={'clinicDetails__redText'}>
                   Notfälle sind lebensbedrohliche Situationen.
                 </span>{' '}
