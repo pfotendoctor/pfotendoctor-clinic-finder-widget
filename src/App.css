@@ -278,7 +278,7 @@ html {
   margin-right: 10px;
   height: 100% !important;
   line-height: 1;
-  padding: 2px;
+  padding: 3px;
 }
 
 .container__bodyLeftSearch .loader .loader__size__small {
@@ -428,12 +428,13 @@ html {
   max-width: 800px;
 }
 
-.container__footer--link {
+.container__footer--link a {
   text-decoration: underline;
   font-weight: 600;
+  color: #2b3656 !important;
 }
 
-.container__footer--link:hover {
+.container__footer--link a:hover {
   cursor: pointer;
 }
 
@@ -1287,7 +1288,7 @@ html {
 
 @media (max-width: 551px) {
   .upsellingModal__bg {
-    width: 100%;
+    width: 101%;
     right: -3px;
     border-radius: 0;
   }
