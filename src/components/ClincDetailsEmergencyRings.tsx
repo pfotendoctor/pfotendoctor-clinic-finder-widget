@@ -47,6 +47,12 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
         <div className={'clinicDetails__detailContainer--subTitle'}>
           Bitte informieren Sie sich unbedingt über den aktuellen Dienstplan.
         </div>
+        <div className={'clinicDetails__emergencyInfo--title'}>
+          Vor ihrem Besuch
+        </div>
+        <div className={'clinicDetails__emergencyInfo--info'}>
+          {clinicService.customerTodo}
+        </div>
         <div className={'clinicDetails__buttonContainer'}>
           {clinicService.phoneNumberRegular && (
             <>

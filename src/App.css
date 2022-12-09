@@ -634,6 +634,9 @@ html {
 
 .clinicDetails__detailContainer--subTitle {
   margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .clinicDetails__attentionContainer {
@@ -648,24 +651,20 @@ html {
   line-height: 1.2rem;
 }
 
-.clinicDetails__attentionContainer--info,
-.clinicDetails__emergencyInfo--info {
+.clinicDetails__emergencyInfo--info,
+.clinicDetails__attentionContainer--info {
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.2rem;
-}
-
-.clinicDetails__emergencyInfo--info {
-  font-size: 14px;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .clinicDetails__attentionContainer--title,
 .clinicDetails__emergencyInfo--title {
   color: #2b3656;
   margin-bottom: 0.5rem;
-  font-size: 0.875rem;
   line-height: 1.2rem;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .clinicDetails__buttonContainer,
