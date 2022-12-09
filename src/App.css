@@ -1254,19 +1254,19 @@ html {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   .upsellingModal__bg {
     width: 688px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .upsellingModal__bg {
     width: 718px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .upsellingModal__bg {
     width: 508px;
   }
