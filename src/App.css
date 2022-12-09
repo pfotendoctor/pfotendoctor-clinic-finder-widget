@@ -647,8 +647,8 @@ html {
   display: flex;
   flex-direction: row;
   gap: 0.2rem;
-  font-size: 0.875rem;
-  line-height: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .clinicDetails__emergencyInfo--info,
