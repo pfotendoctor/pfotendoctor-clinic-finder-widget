@@ -1035,13 +1035,6 @@ html {
 
 /*Responsive media screens*/
 
-@media (min-width: 1600px) {
-  .upsellingModalContainer {
-    top: 19rem;
-    right: 9rem;
-  }
-}
-
 @media (max-width: 1178px) {
   .container__headerRight img {
     bottom: 1.5rem !important;
@@ -1242,14 +1235,7 @@ html {
   height: 550px;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-
-@media (min-width: 1600px) {
-  .upsellingModalContainer {
-    top: 19rem;
-    right: 9rem;
-  }
+  border-radius: 10px 10px 0 0;
 }
 
 @media (min-width: 1600px) {
@@ -1262,7 +1248,7 @@ html {
   }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1599px) {
   .upsellingModal__bg {
     width: 823px;
   }
