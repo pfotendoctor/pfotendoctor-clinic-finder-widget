@@ -41,7 +41,7 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
             Wichtiger Hinweis
           </div>
         </div>
-        <div className={'clinicDetails__detailContainer--title'}>
+        <div className={'clinicDetails__detailContainer--titleSmall'}>
           Der Notdienst wird von mehreren Praxen im Wechsel geleistet.
         </div>
         <div className={'clinicDetails__detailContainer--subTitle'}>

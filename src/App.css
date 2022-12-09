@@ -622,24 +622,24 @@ html {
   color: #2b3656;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.3rem;
+  margin-bottom: .5rem;
+  line-height: 1.5rem;
 }
 
 .clinicDetails__detailContainer--titleSmall {
   color: #2b3656;
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.3rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5rem;
 }
 
 .clinicDetails__detailContainerBox .clinicDetails__detailContainer--title {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .clinicDetails__detailContainer--subTitle {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   line-height: 1.5;
   font-size: 1rem;
   font-weight: 400;
