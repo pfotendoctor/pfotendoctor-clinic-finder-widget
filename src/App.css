@@ -467,7 +467,6 @@ html {
   font-size: 1rem;
   color: white;
   font-weight: 600;
-  text-transform: uppercase;
   border: none;
   border-radius: 6px;
   margin-top: 1rem;
@@ -493,7 +492,6 @@ html {
   font-size: 1rem;
   color: #ff8766;
   font-weight: 600;
-  text-transform: uppercase;
   border: 1px solid #ff8766;
   border-radius: 6px;
   margin-top: 1rem;
@@ -621,6 +619,14 @@ html {
 }
 
 .clinicDetails__detailContainer--title {
+  color: #2b3656;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.3rem;
+}
+
+.clinicDetails__detailContainer--titleSmall {
   color: #2b3656;
   font-size: 1rem;
   font-weight: bold;
@@ -779,6 +785,10 @@ html {
 
 .marginLeft {
   margin-left: 1rem;
+}
+
+.regularText {
+  font-weight: 500;
 }
 
 .backToMap {
@@ -1250,6 +1260,12 @@ html {
 @media (max-width: 1599px) {
   .upsellingModal__bg {
     width: 823px;
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 1599px) {
+  .upsellingModal {
+    margin: 4.5rem 2rem;
   }
 }
 

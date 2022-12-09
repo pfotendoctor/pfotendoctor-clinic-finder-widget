@@ -95,7 +95,7 @@ const UpsellingModal = (props: UpsellingModal) => {
           {windowSize.innerWidth <= 547 ? (
             <div>Weiter zu den lokalen Notdiensten</div>
           ) : (
-            <div>Nein danke, weiter zu den lokalen Notdiensten</div>
+            <div>Nein danke, <span className='regularText'>weiter zu den lokalen Notdiensten</span></div>
           )}
         </>
       </button>

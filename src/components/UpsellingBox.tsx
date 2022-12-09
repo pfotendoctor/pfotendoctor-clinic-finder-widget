@@ -4,7 +4,7 @@ const UpsellingBox = () => {
   return (
     <div className={'clinicDetails__detailContainerBox'}>
       <div className={'clinicDetails__redRowContainer'}></div>
-      <div className={'clinicDetails__detailContainer--title'}>
+      <div className={'clinicDetails__detailContainer--titleSmall'}>
         <span className={'clinicDetails__redText'}>Hinweis: </span>
         <span>
           Nur 2 von 10 Fällen sind wirkliche Notfälle die akut behandelt werden
