@@ -48,6 +48,10 @@ export interface ErrorState {
   message: string;
 }
 const ClinicFinder = (props: ClinicFinder) => {
+  const initialCustomPosition:GeoLocation = {
+    lat: props.lat,
+    lng: props.lng,
+  }
   const [clinics, setClinics] = useState<ClinicService[]>(null);
   const [activeClinicSiteId, setActiveClinicSiteId] = useState<number>(null);
   const [hoveredMarker, setHoveredMarker] = useState<number>(null);
@@ -61,10 +65,7 @@ const ClinicFinder = (props: ClinicFinder) => {
   const [loadingGeoLocation, setLoadingGeolocation] = useState<boolean>(false);
   const [showCurrentPosition, setShowCurrentPosition] =
     useState<boolean>(false);
-  const [customPosition, setCustomPosition] = useState<GeoLocation>({
-    lat: props.lat,
-    lng: props.lng,
-  });
+  const [customPosition, setCustomPosition] = useState<GeoLocation>(initialCustomPosition);
   const [error, setError] = useState<ErrorState>(null);
   const [numberOfMarkerClicks, setNumberOfMarkerClicks] = useState<number>(0);
   const [showUpsellingModal, setShowUpsellingModal] = useState<boolean>(false);
@@ -223,15 +224,18 @@ const ClinicFinder = (props: ClinicFinder) => {
   };
 
   const clearPosition = () => {
-    setShowCurrentPosition(false);
-    setUserGeoLocation(null);
-    setCustomPosition(null);
+    try {
+      setShowCurrentPosition(false);
+      setUserGeoLocation(null);
+      setCustomPosition(initialCustomPosition);
+    } catch(e) {
+      console.log(e)
+    }
   };
 
   const moveToPosition = async () => {
     setLoadingGeolocation(true);
-    setLoadingGeolocation(true);
-    await clearPosition();
+    clearPosition();
     if (navigator.geolocation) {
       await getUserGeoLocation();
     }
