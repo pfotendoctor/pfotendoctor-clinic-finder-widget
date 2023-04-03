@@ -21,16 +21,6 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
       <div className={'clinicDetails__detailContainer--title'}>
         {clinicService.name}
       </div>
-      <div className={'marginBottom'}>
-        <div className={'clinicDetails__detailContainer--address'}>
-          <div>{clinicService.street}</div>
-          <div>{clinicService.houseNumber}</div>
-        </div>
-        <div className={'clinicDetails__detailContainer--address'}>
-          <div>{clinicService.zip}</div>
-          <div>{clinicService.city}</div>
-        </div>
-      </div>
       <div className={'clinicDetails__detailContainerBox'}>
         <div className={'clinicDetails__redRowContainer--emergency'}>
           <img
@@ -80,6 +70,18 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
           </button>
         </div>
       </div>
+
+      <div className={'marginBottom'}>
+        <div className={'clinicDetails__detailContainer--address'}>
+          <div>{clinicService.street}</div>
+          <div>{clinicService.houseNumber}</div>
+        </div>
+        <div className={'clinicDetails__detailContainer--address'}>
+          <div>{clinicService.zip}</div>
+          <div>{clinicService.city}</div>
+        </div>
+      </div>
+
       <UpsellingBoxEmergency />
       <div className={'clinicDetails__emergencyInfo'}>
         <div className={'clinicDetails__emergencyInfo--title'}>

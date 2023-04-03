@@ -67,18 +67,16 @@ const UpsellingModal = (props: UpsellingModal) => {
       )}
       <button
         className={'upsellingModal__buttonPrimary'}
-        onClick={() =>
-          window.open('https://pfotendoctor.de/termin-buchen-3', '_blank')
-        }
+        onClick={() => window.open('tel:+498007777444', '_blank')}
       >
         {windowSize.innerWidth >= 547 && (
           <img
-            src={`${process.env.REACT_APP_CDN_URL}/camera_icon_filled.svg`}
+            src={`${process.env.REACT_APP_CDN_URL}/phone_icon_filled.svg`}
             alt={'video call icon'}
             className={'upsellingModal--icon'}
           />
         )}
-        <div>Videosprechstunde buchen</div>
+        <div>Tierarzt per Telefon sprechen</div>
       </button>
       <button
         className={'upsellingModal__buttonSecondary'}
@@ -95,7 +93,12 @@ const UpsellingModal = (props: UpsellingModal) => {
           {windowSize.innerWidth <= 547 ? (
             <div>Weiter zu den lokalen Notdiensten</div>
           ) : (
-            <div>Nein danke, <span className='regularText'>weiter zu den lokalen Notdiensten</span></div>
+            <div>
+              Nein danke,{' '}
+              <span className="regularText">
+                weiter zu den lokalen Notdiensten
+              </span>
+            </div>
           )}
         </>
       </button>

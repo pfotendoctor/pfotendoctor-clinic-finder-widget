@@ -18,7 +18,7 @@ const UpsellingBoxEmergency = () => {
       <div className={'clinicDetails__buttonContainer--emergency'}>
         <button
           onClick={() => {
-            window.open('https://pfotendoctor.de/terminbuchung?chat&utm_source=website&utm_medium=website&utm_campaign=klinikfinder&utm_content=klinikfinder', '_blank');
+            window.open('tel:+498007777444');
           }}
         >
           Jetzt tierärztlichen Rat erhalten

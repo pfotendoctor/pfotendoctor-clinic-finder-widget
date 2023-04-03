@@ -60,12 +60,10 @@ const Footer = (props: Footer) => {
               <p>
                 Nutze die{' '}
                 <span className={'container__footer--link'}>
-                  <a href={'https://pfotendoctor.de/terminbuchung?chat&utm_source=website&utm_medium=website&utm_campaign=klinikfinder&utm_content=klinikfinder'}>
-                    Notfall-Sprechstunde
-                  </a>
+                  <a href={'tel:+498007777444'}>Notfall-Sprechstunde</a>
                 </span>{' '}
-                per Video oder Telefon, falls du Hilfe bei der Einschätzung
-                deiner Situation brauchst.
+                per Telefon, falls du Hilfe bei der Einschätzung deiner
+                Situation brauchst.
               </p>
             </div>
           </>

@@ -59,3 +59,11 @@ Falls Änderungen schnellstmöglich live gehen sollen im Browser einfach einer d
 https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/index.js
 https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/index.css
 Bei Bildern: https://purge.jsdelivr.net/gh/pfotendoctor/pfotendoctor-clinic-finder-widget@main/docs/image.svg
+
+## Local development with Chrome
+
+Start Chrome with corse disabled
+
+```
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+```
