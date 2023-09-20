@@ -58,12 +58,11 @@ const Footer = (props: Footer) => {
                 Notdienste.
               </p>
               <p>
-                Nutze die{' '}
+              Unsere Tierärzte stehen in wenigen Minuten per Telefon{' '}
                 <span className={'container__footer--link'}>
-                  <a href={'tel:+498007777444'}>Notfall-Sprechstunde</a>
+                  <a href={'tel:+498007777444'}>0800 7777 444</a>
                 </span>{' '}
-                per Telefon, falls du Hilfe bei der Einschätzung deiner
-                Situation brauchst.
+                oder Video zur Verfügung.
               </p>
             </div>
           </>
