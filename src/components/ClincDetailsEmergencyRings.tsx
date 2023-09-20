@@ -82,7 +82,6 @@ const ClincDetailsEmergencyRings = (props: ClinicDetails) => {
         </div>
       </div>
 
-      <UpsellingBoxEmergency />
       <div className={'clinicDetails__emergencyInfo'}>
         <div className={'clinicDetails__emergencyInfo--title'}>
           Notdienst-Öffnungszeiten
