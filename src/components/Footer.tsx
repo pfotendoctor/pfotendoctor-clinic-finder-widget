@@ -57,13 +57,20 @@ const Footer = (props: Footer) => {
                 der Praxis-Öffnungszeiten bitte einen der aufgeführten
                 Notdienste.
               </p>
-              <p>
+              {/* <p>
                 Nutze die{' '}
                 <span className={'container__footer--link'}>
                   <a href={'tel:+498007777444'}>Notfall-Sprechstunde</a>
                 </span>{' '}
                 per Telefon, falls du Hilfe bei der Einschätzung deiner
                 Situation brauchst.
+              </p> */}
+              <p>
+                Für alle anderen Themen stehen dir unsere Tierärzte in wenigen Minuten per Telefon {" "}
+                <span className={'container__footer--link'}>
+                  <a href={'tel:+498007777444'}>0800 7777 444</a>
+                </span>{' '}
+                oder Video zur Verfügung.
               </p>
             </div>
           </>
