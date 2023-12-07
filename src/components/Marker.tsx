@@ -58,6 +58,22 @@ export const Marker = (props: Marker) => {
             alt={props.clinicName}
           />
         )}
+        {props.type === ClinicType.vetExtendedOpeningHours && (
+          <img
+            onMouseEnter={() => {
+              props.onHover(props.id);
+            }}
+            onMouseLeave={() => {
+              props.onHover(null);
+            }}
+            src={
+              props.id === (props.activeInfoCardId || props.hoveredMarker)
+                ? `${process.env.REACT_APP_CDN_URL}/marker-active.svg`
+                : `${process.env.REACT_APP_CDN_URL}/marker-inactive.svg`
+            }
+            alt={props.clinicName}
+          />
+        )}
       </div>
     );
   } else {
