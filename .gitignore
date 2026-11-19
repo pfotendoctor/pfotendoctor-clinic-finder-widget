@@ -1,1 +1,10 @@
 node_modules
+.idea/.gitignore
+.idea/modules.xml
+.idea/pfotendoctor-clinic-finder-widget.iml
+.idea/vcs.xml
+.idea/inspectionProfiles
+/.cache
+/.docs
+/build
+src/react-app-env.d.ts
